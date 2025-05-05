@@ -1,0 +1,1004 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>All Projects - Flutter Developer Portfolio</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#7B42F6',secondary:'#00BCD4'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #121212;
+  color: #FFFFFF;
+}
+.gradient-text {
+  background: linear-gradient(90deg, #7B42F6, #2196F3, #00BCD4);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gradient-border {
+  position: relative;
+  border: 1px solid transparent;
+  background: linear-gradient(#1E1E1E, #1E1E1E) padding-box,
+    linear-gradient(90deg, #7B42F6, #2196F3) border-box;
+}
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #7B42F6, #2196F3);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after, .nav-link.active::after {
+  width: 100%;
+}
+.glass-effect {
+  backdrop-filter: blur(10px);
+  background: rgba(30, 30, 30, 0.7);
+}
+.project-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 10px 25px rgba(123, 66, 246, 0.2);
+}
+.glow-effect {
+  box-shadow: 0 0 15px rgba(123, 66, 246, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+.glow-effect:hover {
+  box-shadow: 0 0 25px rgba(123, 66, 246, 0.8);
+}
+.form-input {
+  background-color: #1E1E1E;
+  border: 1px solid #333;
+  color: #FFF;
+  transition: all 0.3s ease;
+}
+.form-input:focus {
+  border-color: #7B42F6;
+  box-shadow: 0 0 10px rgba(123, 66, 246, 0.3);
+}
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+.slide-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: slideUp 0.6s forwards;
+}
+@keyframes slideUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.filter-chip {
+  transition: all 0.3s ease;
+}
+.filter-chip.active {
+  background: linear-gradient(90deg, rgba(123, 66, 246, 0.2), rgba(0, 188, 212, 0.2));
+  border-color: #7B42F6;
+}
+.custom-checkbox {
+  display: inline-block;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  user-select: none;
+}
+.custom-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  background-color: #2A2A2A;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+.custom-checkbox:hover input ~ .checkmark {
+  background-color: #333;
+}
+.custom-checkbox input:checked ~ .checkmark {
+  background-color: #7B42F6;
+}
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+  display: block;
+}
+.custom-checkbox .checkmark:after {
+  left: 7px;
+  top: 3px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+.skeleton {
+  background: linear-gradient(90deg, #1E1E1E 25%, #2A2A2A 50%, #1E1E1E 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+</style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="fixed w-full z-50 glass-effect">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <div class="flex items-center">
+        <a href="Portfolio.html" data-readdy="true" class="text-2xl font-['Pacifico'] gradient-text">DevFlutter</a>
+      </div>
+      <div class="hidden md:block">
+        <div class="ml-10 flex items-baseline space-x-8">
+          <a href="Portfolio.html#home" data-readdy="true" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Home</a>
+          <a href="Portfolio.html#projects" class="nav-link active text-white px-3 py-2 text-sm font-medium">Projects</a>
+          <a href="Portfolio.html#skills" data-readdy="true" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Skills</a>
+          <a href="Portfolio.html#contact" data-readdy="true" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Contact</a>
+        </div>
+      </div>
+      <div class="md:hidden flex items-center">
+        <button id="mobile-menu-button" class="text-gray-300 hover:text-white">
+          <div class="w-8 h-8 flex items-center justify-center">
+            <i class="ri-menu-line ri-lg"></i>
+          </div>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden md:hidden glass-effect">
+    <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+      <a href="Portfolio.html#home" data-readdy="true" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+      <a href="Portfolio.html#projects" class="text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+      <a href="Portfolio.html#skills" data-readdy="true" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+      <a href="Portfolio.html#contact" data-readdy="true" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- Page Header -->
+<header class="pt-28 pb-12 px-4 sm:px-6 lg:px-8" style="background: linear-gradient(135deg, #121212 0%, #1E1E1E 100%);">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-8">
+      <div class="mb-6 md:mb-0">
+        <div class="flex items-center gap-2 text-gray-300 text-sm mb-2">
+          <a href="https://readdy.ai/home/0158620a-6cdc-47b7-8b74-4a3cad693856/e5ff93af-1b20-4504-817b-73102b72c91e" data-readdy="true" class="hover:text-primary">Home</a>
+          <div class="w-4 h-4 flex items-center justify-center text-gray-500">
+            <i class="ri-arrow-right-s-line"></i>
+          </div>
+          <span>Projects</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-bold gradient-text">All Projects</h1>
+        <p class="text-gray-300 mt-3 max-w-2xl">Explore my complete portfolio of Flutter applications, showcasing a diverse range of skills and technologies.</p>
+      </div>
+      <a href="https://readdy.ai/home/0158620a-6cdc-47b7-8b74-4a3cad693856/e5ff93af-1b20-4504-817b-73102b72c91e" data-readdy="true" class="inline-flex items-center gap-2 text-primary hover:underline">
+        <div class="w-5 h-5 flex items-center justify-center">
+          <i class="ri-arrow-left-line"></i>
+        </div>
+        <span>Back to Portfolio</span>
+      </a>
+    </div>
+    
+    <!-- Search and Filter -->
+    <div class="gradient-border rounded-lg p-6 bg-[#1E1E1E]">
+      <div class="flex flex-col md:flex-row gap-4 mb-6">
+        <div class="flex-1 relative">
+          <div class="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+            <div class="w-5 h-5 flex items-center justify-center text-gray-400">
+              <i class="ri-search-line"></i>
+            </div>
+          </div>
+          <input type="text" id="search-input" placeholder="Search projects by name or technology..." class="form-input w-full pl-10 pr-4 py-3 rounded !rounded-button bg-[#2A2A2A] border-none focus:ring-2 focus:ring-primary text-white text-sm">
+        </div>
+        <div class="flex gap-2">
+          <div class="relative">
+            <button id="category-dropdown-btn" class="flex items-center justify-between gap-2 px-4 py-3 rounded !rounded-button bg-[#2A2A2A] text-white text-sm min-w-[160px]">
+              <span>All Categories</span>
+              <div class="w-5 h-5 flex items-center justify-center">
+                <i class="ri-arrow-down-s-line"></i>
+              </div>
+            </button>
+            <div id="category-dropdown" class="absolute z-10 mt-1 w-full rounded-md bg-[#2A2A2A] shadow-lg hidden">
+              <div class="py-1">
+                <button class="block px-4 py-2 text-sm text-white hover:bg-[#333] w-full text-left category-option active" data-value="all">All Categories</button>
+                <button class="block px-4 py-2 text-sm text-white hover:bg-[#333] w-full text-left category-option" data-value="mobile">Mobile Apps</button>
+                <button class="block px-4 py-2 text-sm text-white hover:bg-[#333] w-full text-left category-option" data-value="web">Web Apps</button>
+                <button class="block px-4 py-2 text-sm text-white hover:bg-[#333] w-full text-left category-option" data-value="desktop">Desktop Apps</button>
+              </div>
+            </div>
+          </div>
+          <button id="filter-button" class="flex items-center gap-2 px-4 py-3 rounded !rounded-button bg-[#2A2A2A] text-white text-sm whitespace-nowrap">
+            <div class="w-5 h-5 flex items-center justify-center">
+              <i class="ri-filter-3-line"></i>
+            </div>
+            <span>Filters</span>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Filter Tags -->
+      <div id="filter-panel" class="border-t border-gray-700 pt-5 hidden">
+        <h3 class="text-lg font-medium mb-4">Filter by Technology</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <label class="custom-checkbox text-sm text-gray-300">
+            <input type="checkbox" class="tech-filter" value="flutter">
+            <span class="checkmark"></span>
+            Flutter
+          </label>
+          <label class="custom-checkbox text-sm text-gray-300">
+            <input type="checkbox" class="tech-filter" value="firebase">
+            <span class="checkmark"></span>
+            Firebase
+          </label>
+          <label class="custom-checkbox text-sm text-gray-300">
+            <input type="checkbox" class="tech-filter" value="bloc">
+            <span class="checkmark"></span>
+            BLoC
+          </label>
+          <label class="custom-checkbox text-sm text-gray-300">
+            <input type="checkbox" class="tech-filter" value="provider">
+            <span class="checkmark"></span>
+            Provider
+          </label>
+          <label class="custom-checkbox text-sm text-gray-300">
+            <input type="checkbox" class="tech-filter" value="getx">
+            <span class="checkmark"></span>
+            GetX
+          </label>
+          <label class="custom-checkbox text-sm text-gray-300">
+            <input type="checkbox" class="tech-filter" value="riverpod">
+            <span class="checkmark"></span>
+            Riverpod
+          </label>
+          <label class="custom-checkbox text-sm text-gray-300">
+            <input type="checkbox" class="tech-filter" value="animations">
+            <span class="checkmark"></span>
+            Animations
+          </label>
+          <label class="custom-checkbox text-sm text-gray-300">
+            <input type="checkbox" class="tech-filter" value="rest-api">
+            <span class="checkmark"></span>
+            REST API
+          </label>
+        </div>
+        <div class="flex justify-end mt-4">
+          <button id="clear-filters" class="text-sm text-primary hover:underline">Clear all filters</button>
+        </div>
+      </div>
+      
+      <!-- Active Filters -->
+      <div id="active-filters" class="flex flex-wrap gap-2 mt-4">
+        <!-- Filter chips will be added here dynamically -->
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Projects Grid -->
+<section class="py-12 px-4 sm:px-6 lg:px-8" style="background: #161616;">
+  <div class="max-w-7xl mx-auto">
+    <div class="flex justify-between items-center mb-8">
+      <h2 class="text-2xl font-bold text-white">Showing <span id="project-count">16</span> projects</h2>
+      <div class="relative">
+        <button id="sort-dropdown-btn" class="flex items-center gap-2 px-4 py-2 rounded !rounded-button bg-[#2A2A2A] text-white text-sm">
+          <span>Sort by: Recent</span>
+          <div class="w-5 h-5 flex items-center justify-center">
+            <i class="ri-arrow-down-s-line"></i>
+          </div>
+        </button>
+        <div id="sort-dropdown" class="absolute right-0 z-10 mt-1 w-48 rounded-md bg-[#2A2A2A] shadow-lg hidden">
+          <div class="py-1">
+            <button class="block px-4 py-2 text-sm text-white hover:bg-[#333] w-full text-left sort-option active" data-value="recent">Most Recent</button>
+            <button class="block px-4 py-2 text-sm text-white hover:bg-[#333] w-full text-left sort-option" data-value="name">Name (A-Z)</button>
+            <button class="block px-4 py-2 text-sm text-white hover:bg-[#333] w-full text-left sort-option" data-value="complexity">Complexity</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div id="projects-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Project 1 -->
+      <div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.1s" data-category="mobile" data-tech="flutter,firebase,bloc,animations">
+        <div class="relative">
+          <img src="eventra.png" alt="event booking App" class="w-full h-47 object-cover object-top">
+          <div class="absolute top-3 right-3 bg-[#1E1E1E] rounded-full px-3 py-1 text-xs font-medium text-primary">Featured</div>
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Eventra</h3>
+          <p class="text-gray-400 mb-4">An Event Booking App With an Admin Panel, User Page and attractive UI.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Firebase</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Firestore</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Cloudinary</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">shared-preference</span>
+          </div>
+          <div class="flex justify-between">
+            <a href="https://drive.google.com/file/d/1D_cPDHQrQgNyGP208C39BdXwdqLwCtIQ/view?usp=sharing" class="text-primary flex items-center gap-1 hover:underline">
+              <span>Download</span>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-external-link-line"></i>
+              </div>
+            </a>
+            <a href="https://github.com/Messy-guy/eventra1" class="text-primary flex items-center gap-1 hover:underline">
+              <span>Source Code</span>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-github-fill"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      
+      <!-- Project 2 -->
+      <div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.2s" data-category="mobile" data-tech="flutter,getx,animations">
+        <div class="relative">
+          <img src="gitpeek (2).png" alt="git hub App" class="w-full h-47 object-cover object-top">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">gitpeek</h3>
+          <p class="text-gray-400 mb-4">An custom Github App that lets you peek someone's github profile , repos , Contribution and Top 5 repos.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Github Api</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">bloc</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">fl_charts</span>
+          </div>
+          <div class="flex justify-between">
+            <a href="https://drive.google.com/file/d/1D_cPDHQrQgNyGP208C39BdXwdqLwCtIQ/view?usp=sharing" class="text-primary flex items-center gap-1 hover:underline">
+              <span>Download</span>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-external-link-line"></i>
+              </div>
+            </a>
+            <a href="https://github.com/Messy-guy/gitpeek" class="text-primary flex items-center gap-1 hover:underline">
+              <span>Source Code</span>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-github-fill"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 3 -->
+      <div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.3s" data-category="mobile" data-tech="flutter,provider,firebase">
+        <div class="relative">
+          <img src="voxa (2).png" alt="Voice Assistantr App" class="w-full h-47 object-cover object-top">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">Voxa</h3>
+          <p class="text-gray-400 mb-4">A Voice Assistant App with a voice assitant to give you your answers and ai-image generator.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">OpenRouter API</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">HuggingFace API</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">HTTP</span>
+          </div>
+          <div class="flex justify-between">
+            <a href="https://drive.google.com/file/d/12Ee6BEHkZJdA7pVP9qdm6ug_qYEe_CIN/view?usp=sharing" class="text-primary flex items-center gap-1 hover:underline">
+              <span>Download</span>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-external-link-line"></i>
+              </div>
+            </a>
+            <a href="https://github.com/Messy-guy/https---github.com-Messy-guy-voxa_" class="text-primary flex items-center gap-1 hover:underline">
+              <span>Source Code</span>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-github-fill"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 4 -->
+      <div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.4s" data-category="mobile" data-tech="flutter,riverpod,animations">
+        <div class="relative">
+          <img src="AirZone.png" alt="Music App" class="w-full h-47 object-cover object-top">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">AirZone</h3>
+          <p class="text-gray-400 mb-4">AirZone is a mobile app that shows real-time AQI, pollutant levels, and a 7-day forecast. It includes a live map with air quality data from nearby cities to help users stay informed.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">fl_charts</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">OpenWeather API</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">HTTp</span>
+          </div>
+          <div class="flex justify-between">
+            <a href="https://drive.google.com/file/d/1NBYX4TafSb-u29gQzYT8Kz4aMhdRhP_K/view?usp=sharing" class="text-primary flex items-center gap-1 hover:underline">
+              <span>Download</span>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-external-link-line"></i>
+              </div>
+            </a>
+            <a href="https://github.com/Messy-guy/AIRZONE" class="text-primary flex items-center gap-1 hover:underline">
+              <span>Source Code</span>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-github-fill"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 5 -->
+      <div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.5s" data-category="mobile" data-tech="flutter,mobx,rest-api,animations">
+        <div class="relative">
+          <img src="brain.png" alt="chatbot App" class="w-full h-47 object-cover object-top">
+        </div>
+        <div class="p-6">
+          <h3 class="text-xl font-bold mb-2">BrAIn</h3>
+          <p class="text-gray-400 mb-4">Brain is a simple and responsive chatbot app designed for smooth real-time conversations. It provides an interactive user experience with intelligent message handling.</p>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">dash_chat_2</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">google generative Ai</span>
+            <span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Gemini Api</span>
+          </div>
+          <div class="flex justify-between">
+            <a href="https://drive.google.com/file/d/1A91sl7QranlT3CMamQ0F4gdiPM3afboP/view?usp=sharing" class="text-primary flex items-center gap-1 hover:underline">
+              <span>Download</span>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-external-link-line"></i>
+              </div>
+            </a>
+            <a href="https://github.com/Messy-guy/BrAIn" class="text-primary flex items-center gap-1 hover:underline">
+              <span>Source Code</span>
+              <div class="w-4 h-4 flex items-center justify-center">
+                <i class="ri-github-fill"></i>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+      
+     
+    <!-- No Results State -->
+    <div id="no-results" class="hidden py-16 text-center">
+      <div class="w-20 h-20 mx-auto mb-6 flex items-center justify-center text-gray-400">
+        <i class="ri-search-2-line ri-3x"></i>
+      </div>
+      <h3 class="text-2xl font-bold text-white mb-2">No projects found</h3>
+      <p class="text-gray-400 mb-6 max-w-md mx-auto">We couldn't find any projects matching your search criteria. Try adjusting your filters or search term.</p>
+      <button id="reset-search" class="gradient-border glow-effect !rounded-button px-6 py-3 text-white font-medium">Reset Filters</button>
+    </div>
+    
+    <!-- Loading State -->
+    <div id="loading-state" class="hidden grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="gradient-border rounded-lg overflow-hidden bg-[#1E1E1E]">
+        <div class="h-48 skeleton"></div>
+        <div class="p-6">
+          <div class="h-7 w-3/4 skeleton mb-3 rounded"></div>
+          <div class="h-4 skeleton mb-2 rounded"></div>
+          <div class="h-4 skeleton mb-2 rounded"></div>
+          <div class="h-4 w-2/3 skeleton mb-4 rounded"></div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <div class="h-6 w-16 skeleton rounded-full"></div>
+            <div class="h-6 w-20 skeleton rounded-full"></div>
+            <div class="h-6 w-24 skeleton rounded-full"></div>
+          </div>
+          <div class="flex justify-between">
+            <div class="h-5 w-20 skeleton rounded"></div>
+            <div class="h-5 w-24 skeleton rounded"></div>
+          </div>
+        </div>
+      </div>
+      <div class="gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] hidden md:block">
+        <div class="h-48 skeleton"></div>
+        <div class="p-6">
+          <div class="h-7 w-3/4 skeleton mb-3 rounded"></div>
+          <div class="h-4 skeleton mb-2 rounded"></div>
+          <div class="h-4 skeleton mb-2 rounded"></div>
+          <div class="h-4 w-2/3 skeleton mb-4 rounded"></div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <div class="h-6 w-16 skeleton rounded-full"></div>
+            <div class="h-6 w-20 skeleton rounded-full"></div>
+            <div class="h-6 w-24 skeleton rounded-full"></div>
+          </div>
+          <div class="flex justify-between">
+            <div class="h-5 w-20 skeleton rounded"></div>
+            <div class="h-5 w-24 skeleton rounded"></div>
+          </div>
+        </div>
+      </div>
+      <div class="gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] hidden lg:block">
+        <div class="h-48 skeleton"></div>
+        <div class="p-6">
+          <div class="h-7 w-3/4 skeleton mb-3 rounded"></div>
+          <div class="h-4 skeleton mb-2 rounded"></div>
+          <div class="h-4 skeleton mb-2 rounded"></div>
+          <div class="h-4 w-2/3 skeleton mb-4 rounded"></div>
+          <div class="flex flex-wrap gap-2 mb-4">
+            <div class="h-6 w-16 skeleton rounded-full"></div>
+            <div class="h-6 w-20 skeleton rounded-full"></div>
+            <div class="h-6 w-24 skeleton rounded-full"></div>
+          </div>
+          <div class="flex justify-between">
+            <div class="h-5 w-20 skeleton rounded"></div>
+            <div class="h-5 w-24 skeleton rounded"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Pagination -->
+    <!-- <div class="mt-12 flex justify-center">
+      <div class="inline-flex rounded-md shadow-sm">
+        <button class="px-4 py-2 text-sm font-medium text-white bg-[#2A2A2A] rounded-l !rounded-button hover:bg-[#333] focus:z-10 focus:ring-2 focus:ring-primary">Previous</button>
+        <button class="px-4 py-2 text-sm font-medium text-white bg-primary rounded-none">1</button>
+        <button class="px-4 py-2 text-sm font-medium text-white bg-[#2A2A2A] rounded-none hover:bg-[#333] focus:z-10 focus:ring-2 focus:ring-primary">2</button>
+        <button class="px-4 py-2 text-sm font-medium text-white bg-[#2A2A2A] rounded-r !rounded-button hover:bg-[#333] focus:z-10 focus:ring-2 focus:ring-primary">Next</button>
+      </div>
+    </div> -->
+  </div>
+</section>
+
+<!-- Back to Top Button -->
+<div id="back-to-top" class="fixed bottom-8 right-8 w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white cursor-pointer shadow-lg opacity-0 invisible transition-all duration-300">
+  <div class="w-6 h-6 flex items-center justify-center">
+    <i class="ri-arrow-up-line ri-lg"></i>
+  </div>
+</div>
+
+<!-- Footer -->
+<!-- <footer class="py-12 px-4 sm:px-6 lg:px-8" style="background: #121212;">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid md:grid-cols-4 gap-8 mb-12">
+      <div>
+        <a href="https://readdy.ai/home/0158620a-6cdc-47b7-8b74-4a3cad693856/e5ff93af-1b20-4504-817b-73102b72c91e" data-readdy="true" class="text-2xl font-['Pacifico'] gradient-text mb-4 inline-block">DevFlutter</a>
+        <p class="text-gray-400 mb-6">Crafting beautiful, performant mobile experiences with Flutter.</p>
+        <p class="text-gray-400">© 2025 Alex Morgan. All rights reserved.</p>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold mb-4 text-white">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="https://readdy.ai/home/0158620a-6cdc-47b7-8b74-4a3cad693856/e5ff93af-1b20-4504-817b-73102b72c91e" data-readdy="true" class="text-gray-400 hover:text-primary transition-colors">Home</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Projects</a></li>
+          <li><a href="https://readdy.ai/home/0158620a-6cdc-47b7-8b74-4a3cad693856/e5ff93af-1b20-4504-817b-73102b72c91e#skills" data-readdy="true" class="text-gray-400 hover:text-primary transition-colors">Skills</a></li>
+          <li><a href="https://readdy.ai/home/0158620a-6cdc-47b7-8b74-4a3cad693856/e5ff93af-1b20-4504-817b-73102b72c91e#contact" data-readdy="true" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold mb-4 text-white">Services</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Mobile App Development</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">UI/UX Design</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">App Performance Optimization</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Code Review & Consulting</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="text-lg font-bold mb-4 text-white">Newsletter</h4>
+        <p class="text-gray-400 mb-4">Subscribe to receive updates on Flutter development and my latest projects.</p>
+        <form class="flex">
+          <input type="email" placeholder="Your email" class="form-input px-4 py-2 rounded-l !rounded-button bg-[#2A2A2A] border-none focus:ring-2 focus:ring-primary text-white w-full" required>
+          <button type="submit" class="gradient-border glow-effect !rounded-button !rounded-l-none px-4 py-2 text-white font-medium whitespace-nowrap">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-500 mb-4 md:mb-0">Designed & Developed with ❤️ using Flutter</p>
+      <div class="flex gap-4">
+        <a href="#" class="text-gray-500 hover:text-primary transition-colors">Privacy Policy</a>
+        <a href="#" class="text-gray-500 hover:text-primary transition-colors">Terms of Service</a>
+        <a href="#" class="text-gray-500 hover:text-primary transition-colors">Cookie Policy</a>
+      </div>
+    </div>
+  </div>
+</footer> -->
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  // Mobile menu toggle
+  const mobileMenuButton = document.getElementById('mobile-menu-button');
+  const mobileMenu = document.getElementById('mobile-menu');
+  
+  if (mobileMenuButton && mobileMenu) {
+    mobileMenuButton.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+  }
+  
+  // Category dropdown toggle
+  const categoryDropdownBtn = document.getElementById('category-dropdown-btn');
+  const categoryDropdown = document.getElementById('category-dropdown');
+  
+  if (categoryDropdownBtn && categoryDropdown) {
+    categoryDropdownBtn.addEventListener('click', function() {
+      categoryDropdown.classList.toggle('hidden');
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!categoryDropdownBtn.contains(event.target) && !categoryDropdown.contains(event.target)) {
+        categoryDropdown.classList.add('hidden');
+      }
+    });
+    
+    // Category selection
+    const categoryOptions = document.querySelectorAll('.category-option');
+    categoryOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        const value = this.getAttribute('data-value');
+        const text = this.textContent;
+        
+        categoryDropdownBtn.querySelector('span').textContent = text;
+        categoryDropdown.classList.add('hidden');
+        
+        // Update active state
+        categoryOptions.forEach(opt => opt.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Filter projects by category
+        filterProjects();
+      });
+    });
+  }
+  
+  // Sort dropdown toggle
+  const sortDropdownBtn = document.getElementById('sort-dropdown-btn');
+  const sortDropdown = document.getElementById('sort-dropdown');
+  
+  if (sortDropdownBtn && sortDropdown) {
+    sortDropdownBtn.addEventListener('click', function() {
+      sortDropdown.classList.toggle('hidden');
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!sortDropdownBtn.contains(event.target) && !sortDropdown.contains(event.target)) {
+        sortDropdown.classList.add('hidden');
+      }
+    });
+    
+    // Sort selection
+    const sortOptions = document.querySelectorAll('.sort-option');
+    sortOptions.forEach(option => {
+      option.addEventListener('click', function() {
+        const value = this.getAttribute('data-value');
+        const text = this.textContent;
+        
+        sortDropdownBtn.querySelector('span').textContent = 'Sort by: ' + text;
+        sortDropdown.classList.add('hidden');
+        
+        // Update active state
+        sortOptions.forEach(opt => opt.classList.remove('active'));
+        this.classList.add('active');
+        
+        // Sort projects
+        sortProjects(value);
+      });
+    });
+  }
+  
+  // Filter panel toggle
+  const filterButton = document.getElementById('filter-button');
+  const filterPanel = document.getElementById('filter-panel');
+  
+  if (filterButton && filterPanel) {
+    filterButton.addEventListener('click', function() {
+      filterPanel.classList.toggle('hidden');
+    });
+  }
+  
+  // Technology filter checkboxes
+  const techFilters = document.querySelectorAll('.tech-filter');
+  techFilters.forEach(filter => {
+    filter.addEventListener('change', function() {
+      updateActiveFilters();
+      filterProjects();
+    });
+  });
+  
+  // Clear filters button
+  const clearFiltersBtn = document.getElementById('clear-filters');
+  if (clearFiltersBtn) {
+    clearFiltersBtn.addEventListener('click', function() {
+      // Reset checkboxes
+      techFilters.forEach(filter => {
+        filter.checked = false;
+      });
+      
+      // Reset category dropdown
+      const allCategoryOption = document.querySelector('.category-option[data-value="all"]');
+      if (allCategoryOption) {
+        allCategoryOption.click();
+      }
+      
+      // Reset search input
+      document.getElementById('search-input').value = '';
+      
+      // Update UI
+      updateActiveFilters();
+      filterProjects();
+    });
+  }
+  
+  // Reset search button
+  const resetSearchBtn = document.getElementById('reset-search');
+  if (resetSearchBtn) {
+    resetSearchBtn.addEventListener('click', function() {
+      clearFiltersBtn.click();
+    });
+  }
+  
+  // Search input
+  const searchInput = document.getElementById('search-input');
+  if (searchInput) {
+    searchInput.addEventListener('input', function() {
+      filterProjects();
+    });
+  }
+  
+  // Back to top button
+  const backToTopBtn = document.getElementById('back-to-top');
+  if (backToTopBtn) {
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 500) {
+        backToTopBtn.classList.remove('opacity-0', 'invisible');
+        backToTopBtn.classList.add('opacity-100', 'visible');
+      } else {
+        backToTopBtn.classList.add('opacity-0', 'invisible');
+        backToTopBtn.classList.remove('opacity-100', 'visible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+  
+  // Update active filters display
+  function updateActiveFilters() {
+    const activeFiltersContainer = document.getElementById('active-filters');
+    if (!activeFiltersContainer) return;
+    
+    // Clear existing filters
+    activeFiltersContainer.innerHTML = '';
+    
+    // Get selected technologies
+    const selectedTechs = [];
+    techFilters.forEach(filter => {
+      if (filter.checked) {
+        selectedTechs.push(filter.value);
+      }
+    });
+    
+    // Get selected category
+    const selectedCategory = document.querySelector('.category-option.active');
+    const categoryValue = selectedCategory ? selectedCategory.getAttribute('data-value') : 'all';
+    
+    // Add category chip if not "all"
+    if (categoryValue !== 'all') {
+      const categoryName = selectedCategory.textContent.trim();
+      const categoryChip = createFilterChip('category', categoryValue, categoryName);
+      activeFiltersContainer.appendChild(categoryChip);
+    }
+    
+    // Add technology chips
+    selectedTechs.forEach(tech => {
+      const techChip = createFilterChip('tech', tech, tech.charAt(0).toUpperCase() + tech.slice(1));
+      activeFiltersContainer.appendChild(techChip);
+    });
+    
+    // Show/hide container based on if there are active filters
+    if (selectedTechs.length > 0 || categoryValue !== 'all') {
+      activeFiltersContainer.classList.remove('hidden');
+    } else {
+      activeFiltersContainer.classList.add('hidden');
+    }
+  }
+  
+  // Create a filter chip element
+  function createFilterChip(type, value, label) {
+    const chip = document.createElement('div');
+    chip.className = 'filter-chip flex items-center gap-1 bg-[#2A2A2A] px-3 py-1 rounded-full text-xs font-medium text-white';
+    chip.innerHTML = `
+      <span>${label}</span>
+      <button class="remove-filter w-4 h-4 flex items-center justify-center text-gray-400 hover:text-white" data-type="${type}" data-value="${value}">
+        <i class="ri-close-line"></i>
+      </button>
+    `;
+    
+    // Add remove event listener
+    const removeBtn = chip.querySelector('.remove-filter');
+    removeBtn.addEventListener('click', function() {
+      const filterType = this.getAttribute('data-type');
+      const filterValue = this.getAttribute('data-value');
+      
+      if (filterType === 'category') {
+        // Reset category to "All Categories"
+        const allCategoryOption = document.querySelector('.category-option[data-value="all"]');
+        if (allCategoryOption) {
+          allCategoryOption.click();
+        }
+      } else if (filterType === 'tech') {
+        // Uncheck the corresponding checkbox
+        const checkbox = document.querySelector(`.tech-filter[value="${filterValue}"]`);
+        if (checkbox) {
+          checkbox.checked = false;
+        }
+      }
+      
+      updateActiveFilters();
+      filterProjects();
+    });
+    
+    return chip;
+  }
+  
+  // Filter projects based on selected filters and search term
+  function filterProjects() {
+    const projectsGrid = document.getElementById('projects-grid');
+    const noResults = document.getElementById('no-results');
+    const projectCount = document.getElementById('project-count');
+    const projects = document.querySelectorAll('.project-card');
+    
+    // Show loading state
+    projectsGrid.classList.add('hidden');
+    document.getElementById('loading-state').classList.remove('hidden');
+    
+    // Get filter values
+    const searchTerm = document.getElementById('search-input').value.toLowerCase();
+    const selectedCategory = document.querySelector('.category-option.active');
+    const categoryValue = selectedCategory ? selectedCategory.getAttribute('data-value') : 'all';
+    
+    const selectedTechs = [];
+    document.querySelectorAll('.tech-filter:checked').forEach(filter => {
+      selectedTechs.push(filter.value);
+    });
+    
+    // Simulate loading delay
+    setTimeout(() => {
+      let visibleCount = 0;
+      
+      projects.forEach(project => {
+        const projectCategory = project.getAttribute('data-category');
+        const projectTechs = project.getAttribute('data-tech').split(',');
+        const projectTitle = project.querySelector('h3').textContent.toLowerCase();
+        const projectDescription = project.querySelector('p').textContent.toLowerCase();
+        
+        // Check if project matches all filters
+        const matchesCategory = categoryValue === 'all' || projectCategory === categoryValue;
+        const matchesTechs = selectedTechs.length === 0 || selectedTechs.every(tech => projectTechs.includes(tech));
+        const matchesSearch = searchTerm === '' || 
+                             projectTitle.includes(searchTerm) || 
+                             projectDescription.includes(searchTerm) ||
+                             projectTechs.some(tech => tech.includes(searchTerm));
+        
+        if (matchesCategory && matchesTechs && matchesSearch) {
+          project.classList.remove('hidden');
+          visibleCount++;
+        } else {
+          project.classList.add('hidden');
+        }
+      });
+      
+      // Update project count
+      if (projectCount) {
+        projectCount.textContent = visibleCount;
+      }
+      
+      // Show no results message if needed
+      if (visibleCount === 0) {
+        noResults.classList.remove('hidden');
+      } else {
+        noResults.classList.add('hidden');
+      }
+      
+      // Hide loading state
+      document.getElementById('loading-state').classList.add('hidden');
+      projectsGrid.classList.remove('hidden');
+    }, 500);
+  }
+  
+  // Sort projects by different criteria
+  function sortProjects(sortBy) {
+    const projectsGrid = document.getElementById('projects-grid');
+    const projects = Array.from(document.querySelectorAll('.project-card'));
+    
+    // Show loading state
+    projectsGrid.classList.add('hidden');
+    document.getElementById('loading-state').classList.remove('hidden');
+    
+    // Simulate loading delay
+    setTimeout(() => {
+      // Sort projects based on criteria
+      projects.sort((a, b) => {
+        if (sortBy === 'name') {
+          const nameA = a.querySelector('h3').textContent.toLowerCase();
+          const nameB = b.querySelector('h3').textContent.toLowerCase();
+          return nameA.localeCompare(nameB);
+        } else if (sortBy === 'complexity') {
+          // Sort by number of technologies (more technologies = more complex)
+          const techsA = a.getAttribute('data-tech').split(',').length;
+          const techsB = b.getAttribute('data-tech').split(',').length;
+          return techsB - techsA;
+        } else {
+          // Default: sort by recent (using animation delay as a proxy for recency)
+          const delayA = parseFloat(a.style.animationDelay || '0');
+          const delayB = parseFloat(b.style.animationDelay || '0');
+          return delayA - delayB;
+        }
+      });
+      
+      // Re-append sorted projects to the grid
+      projects.forEach(project => {
+        projectsGrid.appendChild(project);
+      });
+      
+      // Hide loading state
+      document.getElementById('loading-state').classList.add('hidden');
+      projectsGrid.classList.remove('hidden');
+    }, 500);
+  }
+  
+  // Initialize the page
+  updateActiveFilters();
+  
+  // Animate projects on scroll
+  function animateOnScroll() {
+    const elements = document.querySelectorAll('.slide-up');
+    elements.forEach(element => {
+      const position = element.getBoundingClientRect();
+      // Check if element is in viewport
+      if(position.top < window.innerHeight && position.bottom >= 0) {
+        const delay = element.style.animationDelay || '0s';
+        setTimeout(() => {
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }, parseFloat(delay) * 1000);
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', animateOnScroll);
+  animateOnScroll(); // Initial check
+});
+</script>
+</body>
+</html>

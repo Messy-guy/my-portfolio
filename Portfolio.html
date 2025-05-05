@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flutter Developer Portfolio</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#7B42F6',secondary:'#00BCD4'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Inter', sans-serif;
+background-color: #121212;
+color: #FFFFFF;
+overflow-x: hidden;
+}
+.gradient-text {
+background: linear-gradient(90deg, #7B42F6, #2196F3, #00BCD4);
+-webkit-background-clip: text;
+background-clip: text;
+color: transparent;
+}
+.gradient-border {
+position: relative;
+border: 1px solid transparent;
+background: linear-gradient(#1E1E1E, #1E1E1E) padding-box,
+linear-gradient(90deg, #7B42F6, #2196F3) border-box;
+}
+.nav-link {
+position: relative;
+overflow: hidden;
+}
+.nav-link::after {
+content: '';
+position: absolute;
+bottom: 0;
+left: 0;
+width: 0;
+height: 2px;
+background: linear-gradient(90deg, #7B42F6, #2196F3);
+transition: width 0.3s ease;
+}
+.nav-link:hover::after, .nav-link.active::after {
+width: 100%;
+}
+.glass-effect {
+backdrop-filter: blur(10px);
+background: rgba(30, 30, 30, 0.7);
+}
+.project-card {
+transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.project-card:hover {
+transform: translateY(-5px) scale(1.02);
+box-shadow: 0 10px 25px rgba(123, 66, 246, 0.2);
+}
+.skill-bar {
+position: relative;
+height: 8px;
+background: #2A2A2A;
+border-radius: 4px;
+overflow: hidden;
+}
+.skill-progress {
+height: 100%;
+background: linear-gradient(90deg, #7B42F6, #2196F3);
+border-radius: 4px;
+position: relative;
+animation: skillFill 1.5s ease-out forwards;
+}
+@keyframes skillFill {
+from { width: 0; }
+}
+.glow-effect {
+box-shadow: 0 0 15px rgba(123, 66, 246, 0.5);
+transition: box-shadow 0.3s ease;
+}
+.glow-effect:hover {
+box-shadow: 0 0 25px rgba(123, 66, 246, 0.8);
+}
+.float-animation {
+animation: float 3s ease-in-out infinite;
+}
+@keyframes float {
+0% { transform: translateY(0px); }
+50% { transform: translateY(-10px); }
+100% { transform: translateY(0px); }
+}
+.typewriter {
+overflow: hidden;
+border-right: 3px solid #7B42F6;
+white-space: nowrap;
+margin: 0 auto;
+animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
+@keyframes typing {
+from { width: 0 }
+to { width: 100% }
+}
+@keyframes blink-caret {
+from, to { border-color: transparent }
+50% { border-color: #7B42F6 }
+}
+.form-input {
+background-color: #1E1E1E;
+border: 1px solid #333;
+color: #FFF;
+transition: all 0.3s ease;
+}
+.form-input:focus {
+border-color: #7B42F6;
+box-shadow: 0 0 10px rgba(123, 66, 246, 0.3);
+}
+.pulse-animation {
+animation: pulse 2s infinite;
+}
+@keyframes pulse {
+0% { box-shadow: 0 0 0 0 rgba(123, 66, 246, 0.4); }
+70% { box-shadow: 0 0 0 10px rgba(123, 66, 246, 0); }
+100% { box-shadow: 0 0 0 0 rgba(123, 66, 246, 0); }
+}
+.fade-in {
+opacity: 0;
+animation: fadeIn 1s forwards;
+}
+@keyframes fadeIn {
+to { opacity: 1; }
+}
+.slide-up {
+opacity: 0;
+transform: translateY(20px);
+animation: slideUp 0.6s forwards;
+}
+@keyframes slideUp {
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+.progress-circle {
+transition: stroke-dashoffset 1s ease;
+}
+</style>
+</head>
+<body>
+<!-- Navigation -->
+<nav class="fixed w-full z-50 glass-effect">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center">
+<div class="text-2xl font-['Pacifico'] gradient-text">DevFlutter</div>
+</div>
+<div class="hidden md:block">
+<div class="ml-10 flex items-baseline space-x-8">
+<a href="#home" class="nav-link active text-white px-3 py-2 text-sm font-medium">Home</a>
+<a href="#projects" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Projects</a>
+<a href="#skills" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Skills</a>
+<a href="#contact" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Contact</a>
+</div>
+</div>
+<div class="md:hidden flex items-center">
+<button id="mobile-menu-button" class="text-gray-300 hover:text-white">
+<div class="w-8 h-8 flex items-center justify-center">
+<i class="ri-menu-line ri-lg"></i>
+</div>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile menu -->
+<div id="mobile-menu" class="hidden md:hidden glass-effect">
+<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+<a href="#home" class="text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
+<a href="#projects" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
+<a href="#skills" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Skills</a>
+<a href="#contact" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<section id="home" class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative" style="background: linear-gradient(135deg, #121212 0%, #1E1E1E 100%);">
+<div class="absolute inset-0 overflow-hidden">
+<div id="particles-js" class="absolute inset-0"></div>
+</div>
+<div class="max-w-7xl w-full mx-auto grid md:grid-cols-2 gap-8 items-center z-10">
+<div class="fade-in" style="animation-delay: 0.2s">
+<h2 class="text-3xl font-bold text-gray-300 mb-2">Hello, I'm</h2>
+<h1 class="text-5xl md:text-6xl font-bold mb-4 typewriter gradient-text">Animesh Poudel</h1>
+<p class="text-xl text-gray-300 mb-8"> An Aspiring Flutter Developer, building responsive, user-friendly mobile apps with Flutter & Dart. Eager to grow through real-world experience and hands-on learning.</p>
+<div class="flex flex-wrap gap-4">
+<a href="#projects" class="gradient-border glow-effect !rounded-button px-6 py-3 text-white font-medium">View My Work</a>
+<a href="#contact" class="border border-gray-600 !rounded-button px-6 py-3 text-white font-medium hover:border-primary transition-all">Get In Touch</a>
+</div>
+</div>
+<div class="relative float-animation fade-in" style="animation-delay: 0.6s">
+<div class="relative">
+<img src="MyImage.jpg" alt="Flutter Developer" class="rounded-xl mx-auto object-top glow-effect w-full h-auto max-w-lg shadow-lg">
+<div class="absolute -bottom-4 -right-4 gradient-border glow-effect rounded-lg p-3 bg-[#1E1E1E]">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 flex items-center justify-center">
+<i class="ri-flutter-fill ri-lg text-primary"></i>
+</div>
+<!-- <span>Flutter Expert</span> -->
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Projects Section -->
+<section id="projects" class="py-20 px-4 sm:px-6 lg:px-8" style="background: #161616;">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold mb-4 gradient-text">My Projects</h2>
+<p class="text-xl text-gray-300 max-w-3xl mx-auto">Showcasing my Flutter development with a focus on performance, animations, and user experience.</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Project 1 -->
+<div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.1s">
+<div class="relative">
+<img src="eventra.png" alt="event booking App" class="w-full h-47 object-cover object-top">
+<div class="absolute top-3 right-3 bg-[#1E1E1E] rounded-full px-3 py-1 text-xs font-medium text-primary">Featured</div>
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">Eventra</h3>
+<p class="text-gray-400 mb-4">An Event Booking App With an Admin Panel, User Page and attractive UI</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Firebase</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Firestore</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Cloudinary</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">shared-preference</span>
+</div>
+<div class="flex justify-between">
+<a href="https://drive.google.com/file/d/1D_cPDHQrQgNyGP208C39BdXwdqLwCtIQ/view?usp=sharing" class="text-primary flex items-center gap-1 hover:underline">
+<span>Download</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-external-link-line"></i>
+</div>
+</a>
+<a href="https://github.com/Messy-guy/eventra1" class="text-primary flex items-center gap-1 hover:underline">
+<span>Source Code</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-github-fill"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+<!-- Project 2 -->
+<div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.2s">
+<div class="relative">
+<img src="gitpeek (2).png" alt="" class="w-full h-47 object-cover object-top">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">Gitpeek</h3>
+<p class="text-gray-400 mb-4">An custom Github App that lets you peek someone's github profile , repos , Contribution and Top 5 repos.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Github api</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Bloc</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">fl_chart</span>
+</div>
+<div class="flex justify-between">
+<a href="https://drive.google.com/file/d/1D_cPDHQrQgNyGP208C39BdXwdqLwCtIQ/view?usp=sharing" class="text-primary flex items-center gap-1 hover:underline">
+<span>Download</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-external-link-line"></i>
+</div>
+</a>
+<a href="https://github.com/Messy-guy/gitpeek" class="text-primary flex items-center gap-1 hover:underline">
+<span>Source Code</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-github-fill"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+<!-- Project 3 -->
+<div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.3s">
+<div class="relative">
+<img src="voxa (2).png" alt="Voice assistant App" class="w-full h-46 object-cover object-top">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">Voxa</h3>
+<p class="text-gray-400 mb-4">A Voice Assistant App with a voice assitant to give you your answers and ai-image generator.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Openrouter Api</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">huggingface Api</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">http</span>
+</div>
+<div class="flex justify-between">
+<a href="https://drive.google.com/file/d/12Ee6BEHkZJdA7pVP9qdm6ug_qYEe_CIN/view?usp=sharing" class="text-primary flex items-center gap-1 hover:underline">
+<span>Download</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-external-link-line"></i>
+</div>
+</a>
+<a href="https://github.com/Messy-guy/https---github.com-Messy-guy-voxa_" class="text-primary flex items-center gap-1 hover:underline">
+<span>Source Code</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-github-fill"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+<!-- Project 4 -->
+<div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.4s">
+<div class="relative">
+<img src="AirZone.png" alt="AirQuality App" class="w-full h-47 object-cover object-top">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">AirZone</h3>
+<p class="text-gray-400 mb-4">AirZone is a mobile app that shows real-time AQI, pollutant levels, and a 7-day forecast. It includes a live map with air quality data from nearby cities to help users stay informed.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">http</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">fl_chart</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">OpenWeather Api</span>
+</div>
+<div class="flex justify-between">
+<a href="https://drive.google.com/file/d/1NBYX4TafSb-u29gQzYT8Kz4aMhdRhP_K/view?usp=sharing" class="text-primary flex items-center gap-1 hover:underline">
+<span>Download</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-external-link-line"></i>
+</div>
+</a>
+<a href="https://github.com/Messy-guy/AIRZONE" class="text-primary flex items-center gap-1 hover:underline">
+<span>Source Code</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-github-fill"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+<!-- Project 5 -->
+<div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.5s">
+<div class="relative">
+<img src="brain.png" alt="chatbot" class="w-full h-47 object-cover object-top">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">BrAIn</h3>
+<p class="text-gray-400 mb-4">Brain is a simple and responsive chatbot app designed for smooth real-time conversations. It provides an interactive user experience with intelligent message handling.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">dash_chat_2</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">google generative Ai</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Gemini Api</span>
+</div>
+<div class="flex justify-between">
+<a href="https://drive.google.com/file/d/1A91sl7QranlT3CMamQ0F4gdiPM3afboP/view?usp=sharing" class="text-primary flex items-center gap-1 hover:underline">
+<span>Download</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-external-link-line"></i>
+</div>
+</a>
+<a href="https://github.com/Messy-guy/BrAIn" class="text-primary flex items-center gap-1 hover:underline">
+<span>Source Code</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-github-fill"></i>
+</div>
+</a>
+</div>
+</div>
+</div>
+<!-- Project 6 -->
+ <!-- <div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.6s">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=chat%20messaging%20app%20interface%20with%20dark%20theme%2C%20conversation%20threads%2C%20message%20bubbles%2C%20user%20profiles%2C%20modern%20UI%20with%20purple%20accent%20colors%2C%20high%20quality%20render&width=600&height=400&seq=7&orientation=landscape" alt="Chat App" class="w-full h-48 object-cover object-top">
+</div>
+<div class="p-6">
+<h3 class="text-xl font-bold mb-2">ChatConnect</h3>
+<p class="text-gray-400 mb-4">A real-time messaging platform with typing indicators, read receipts, and rich media sharing capabilities.</p>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Socket.io</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Hive</span>
+<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">End-to-End Encryption</span>
+</div>
+<div class="flex justify-between">
+<a href="#" class="text-primary flex items-center gap-1 hover:underline">
+<span>Download</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-external-link-line"></i>
+</div>
+</a>
+<a href="#" class="text-primary flex items-center gap-1 hover:underline">
+<span>Source Code</span>
+<div class="w-4 h-4 flex items-center justify-center">
+<i class="ri-github-fill"></i>
+</div>
+</a>
+</div>
+</div>
+</div> -->
+</div>
+<div class="text-center mt-12">
+<a href="allprojects.html" data-readdy="true" class="gradient-border glow-effect !rounded-button px-6 py-3 text-white font-medium inline-flex items-center gap-2">
+<span>View All Projects</span>
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-arrow-right-line"></i>
+</div>
+</a>
+</div>
+</div>
+</section>
+<!-- Skills Section -->
+<section id="skills" class="py-20 px-4 sm:px-6 lg:px-8" style="background: #121212;">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold mb-4 gradient-text">Technical Skills</h2>
+<p class="text-xl text-gray-300 max-w-3xl mx-auto">A comprehensive overview of my technical expertise and proficiency levels.</p>
+</div>
+<div class="grid md:grid-cols-2 gap-12">
+<!-- Left Column - Skill Bars -->
+<div>
+<h3 class="text-2xl font-bold mb-6 text-white">Development Skills</h3>
+<!-- Flutter -->
+<div class="mb-6 slide-up" style="animation-delay: 0.1s">
+<div class="flex justify-between mb-2">
+<span class="text-gray-300">Flutter</span>
+<span class="text-primary">75%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width: 75%"></div>
+</div>
+</div>
+<!-- Dart -->
+<div class="mb-6 slide-up" style="animation-delay: 0.2s">
+<div class="flex justify-between mb-2">
+<span class="text-gray-300">Dart</span>
+<span class="text-primary">80%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width: 80%"></div>
+</div>
+</div>
+<!-- UI/UX Design
+<div class="mb-6 slide-up" style="animation-delay: 0.3s">
+<div class="flex justify-between mb-2">
+<span class="text-gray-300">UI/UX Design</span>
+<span class="text-primary">88%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width: 88%"></div>
+</div>
+</div> -->
+<!-- Firebase -->
+<div class="mb-6 slide-up" style="animation-delay: 0.4s">
+<div class="flex justify-between mb-2">
+<span class="text-gray-300">Firebase</span>
+<span class="text-primary">60%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width: 60%"></div>
+</div>
+</div>
+<!-- State Management -->
+<div class="mb-6 slide-up" style="animation-delay: 0.5s">
+<div class="flex justify-between mb-2">
+<span class="text-gray-300">State Management (BLoC, Riverpod)</span>
+<span class="text-primary">70%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width: 70%"></div>
+</div>
+</div>
+<!-- RESTful APIs -->
+<div class="slide-up" style="animation-delay: 0.6s">
+<div class="flex justify-between mb-2">
+<span class="text-gray-300">API Integration</span>
+<span class="text-primary">75%</span>
+</div>
+<div class="skill-bar">
+<div class="skill-progress" style="width: 75%"></div>
+</div>
+</div>
+</div>
+<!-- Right Column - Skill Cards -->
+<div>
+<h3 class="text-2xl font-bold mb-6 text-white">Specialized Expertise</h3>
+<div class="grid grid-cols-2 gap-4">
+<!-- Animation & Motion -->
+<div class="gradient-border rounded-lg p-5 bg-[#1E1E1E] slide-up" style="animation-delay: 0.1s">
+<div class="w-12 h-12 flex items-center justify-center mb-4 text-primary">
+<i class="ri-animation-fill ri-2x"></i>
+</div>
+<h4 class="text-lg font-bold mb-2">Animation </h4>
+<p class="text-gray-400">Creating simple animations,splash screens and smooth loading UI in mobile apps </p>
+</div>
+<!-- Cross-Platform Development -->
+<!-- <div class="gradient-border rounded-lg p-5 bg-[#1E1E1E] slide-up" style="animation-delay: 0.2s">
+<div class="w-12 h-12 flex items-center justify-center mb-4 text-primary">
+<i class="ri-device-fill ri-2x"></i>
+</div>
+<h4 class="text-lg font-bold mb-2">Cross-Platform</h4>
+<p class="text-gray-400">Building apps that work flawlessly on iOS, Android, and web platforms.</p>
+</div> -->
+<!-- Performance Optimization -->
+<div class="gradient-border rounded-lg p-5 bg-[#1E1E1E] slide-up" style="animation-delay: 0.3s">
+<div class="w-12 h-12 flex items-center justify-center mb-4 text-primary">
+<i class="ri-speed-up-fill ri-2x"></i>
+</div>
+<h4 class="text-lg font-bold mb-2">Performance</h4>
+<p class="text-gray-400">Optimizing apps for speed, memory usage, and battery efficiency.</p>
+</div>
+<!-- Custom Widgets -->
+<div class="gradient-border rounded-lg p-5 bg-[#1E1E1E] slide-up" style="animation-delay: 0.4s">
+<div class="w-12 h-12 flex items-center justify-center mb-4 text-primary">
+<i class="ri-layout-masonry-fill ri-2x"></i>
+</div>
+<h4 class="text-lg font-bold mb-2">Custom Widgets</h4>
+<p class="text-gray-400">Creating bespoke UI components for unique and branded experiences.</p>
+</div>
+<!-- CI/CD -->
+<!-- <div class="gradient-border rounded-lg p-5 bg-[#1E1E1E] slide-up" style="animation-delay: 0.5s">
+<div class="w-12 h-12 flex items-center justify-center mb-4 text-primary">
+<i class="ri-git-branch-fill ri-2x"></i>
+</div>
+<h4 class="text-lg font-bold mb-2">CI/CD</h4>
+<p class="text-gray-400">Setting up automated testing and deployment pipelines for efficiency.</p>
+</div> -->
+<!-- App Architecture -->
+<div class="gradient-border rounded-lg p-5 bg-[#1E1E1E] slide-up" style="animation-delay: 0.6s">
+<div class="w-12 h-12 flex items-center justify-center mb-4 text-primary">
+<i class="ri-stack-fill ri-2x"></i>
+</div>
+<h4 class="text-lg font-bold mb-2">Architecture</h4>
+<p class="text-gray-400">Designing scalable, maintainable app structures following best practices.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Progress Circles -->
+<!-- <div class="mt-16">
+<h3 class="text-2xl font-bold mb-8 text-center text-white">Additional Competencies</h3>
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8"> -->
+<!-- Circle 1 -->
+<!-- <div class="text-center slide-up" style="animation-delay: 0.1s">
+<div class="relative w-32 h-32 mx-auto mb-4">
+<svg class="w-full h-full" viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="45" fill="none" stroke="#2A2A2A" stroke-width="8" />
+<circle class="progress-circle" cx="50" cy="50" r="45" fill="none" stroke="url(#gradient1)" stroke-width="8" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="42" />
+<defs>
+<linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="#7B42F6" />
+<stop offset="100%" stop-color="#2196F3" />
+</linearGradient>
+</defs>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-2xl font-bold text-white">85%</span>
+</div>
+</div>
+<h4 class="text-lg font-bold text-white">Testing & QA</h4>
+</div> -->
+<!-- Circle 2 -->
+<!-- <div class="text-center slide-up" style="animation-delay: 0.2s">
+<div class="relative w-32 h-32 mx-auto mb-4">
+<svg class="w-full h-full" viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="45" fill="none" stroke="#2A2A2A" stroke-width="8" />
+<circle class="progress-circle" cx="50" cy="50" r="45" fill="none" stroke="url(#gradient2)" stroke-width="8" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="71" />
+<defs>
+<linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="#7B42F6" />
+<stop offset="100%" stop-color="#2196F3" />
+</linearGradient>
+</defs>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-2xl font-bold text-white">75%</span>
+</div>
+</div>
+<h4 class="text-lg font-bold text-white">Backend Integration</h4>
+</div> -->
+<!-- Circle 3 -->
+<!-- <div class="text-center slide-up" style="animation-delay: 0.3s">
+<div class="relative w-32 h-32 mx-auto mb-4">
+<svg class="w-full h-full" viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="45" fill="none" stroke="#2A2A2A" stroke-width="8" />
+<circle class="progress-circle" cx="50" cy="50" r="45" fill="none" stroke="url(#gradient3)" stroke-width="8" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="56" />
+<defs>
+<linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="#7B42F6" />
+<stop offset="100%" stop-color="#2196F3" />
+</linearGradient>
+</defs>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-2xl font-bold text-white">80%</span>
+</div>
+</div>
+<h4 class="text-lg font-bold text-white">App Store Optimization</h4>
+</div> -->
+<!-- Circle 4 -->
+<!-- <div class="text-center slide-up" style="animation-delay: 0.4s">
+<div class="relative w-32 h-32 mx-auto mb-4">
+<svg class="w-full h-full" viewBox="0 0 100 100">
+<circle cx="50" cy="50" r="45" fill="none" stroke="#2A2A2A" stroke-width="8" />
+<circle class="progress-circle" cx="50" cy="50" r="45" fill="none" stroke="url(#gradient4)" stroke-width="8" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="28" />
+<defs>
+<linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="0%">
+<stop offset="0%" stop-color="#7B42F6" />
+<stop offset="100%" stop-color="#2196F3" />
+</linearGradient>
+</defs>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center">
+<span class="text-2xl font-bold text-white">90%</span>
+</div>
+</div>
+<h4 class="text-lg font-bold text-white">Responsive Design</h4>
+</div>
+</div>
+</div>
+</div>
+</section> -->
+<!-- Contact Section -->
+<section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 mt-24" style="background: #161616;">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-16">
+<h2 class="text-4xl font-bold mb-4 gradient-text">Get In Touch</h2>
+<p class="text-xl text-gray-300 max-w-3xl mx-auto">Have a project in mind? Let's discuss how we can bring your ideas to life with Flutter.</p>
+</div>
+<div class="grid md:grid-cols-2 gap-12">
+<!-- Contact Form -->
+<div class="gradient-border rounded-lg p-8 h-full bg-[#1E1E1E] fade-in" style="animation-delay: 0.2s">
+<h3 class="text-2xl font-bold mb-6 text-white">Send Me a Message</h3>
+<form name="submit-to-google-sheet" id="submit-to-google-sheet">
+    <div class="mb-6">
+      <label for="name" class="block text-gray-300 mb-2">Name</label>
+      <input type="text" name="Name" id="name" class="form-input w-full px-4 py-3 rounded !rounded-button bg-[#2A2A2A] border-none focus:ring-2 focus:ring-primary text-white" placeholder="Your name" required>
+    </div>
+    <div class="mb-6">
+      <label for="email" class="block text-gray-300 mb-2">Email</label>
+      <input type="email" name="Email" id="email" class="form-input w-full px-4 py-3 rounded !rounded-button bg-[#2A2A2A] border-none focus:ring-2 focus:ring-primary text-white" placeholder="your.email@example.com" required>
+    </div>
+    <div class="mb-6">
+      <label for="message" class="block text-gray-300 mb-2">Message</label>
+      <textarea name="Message" id="message" rows="5" class="form-input w-full px-4 py-3 rounded !rounded-button bg-[#2A2A2A] border-none focus:ring-2 focus:ring-primary text-white" placeholder="Tell me about your project..." required></textarea>
+    </div>
+    <button type="submit" class="w-full gradient-border glow-effect pulse-animation !rounded-button px-6 py-3 text-white font-medium">Send Message</button>
+  </form>
+</div>
+<!-- Contact Info -->
+<div class="fade-in" style="animation-delay: 0.4s">
+<h3 class="text-2xl font-bold mb-6 text-white">Contact Information</h3>
+<div class="space-y-6">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-[#1E1E1E] rounded-full">
+<i class="ri-mail-line ri-lg"></i>
+</div>
+<div>
+<h4 class="text-lg font-medium text-white">Email</h4>
+<a href="mailto:animeshpoudel6@gmail.com" class="text-gray-300">animeshpoudel6@gmail.com</a>
+<p class="text-gray-400 text-sm mt-1">I'll respond within 24 hours</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-[#1E1E1E] rounded-full">
+<i class="ri-map-pin-line ri-lg"></i>
+</div>
+<div>
+<h4 class="text-lg font-medium text-white">Location</h4>
+<p class="text-gray-300">Gyaneshwor, Kathmandu</p>
+<p class="text-gray-400 text-sm mt-1">Available for remote work worldwide</p>
+</div>
+</div>
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 flex items-center justify-center text-primary bg-[#1E1E1E] rounded-full">
+<i class="ri-phone-line ri-lg"></i>
+</div>
+<div>
+<h4 class="text-lg font-medium text-white">Contact</h4>
+<p class="text-gray-300">+977 9761657579</p>
+<p class="text-gray-400 text-sm mt-1">Available 24/7</p>
+</div>
+</div>
+</div>
+<div class="mt-10">
+<h4 class="text-lg font-bold mb-4 text-white">Connect With Me</h4>
+<div class="flex gap-4">
+<a href="https://github.com/Messy-guy" class="w-10 h-10 flex items-center justify-center text-white bg-[#1E1E1E] rounded-full hover:bg-primary transition-all">
+<i class="ri-github-fill ri-lg"></i>
+</a>
+<a href="#" class="w-10 h-10 flex items-center justify-center text-white bg-[#1E1E1E] rounded-full hover:bg-primary transition-all">
+<i class="ri-linkedin-fill ri-lg"></i>
+</a>
+<a href="https://www.instagram.com/iam_animeshpoudel/" class="w-10 h-10 flex items-center justify-center text-white bg-[#1E1E1E] rounded-full hover:bg-primary transition-all">
+<i class="ri-instagram-fill ri-lg"></i>
+</a>
+<a href="https://www.facebook.com/animesh.poudel.79/" class="w-10 h-10 flex items-center justify-center text-white bg-[#1E1E1E] rounded-full hover:bg-primary transition-all">
+<i class="ri-facebook-fill ri-lg"></i>
+</a>
+<!-- <a href="#" class="w-10 h-10 flex items-center justify-center text-white bg-[#1E1E1E] rounded-full hover:bg-primary transition-all">
+<i class="ri-medium-fill ri-lg"></i>
+</a> -->
+</div>
+</div>
+<div class="mt-10 gradient-border rounded-lg p-6 bg-[#1E1E1E]">
+<h4 class="text-lg font-bold mb-3 text-white">Current Availability</h4>
+<p class="text-gray-300 mb-4">I'm currently available for new projects starting from May 2025.</p>
+<div class="flex items-center gap-2 text-primary">
+<div class="w-5 h-5 flex items-center justify-center">
+<i class="ri-calendar-check-fill"></i>
+</div>
+<span>Taking new clients</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<!-- <footer class="py-12 px-4 sm:px-6 lg:px-8" style="background: #121212;">
+<div class="max-w-7xl mx-auto">
+<div class="grid md:grid-cols-4 gap-8 mb-12">
+<div>
+<div class="text-2xl font-['Pacifico'] gradient-text mb-4">DevFlutter</div>
+<p class="text-gray-400 mb-6">Crafting beautiful, performant mobile experiences with Flutter.</p>
+<p class="text-gray-400">© 2025 Alex Morgan. All rights reserved.</p>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-4 text-white">Quick Links</h4>
+<ul class="space-y-2">
+<li><a href="#home" class="text-gray-400 hover:text-primary transition-colors">Home</a></li>
+<li><a href="#projects" class="text-gray-400 hover:text-primary transition-colors">Projects</a></li>
+<li><a href="#skills" class="text-gray-400 hover:text-primary transition-colors">Skills</a></li>
+<li><a href="#contact" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-4 text-white">Services</h4>
+<ul class="space-y-2">
+<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Mobile App Development</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">UI/UX Design</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">App Performance Optimization</a></li>
+<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Code Review & Consulting</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-lg font-bold mb-4 text-white">Newsletter</h4>
+<p class="text-gray-400 mb-4">Subscribe to receive updates on Flutter development and my latest projects.</p>
+<form class="flex">
+<input type="email" placeholder="Your email" class="form-input px-4 py-2 rounded-l !rounded-button bg-[#2A2A2A] border-none focus:ring-2 focus:ring-primary text-white w-full" required>
+<button type="submit" class="gradient-border glow-effect !rounded-button !rounded-l-none px-4 py-2 text-white font-medium whitespace-nowrap">Subscribe</button>
+</form>
+</div>
+</div> -->
+<div class="text-center mt-4 mb-4">
+<p class="text-gray-500 text-center">Designed & Developed with ❤️</p>
+<!-- <div class="flex gap-4"> -->
+<!-- <a href="#" class="text-gray-500 hover:text-primary transition-colors">Privacy Policy</a>
+<a href="#" class="text-gray-500 hover:text-primary transition-colors">Terms of Service</a>
+<a href="#" class="text-gray-500 hover:text-primary transition-colors">Cookie Policy</a> -->
+<!-- </div> -->
+</div>
+</div>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+// Mobile menu toggle
+const mobileMenuButton = document.getElementById('mobile-menu-button');
+const mobileMenu = document.getElementById('mobile-menu');
+if (mobileMenuButton && mobileMenu) {
+mobileMenuButton.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+});
+}
+// Smooth scroll for all navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+// Close mobile menu if open
+if (!mobileMenu.classList.contains('hidden')) {
+mobileMenu.classList.add('hidden');
+}
+// Smooth scroll to target
+targetElement.scrollIntoView({
+behavior: 'smooth',
+block: 'start'
+});
+// Update URL without jumping
+window.history.pushState(null, '', targetId);
+// Update active state
+document.querySelectorAll('.nav-link').forEach(link => {
+link.classList.remove('active');
+});
+this.classList.add('active');
+}
+});
+});
+// Nav link active state
+const navLinks = document.querySelectorAll('.nav-link');
+const sections = document.querySelectorAll('section');
+function setActiveLink() {
+let current = '';
+sections.forEach(section => {
+const sectionTop = section.offsetTop;
+const sectionHeight = section.clientHeight;
+if (window.scrollY >= (sectionTop - 100)) {
+current = section.getAttribute('id');
+}
+});
+navLinks.forEach(link => {
+link.classList.remove('active');
+if (link.getAttribute('href') === `#${current}`) {
+link.classList.add('active');
+}
+});
+}
+window.addEventListener('scroll', setActiveLink);
+// Contact form submission
+// const contactForm = document.getElementById('contact-form');
+// if (contactForm) {
+// contactForm.addEventListener('submit', function(e) {
+// e.preventDefault();
+// // Simulate form submission
+// const submitButton = contactForm.querySelector('button[type="submit"]');
+// submitButton.innerHTML = 'Sending...';
+// setTimeout(() => {
+// submitButton.innerHTML = 'Message Sent!';
+// contactForm.reset();
+// setTimeout(() => {
+// submitButton.innerHTML = 'Send Message';
+// }, 3000);
+// }, 1500);
+// });
+// }
+// Initialize particles.js
+if (typeof particlesJS !== 'undefined') {
+particlesJS('particles-js', {
+particles: {
+number: { value: 80, density: { enable: true, value_area: 800 } },
+color: { value: '#7B42F6' },
+shape: { type: 'circle' },
+opacity: { value: 0.5, random: false },
+size: { value: 3, random: true },
+line_linked: {
+enable: true,
+distance: 150,
+color: '#2196F3',
+opacity: 0.2,
+width: 1
+},
+move: {
+enable: true,
+speed: 2,
+direction: 'none',
+random: false,
+straight: false,
+out_mode: 'out',
+bounce: false
+}
+},
+interactivity: {
+detect_on: 'canvas',
+events: {
+onhover: { enable: true, mode: 'grab' },
+onclick: { enable: true, mode: 'push' },
+resize: true
+},
+modes: {
+grab: { distance: 140, line_linked: { opacity: 0.5 } },
+push: { particles_nb: 4 }
+}
+},
+retina_detect: true
+});
+}
+// Animate skill bars on scroll
+function animateOnScroll() {
+const elements = document.querySelectorAll('.slide-up');
+elements.forEach(element => {
+const position = element.getBoundingClientRect();
+// Check if element is in viewport
+if(position.top < window.innerHeight && position.bottom >= 0) {
+const delay = element.style.animationDelay || '0s';
+setTimeout(() => {
+element.style.opacity = '1';
+element.style.transform = 'translateY(0)';
+}, parseFloat(delay) * 1000);
+}
+});
+}
+window.addEventListener('scroll', animateOnScroll);
+animateOnScroll(); // Initial check
+});
+</script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxMWn-MgTGgGU1r09HWLk4eMOG1vdr3pjfCgTyVAd5vdXee3o1bnsauAhlzVhT_y0Yx/exec'
+    const form = document.forms['submit-to-google-sheet'];
+    const submitButton = form.querySelector('button[type="submit"]');
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault();
+      
+      // Show sending state
+      submitButton.innerHTML = 'Sending...';
+      submitButton.disabled = true;
+      
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+          console.log('Success!', response);
+          submitButton.innerHTML = 'Message Sent!';
+          form.reset();
+          
+          // Reset button after 3 seconds
+          setTimeout(() => {
+            submitButton.innerHTML = 'Send Message';
+            submitButton.disabled = false;
+          }, 3000);
+        })
+        .catch(error => {
+          console.error('Error!', error.message);
+          submitButton.innerHTML = 'Error! Try Again';
+          submitButton.disabled = false;
+          
+          // Reset button after 3 seconds
+          setTimeout(() => {
+            submitButton.innerHTML = 'Send Message';
+          }, 3000);
+        });
+    });
+</script>
+</body>
+</html>
