@@ -38,10 +38,10 @@ export default function Contact() {
           const y = e.clientY - bound.top - bound.height / 2;
 
           gsap.to(magnetChild, {
-            x: x * 0.4,
-            y: y * 0.4,
-            duration: 1,
-            ease: "power3.out",
+            x: x * 0.8,
+            y: y * 0.8,
+            duration: 0.05,
+            ease: "power2.out",
           });
         };
 
@@ -49,7 +49,7 @@ export default function Contact() {
           gsap.to(magnetChild, {
             x: 0,
             y: 0,
-            duration: 1,
+            duration: 0.8,
             ease: "elastic.out(1, 0.3)",
           });
         };

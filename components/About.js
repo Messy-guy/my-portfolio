@@ -2,7 +2,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -84,23 +83,10 @@ export default function About() {
           </h2>
         </div>
 
-        <div className="flex flex-col lg:flex-row items-stretch gap-12 lg:gap-20">
+        <div className="flex flex-col items-center gap-12">
           
-          {/* Parallax Image */}
-          <div 
-            className="about-img-container w-full lg:w-[45%] h-[50vh] md:h-[70vh] rounded-[2rem] overflow-hidden relative border border-white/10 shadow-2xl"
-            data-cursor-text="VIEW PROFILE"
-          >
-            <Image
-              src="/images/MyImage.jpg"
-              alt="Animesh Poudel"
-              fill
-              className="about-img object-cover object-center transition-transform duration-700 hover:scale-[1.03]"
-            />
-          </div>
-
           {/* Bio & Stats */}
-          <div className="w-full lg:w-[55%] flex flex-col justify-center">
+          <div className="w-full max-w-4xl flex flex-col justify-center text-center mx-auto">
             <div className="space-y-6 md:space-y-8 text-base md:text-xl text-gray-400 font-light leading-relaxed">
               <p className="hover-trigger transition-colors duration-300 hover:text-white active:text-white">
                 Based in <strong className="text-white">Kathmandu</strong>, I specialize in crafting cross-platform mobile applications using <strong className="text-[#02569B]">Flutter</strong> and dynamic web experiences with the <strong className="text-[#61DAFB]">React ecosystem</strong>.

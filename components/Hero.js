@@ -8,27 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function Hero() {
   const containerRef = useRef(null);
 
-  const handleScramble = (e, originalText, hiddenText) => {
-    const chars = "!<>-_\\\\/[]{}—=+*^?#_0123456789";
-    let iteration = 0;
-    const el = e.currentTarget;
-    const targetText = e.type === "mouseenter" ? hiddenText : originalText;
-    
-    clearInterval(el.interval);
-    
-    el.interval = setInterval(() => {
-      el.innerText = targetText
-        .split("")
-        .map((letter, index) => {
-          if(index < iteration) return targetText[index];
-          return chars[Math.floor(Math.random() * chars.length)];
-        })
-        .join("");
-      
-      if(iteration >= targetText.length) clearInterval(el.interval);
-      iteration += 1 / 2;
-    }, 30);
-  };
+
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -72,14 +52,15 @@ export default function Hero() {
           
           <div className="group relative w-full flex justify-center hover-trigger py-2 overflow-hidden hero-line-1 origin-bottom">
             <div className="hero-line-anim">
-              <h1 
-                className="font-display text-[15vw] md:text-[12vw] leading-none font-bold uppercase tracking-tighter text-white transition-colors duration-500 hover:text-accent active:text-accent"
-                onMouseEnter={(e) => handleScramble(e, "FULL STACK", "SYSTEM ARCHITECT")}
-                onMouseLeave={(e) => handleScramble(e, "FULL STACK", "FULL STACK")}
-                onTouchStart={(e) => handleScramble(e, "FULL STACK", "SYSTEM ARCHITECT")}
-                onTouchEnd={(e) => handleScramble(e, "FULL STACK", "FULL STACK")}
-              >
-                FULL STACK
+              <h1 className="font-display text-[15vw] md:text-[12vw] leading-none font-bold uppercase tracking-tighter text-white relative">
+                {/* Default Text */}
+                <span className="block transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-full group-active:opacity-0 group-active:-translate-y-full">
+                  FULL STACK
+                </span>
+                {/* Hover Text */}
+                <span className="absolute top-0 left-0 w-full text-center text-accent transition-all duration-500 opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0 group-active:opacity-100 group-active:translate-y-0">
+                  SYSTEM ARCHITECT
+                </span>
               </h1>
             </div>
           </div>
@@ -87,26 +68,20 @@ export default function Hero() {
           <div className="group relative w-full flex justify-center hover-trigger py-2 mt-[-2vw] overflow-hidden hero-line-2 origin-top">
             <div className="hero-line-anim">
               <h1 
-                className="font-display text-[15vw] md:text-[12vw] leading-none font-bold uppercase tracking-tighter text-transparent transition-colors duration-500 hover:text-accent2 active:text-accent2" 
+                className="font-display text-[15vw] md:text-[12vw] leading-none font-bold uppercase tracking-tighter text-transparent relative" 
                 style={{ WebkitTextStroke: "2px white" }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.WebkitTextStroke = "0px";
-                  handleScramble(e, "DEVELOPER.", "CREATOR.");
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.WebkitTextStroke = "2px white";
-                  handleScramble(e, "DEVELOPER.", "DEVELOPER.");
-                }}
-                onTouchStart={(e) => {
-                  e.currentTarget.style.WebkitTextStroke = "0px";
-                  handleScramble(e, "DEVELOPER.", "CREATOR.");
-                }}
-                onTouchEnd={(e) => {
-                  e.currentTarget.style.WebkitTextStroke = "2px white";
-                  handleScramble(e, "DEVELOPER.", "DEVELOPER.");
-                }}
               >
-                DEVELOPER.
+                {/* Default Text */}
+                <span className="block transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-full group-active:opacity-0 group-active:-translate-y-full">
+                  DEVELOPER.
+                </span>
+                {/* Hover Text */}
+                <span 
+                  className="absolute top-0 left-0 w-full text-center text-accent2 transition-all duration-500 opacity-0 translate-y-full group-hover:opacity-100 group-hover:translate-y-0 group-active:opacity-100 group-active:translate-y-0"
+                  style={{ WebkitTextStroke: "0px" }}
+                >
+                  CREATOR.
+                </span>
               </h1>
             </div>
           </div>

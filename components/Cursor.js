@@ -12,8 +12,8 @@ export default function Cursor() {
     // Show cursor by default
     gsap.set(dot, { opacity: 1 });
 
-    const xToDot = gsap.quickTo(dot, "x", { duration: 0.1, ease: "power3" });
-    const yToDot = gsap.quickTo(dot, "y", { duration: 0.1, ease: "power3" });
+    const xToDot = gsap.quickTo(dot, "x", { duration: 0.02, ease: "none" });
+    const yToDot = gsap.quickTo(dot, "y", { duration: 0.02, ease: "none" });
 
     const handleMouseMove = (e) => {
       xToDot(e.clientX);
@@ -49,7 +49,7 @@ export default function Cursor() {
         }
       }
       
-      gsap.to(dot, { width: newSize, height: newSize, duration: 0.3, ease: "back.out(1.5)" });
+      gsap.to(dot, { width: newSize, height: newSize, marginTop: -newSize/2, marginLeft: -newSize/2, duration: 0.3, ease: "back.out(1.5)" });
     };
 
     const handleMouseOut = (e) => {
@@ -59,7 +59,7 @@ export default function Cursor() {
       if (cursorTextEl) {
         cursorTextEl.style.opacity = "0";
       }
-      gsap.to(dot, { width: 24, height: 24, backgroundColor: "white", mixBlendMode: "difference", duration: 0.3, ease: "power3.out" }); 
+      gsap.to(dot, { width: 24, height: 24, marginTop: -12, marginLeft: -12, backgroundColor: "white", mixBlendMode: "difference", duration: 0.3, ease: "power3.out" }); 
     };
 
     // Track mouse position to check elements during scroll
