@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -45,18 +46,6 @@ export default function About() {
         }
       );
 
-      // Stats Reveal
-      gsap.from(".stat-item", {
-        y: 40,
-        opacity: 0,
-        stagger: 0.2,
-        duration: 1,
-        ease: "power4.out",
-        scrollTrigger: {
-          trigger: ".stats-wrapper",
-          start: "top 85%",
-        }
-      });
     }, sectionRef);
 
     return () => ctx.revert();
@@ -67,15 +56,15 @@ export default function About() {
 
   return (
     <section id="about" ref={sectionRef} className="py-24 md:py-40 relative z-10 bg-[#050505]">
-      <div className="container mx-auto px-6 max-w-7xl">
+      <div className="container mx-auto px-6 max-w-7xl relative">
         
         {/* Scrub Reveal Text */}
-        <div className="text-reveal-container max-w-5xl mb-24 md:mb-32">
+        <div className="text-reveal-container max-w-5xl mb-16 md:mb-20">
           <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight uppercase tracking-tight">
             {wordsArray.map((word, i) => (
-              <span 
-                key={i} 
-                className="reveal-word inline-block mr-[0.3em] transition-colors duration-100 hover-trigger"
+              <span
+                key={i}
+                className="reveal-word inline-block mr-[0.3em]"
               >
                 {word}
               </span>
@@ -83,32 +72,6 @@ export default function About() {
           </h2>
         </div>
 
-        <div className="flex flex-col items-center gap-12">
-          
-          {/* Bio & Stats */}
-          <div className="w-full max-w-4xl flex flex-col justify-center text-center mx-auto">
-            <div className="space-y-6 md:space-y-8 text-base md:text-xl text-gray-400 font-light leading-relaxed">
-              <p className="hover-trigger transition-colors duration-300 hover:text-white active:text-white">
-                Based in <strong className="text-white">Kathmandu</strong>, I specialize in crafting cross-platform mobile applications using <strong className="text-[#02569B]">Flutter</strong> and dynamic web experiences with the <strong className="text-[#61DAFB]">React ecosystem</strong>.
-              </p>
-              <p className="hover-trigger transition-colors duration-300 hover:text-white active:text-white">
-                My philosophy is simple: engineering and design are not separate disciplines. Beautiful UI without flawless logic is useless, and a robust backend without an intuitive interface is frustrating. I bridge the gap to create complete digital experiences.
-              </p>
-            </div>
-
-            <div className="stats-wrapper grid grid-cols-2 gap-8 mt-16 pt-12 border-t border-white/10">
-              <div className="stat-item">
-                <h4 className="font-display text-5xl md:text-6xl font-bold text-white mb-2">03+</h4>
-                <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest font-display">Years Experience</p>
-              </div>
-              <div className="stat-item">
-                <h4 className="font-display text-5xl md:text-6xl font-bold text-accent2 mb-2">15+</h4>
-                <p className="text-xs md:text-sm text-gray-500 uppercase tracking-widest font-display">Projects Delivered</p>
-              </div>
-            </div>
-          </div>
-
-        </div>
       </div>
     </section>
   );

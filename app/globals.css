@@ -146,6 +146,25 @@ html.lenis, html.lenis body { height: auto; }
 /* Smooth reveal for horizontal section */
 .skills-wrapper { transition: background-color 0.5s ease; }
 
+/* Monochrome etched look for real brand logos */
+.logo-outline {
+  filter: none;
+  mix-blend-mode: normal;
+  will-change: transform, opacity, filter;
+  animation: logo-outline-idle 2.8s ease-in-out infinite;
+}
+
+.group:hover .logo-outline {
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.24));
+  animation-duration: 1.2s;
+}
+
+@keyframes logo-outline-idle {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-1.5px); }
+  100% { transform: translateY(0); }
+}
+
 @theme inline {
   --font-heading: var(--font-sans);
   --font-sans: var(--font-sans);

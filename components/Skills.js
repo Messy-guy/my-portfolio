@@ -2,68 +2,85 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-import { SmartphoneChargingIcon } from "@/components/ui/smartphone-charging";
-import { AtomIcon } from "@/components/ui/atom";
-import { LayersIcon } from "@/components/ui/layers";
-import { TerminalIcon } from "@/components/ui/terminal";
-import { WindIcon } from "@/components/ui/wind";
-import { FlameIcon } from "@/components/ui/flame";
-
 const skills = [
   { 
     name: "Flutter", 
     code: "Widget build() {\n  return MaterialApp(\n    home: Scaffold(),\n  );\n}", 
-    icon: SmartphoneChargingIcon, 
+    logoSrc: "/logos/outline/flutter.svg",
+    logoClass: "logo-outline",
+    colorHex: "#02569B",
     color: "text-[#02569B]", 
+    idleAnim: { y: [0, -2, 0], rotate: [0, -1.5, 0, 1.5, 0], transition: { repeat: Infinity, duration: 2.4, ease: "easeInOut" } },
     hoverAnim: { rotate: [0, -10, 10, -10, 10, 0], scale: 1.1, transition: { repeat: Infinity, duration: 1, ease: "easeInOut" } } 
   },
   { 
     name: "React", 
     code: "const App = () => {\n  const [s, set] = useState();\n  return <UI />;\n}", 
-    icon: AtomIcon, 
+    logoSrc: "/logos/outline/react.svg",
+    logoClass: "logo-outline",
+    colorHex: "#61DAFB",
     color: "text-[#61DAFB]", 
+    idleAnim: { rotate: [0, 5, 0, -5, 0], transition: { repeat: Infinity, duration: 3.6, ease: "linear" } },
     hoverAnim: { rotate: 360, scale: 1.1, transition: { repeat: Infinity, duration: 3, ease: "linear" } } 
   },
   { 
     name: "Next.js", 
     code: "export async function \ngetServerSideProps() {\n  return { props: {} }\n}", 
-    icon: LayersIcon, 
+    logoSrc: "/logos/outline/nextjs.svg",
+    logoClass: "logo-outline",
+    colorHex: "#FFFFFF",
     color: "text-white", 
+    idleAnim: { y: [0, -1.5, 0], transition: { repeat: Infinity, duration: 2, ease: "easeInOut" } },
     hoverAnim: { y: [0, -10, 0], scale: 1.1, transition: { repeat: Infinity, duration: 1.5, ease: "easeInOut" } } 
   },
   { 
     name: "TypeScript", 
     code: "interface AppProps {\n  id: string;\n  data: UserData[];\n}", 
-    icon: TerminalIcon, 
+    logoSrc: "/logos/outline/typescript.svg",
+    logoClass: "logo-outline",
+    colorHex: "#3178C6",
     color: "text-[#3178C6]", 
+    idleAnim: { opacity: [0.65, 0.9, 0.65], transition: { repeat: Infinity, duration: 2.1, ease: "easeInOut" } },
     hoverAnim: { opacity: [1, 0.4, 1], scale: 1.1, transition: { repeat: Infinity, duration: 1.5, ease: "easeInOut" } } 
   },
   { 
     name: "React Native", 
     code: "<View style={styles.app}>\n  <Text>Mobile UI</Text>\n</View>", 
-    icon: AtomIcon, 
+    logoSrc: "/logos/outline/react-native.svg",
+    logoClass: "logo-outline",
+    colorHex: "#61DAFB",
     color: "text-[#61DAFB]", 
+    idleAnim: { rotate: [0, -5, 0, 5, 0], transition: { repeat: Infinity, duration: 3.8, ease: "linear" } },
     hoverAnim: { rotate: -360, scale: 1.1, transition: { repeat: Infinity, duration: 3, ease: "linear" } } 
   },
   { 
     name: "JavaScript", 
     code: "async function init() {\n  await fetch('/api');\n  console.log('done');\n}", 
-    icon: TerminalIcon, 
+    logoSrc: "/logos/outline/javascript.svg",
+    logoClass: "logo-outline",
+    colorHex: "#F7DF1E",
     color: "text-[#F7DF1E]", 
+    idleAnim: { opacity: [0.65, 0.92, 0.65], y: [0, -1.5, 0], transition: { repeat: Infinity, duration: 1.9, ease: "easeInOut" } },
     hoverAnim: { opacity: [1, 0.4, 1], scale: 1.1, transition: { repeat: Infinity, duration: 1.5, ease: "easeInOut" } } 
   },
   { 
     name: "Tailwind", 
     code: "<div className=\"\n flex w-full h-screen \n bg-black/50 rounded-xl\n\" />", 
-    icon: WindIcon, 
+    logoSrc: "/logos/outline/tailwind.svg",
+    logoClass: "logo-outline",
+    colorHex: "#06B6D4",
     color: "text-[#06B6D4]", 
+    idleAnim: { x: [0, 2.5, 0, -2.5, 0], transition: { repeat: Infinity, duration: 2.4, ease: "easeInOut" } },
     hoverAnim: { x: [0, 8, -4, 8, 0], scale: 1.1, transition: { repeat: Infinity, duration: 1, ease: "easeInOut" } } 
   },
   { 
     name: "Firebase", 
     code: "const doc = await \ngetDocs(collection(db));\nauth.signIn();", 
-    icon: FlameIcon, 
+    logoSrc: "/logos/outline/firebase.svg",
+    logoClass: "logo-outline",
+    colorHex: "#FFCA28",
     color: "text-[#FFCA28]", 
+    idleAnim: { y: [0, -2, 0], scale: [1, 1.02, 1], transition: { repeat: Infinity, duration: 1.8, ease: "easeInOut" } },
     hoverAnim: { scale: [1.1, 1.25, 1.05, 1.2, 1.1], transition: { repeat: Infinity, duration: 0.8, ease: "easeInOut" } } 
   },
 ];
@@ -141,11 +158,30 @@ function SkillItem({ skill }) {
         >
           {/* Animated Icon */}
           <motion.div 
-            animate={isHovered ? skill.hoverAnim : { scale: 1, rotate: 0, x: 0, y: 0, opacity: 1 }}
+            animate={isHovered ? skill.hoverAnim : (skill.idleAnim ?? { scale: 1, rotate: 0, x: 0, y: 0, opacity: 1 })}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className={`mb-5 md:mb-6 text-[#555] transition-colors duration-500 group-hover:${skill.color}`}
+            className="relative mb-5 md:mb-6 transition-colors duration-500 text-white"
           >
-            <skill.icon size={80} className="md:w-24 md:h-24" strokeWidth={1} />
+            <motion.div
+              aria-label={`${skill.name} logo`}
+              role="img"
+              animate={{
+                backgroundColor: isHovered ? skill.colorHex : "#8A8A8A",
+                opacity: isHovered ? 1 : 0.8,
+              }}
+              transition={{ duration: 0.35, ease: "easeInOut" }}
+              className={`w-20 h-20 md:w-24 md:h-24 ${skill.logoClass ?? ""}`}
+              style={{
+                WebkitMaskImage: `url(${skill.logoSrc})`,
+                maskImage: `url(${skill.logoSrc})`,
+                WebkitMaskRepeat: "no-repeat",
+                maskRepeat: "no-repeat",
+                WebkitMaskPosition: "center",
+                maskPosition: "center",
+                WebkitMaskSize: "contain",
+                maskSize: "contain",
+              }}
+            />
           </motion.div>
           
           <h3 className={`font-display font-medium text-lg md:text-xl uppercase tracking-[0.25em] transition-colors duration-500 ${isHovered ? skill.color : 'text-[#666]'}`}>
