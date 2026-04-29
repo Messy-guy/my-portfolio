@@ -152,7 +152,10 @@ export default function Projects() {
                 </a>
               </div>
               
-              <div className="w-full md:w-[55%] h-1/2 md:h-full order-1 md:order-2 relative overflow-hidden z-10 bg-black">
+              <div 
+                className="w-full md:w-[55%] h-1/2 md:h-full order-1 md:order-2 relative overflow-hidden z-10 bg-black"
+                data-cursor-text="EXPLORE"
+              >
                 <div className="absolute inset-0 bg-black/20 z-10 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none"></div>
                 <Image
                   src={p.img}

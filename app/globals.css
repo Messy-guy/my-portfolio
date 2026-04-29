@@ -9,8 +9,8 @@
   --color-light: #f5f5f5;
   --color-accent: #ff3366;
   --color-accent2: #00f0ff;
-  --font-sans: var(--font-outfit), sans-serif;
-  --font-display: var(--font-space-grotesk), sans-serif;
+  --font-sans: var(--font-inter), sans-serif;
+  --font-display: var(--font-jetbrains-mono), monospace;
 }
 
 /* Smooth Scroll (Lenis) */
@@ -24,13 +24,15 @@ body {
   cursor: none; /* Hide default cursor */
 }
 
+[data-cursor-text] { cursor: none; }
+
 ::-webkit-scrollbar { display: none; }
 
 /* Sleek Inverted Cursor */
 .cursor-dot {
   position: fixed;
   top: 0; left: 0;
-  width: 16px; height: 16px;
+  width: 24px; height: 24px;
   background-color: white;
   border-radius: 50%;
   z-index: 99999;
@@ -40,7 +42,7 @@ body {
   transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 .cursor-hover .cursor-dot {
-  width: 80px; height: 80px;
+  width: 100px; height: 100px;
 }
 
 /* Cinematic Loader */
@@ -71,19 +73,22 @@ body {
   -webkit-text-stroke: 1px transparent;
   transform: scale(1.02) skewX(-4deg);
 }
-
-/* Dynamic Glow that follows cursor */
-.glow-orb {
-  position: fixed;
-  width: 50vw; height: 50vw;
-  background: radial-gradient(circle, rgba(255,51,102,0.15) 0%, rgba(0,240,255,0.15) 50%, transparent 70%);
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  z-index: 0;
-  top: 0; left: 0;
-  transform: translate(-50%, -50%);
-  will-change: transform;
+/* Hacker Glitch Effects */
+@keyframes glitch-red {
+  0% { transform: translate(0) }
+  20% { transform: translate(-3px, 1px) }
+  40% { transform: translate(-1px, -2px) }
+  60% { transform: translate(3px, 2px) }
+  80% { transform: translate(2px, -1px) }
+  100% { transform: translate(0) }
+}
+@keyframes glitch-blue {
+  0% { transform: translate(0) }
+  20% { transform: translate(3px, -1px) }
+  40% { transform: translate(1px, 2px) }
+  60% { transform: translate(-3px, -2px) }
+  80% { transform: translate(-2px, 1px) }
+  100% { transform: translate(0) }
 }
 
 /* Glassmorphism & Parallax Cards */

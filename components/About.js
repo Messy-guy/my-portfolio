@@ -74,7 +74,10 @@ export default function About() {
         <div className="text-reveal-container max-w-5xl mb-24 md:mb-32">
           <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-bold leading-tight uppercase tracking-tight">
             {wordsArray.map((word, i) => (
-              <span key={i} className="reveal-word inline-block mr-[0.3em] transition-colors duration-100">
+              <span 
+                key={i} 
+                className="reveal-word inline-block mr-[0.3em] transition-colors duration-100 hover-trigger"
+              >
                 {word}
               </span>
             ))}
@@ -84,22 +87,25 @@ export default function About() {
         <div className="flex flex-col lg:flex-row items-stretch gap-12 lg:gap-20">
           
           {/* Parallax Image */}
-          <div className="about-img-container w-full lg:w-[45%] h-[50vh] md:h-[70vh] rounded-[2rem] overflow-hidden relative border border-white/10 shadow-2xl">
+          <div 
+            className="about-img-container w-full lg:w-[45%] h-[50vh] md:h-[70vh] rounded-[2rem] overflow-hidden relative border border-white/10 shadow-2xl"
+            data-cursor-text="VIEW PROFILE"
+          >
             <Image
               src="/images/MyImage.jpg"
               alt="Animesh Poudel"
               fill
-              className="about-img object-cover object-center"
+              className="about-img object-cover object-center transition-transform duration-700 hover:scale-[1.03]"
             />
           </div>
 
           {/* Bio & Stats */}
           <div className="w-full lg:w-[55%] flex flex-col justify-center">
             <div className="space-y-6 md:space-y-8 text-base md:text-xl text-gray-400 font-light leading-relaxed">
-              <p>
+              <p className="hover-trigger transition-colors duration-300 hover:text-white">
                 Based in <strong className="text-white">Kathmandu</strong>, I specialize in crafting cross-platform mobile applications using <strong className="text-[#02569B]">Flutter</strong> and dynamic web experiences with the <strong className="text-[#61DAFB]">React ecosystem</strong>.
               </p>
-              <p>
+              <p className="hover-trigger transition-colors duration-300 hover:text-white">
                 My philosophy is simple: engineering and design are not separate disciplines. Beautiful UI without flawless logic is useless, and a robust backend without an intuitive interface is frustrating. I bridge the gap to create complete digital experiences.
               </p>
             </div>

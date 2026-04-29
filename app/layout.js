@@ -1,14 +1,14 @@
-import { Outfit, Space_Grotesk } from "next/font/google";
+import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const outfit = Outfit({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-inter",
 });
 
-const spaceGrotesk = Space_Grotesk({
+const jetbrainsMono = JetBrains_Mono({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-jetbrains-mono",
 });
 
 export const metadata = {
@@ -20,7 +20,7 @@ export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${outfit.variable} ${spaceGrotesk.variable} scroll-smooth`}
+      className={`${inter.variable} ${jetbrainsMono.variable} scroll-smooth`}
     >
       <head>
         <link
