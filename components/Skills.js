@@ -80,7 +80,7 @@ export default function Skills() {
           {skills.map((skill, index) => (
             <div
               key={index}
-              className={`bento-item opacity-0 ${skill.colSpan} ${skill.rowSpan} rounded-3xl border border-white/10 bg-[#0f0f0f]/80 backdrop-blur-md overflow-hidden group relative hover-trigger flex flex-col justify-between p-6 md:p-8 transition-transform duration-500 hover:scale-[1.02] hover:-translate-y-1 ${skill.border} shadow-[0_0_0_rgba(0,0,0,0)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]`}
+              className={`bento-item opacity-0 ${skill.colSpan} ${skill.rowSpan} rounded-3xl border border-white/10 bg-[#0f0f0f]/80 backdrop-blur-md overflow-hidden group relative hover-trigger flex flex-col justify-between p-6 md:p-8 transition-transform duration-500 hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98] active:translate-y-0 ${skill.border} shadow-[0_0_0_rgba(0,0,0,0)] hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]`}
             >
               {/* Animated Background gradient that follows mouse */}
               <div 
@@ -90,9 +90,9 @@ export default function Skills() {
                 }}
               ></div>
               
-              <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-0 ${skill.bg}`}></div>
+              <div className={`absolute inset-0 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity duration-500 z-0 ${skill.bg}`}></div>
               
-              <div className="relative z-10 mb-4 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3 origin-bottom-left">
+              <div className="relative z-10 mb-4 transition-transform duration-500 group-hover:scale-110 group-active:scale-110 group-hover:-rotate-3 group-active:-rotate-3 origin-bottom-left">
                 <skill.icon size={48} className={skill.color} />
               </div>
               

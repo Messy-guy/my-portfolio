@@ -156,12 +156,12 @@ export default function Projects() {
                 className="w-full md:w-[55%] h-1/2 md:h-full order-1 md:order-2 relative overflow-hidden z-10 bg-black"
                 data-cursor-text="EXPLORE"
               >
-                <div className="absolute inset-0 bg-black/20 z-10 transition-opacity duration-500 group-hover:opacity-0 pointer-events-none"></div>
+                <div className="absolute inset-0 bg-black/20 z-10 transition-opacity duration-500 group-hover:opacity-0 group-active:opacity-0 pointer-events-none"></div>
                 <Image
                   src={p.img}
                   alt={p.title}
                   fill
-                  className="img-parallax object-cover object-left md:object-center transition-transform duration-[1.5s] ease-out group-hover:scale-[1.03]"
+                  className="img-parallax object-cover object-left md:object-center transition-transform duration-[1.5s] ease-out group-hover:scale-[1.03] group-active:scale-[1.03]"
                 />
               </div>
 

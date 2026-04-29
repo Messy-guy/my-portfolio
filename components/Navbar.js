@@ -35,7 +35,7 @@ export default function Navbar() {
         </div>
         <button 
           onClick={() => setIsOpen(!isOpen)} 
-          className="md:hidden flex justify-center items-center pointer-events-auto z-[101] hover-trigger text-white transition-all duration-300 hover:scale-110"
+          className="md:hidden flex justify-center items-center pointer-events-auto z-[101] hover-trigger text-white transition-all duration-300 hover:scale-110 active:scale-95"
         >
           {isOpen ? <XIcon size={32} /> : <MenuIcon size={32} />}
         </button>
@@ -51,7 +51,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
               className="menu-link overflow-hidden relative group hover-trigger"
             >
-              <span className="text-white group-hover:text-transparent group-hover:[-webkit-text-stroke:1px_white] transition-all duration-300">
+              <span className="text-white group-hover:text-transparent group-hover:[-webkit-text-stroke:1px_white] group-active:text-transparent group-active:[-webkit-text-stroke:1px_white] transition-all duration-300">
                 {item}
               </span>
             </a>

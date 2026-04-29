@@ -82,9 +82,9 @@ export default function Contact() {
         <div className="contact-anim magnetic-wrap inline-block p-8 md:p-16 hover-trigger">
           <a
             href="mailto:animeshpoudel6@gmail.com"
-            className="magnetic-btn inline-flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-full bg-white text-[#050505] font-display font-bold text-3xl md:text-5xl transition-colors hover:bg-[#ff3366] hover:text-white group"
+            className="magnetic-btn inline-flex items-center justify-center w-48 h-48 md:w-64 md:h-64 rounded-full bg-white text-[#050505] font-display font-bold text-3xl md:text-5xl transition-all duration-300 hover:bg-[#ff3366] hover:text-white active:bg-[#ff3366] active:text-white active:scale-95 group"
           >
-            <span className="group-hover:scale-110 transition-transform duration-300">SAY HI</span>
+            <span className="group-hover:scale-110 group-active:scale-110 transition-transform duration-300">SAY HI</span>
           </a>
         </div>
       </div>
@@ -100,22 +100,22 @@ export default function Contact() {
           <div>
             <h4 className="text-xs text-gray-500 uppercase tracking-widest mb-4 font-display">Contact</h4>
             <p className="text-lg md:text-xl font-light">+977 9761657579</p>
-            <a href="mailto:animeshpoudel6@gmail.com" className="text-sm md:text-base text-gray-400 mt-2 hover:text-white transition-colors inline-block relative group">
+            <a href="mailto:animeshpoudel6@gmail.com" className="text-sm md:text-base text-gray-400 mt-2 hover:text-white active:text-white transition-colors inline-block relative group">
               animeshpoudel6@gmail.com
-              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span>
+              <span className="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full group-active:w-full"></span>
             </a>
           </div>
           <div>
             <h4 className="text-xs text-gray-500 uppercase tracking-widest mb-4 font-display">Socials</h4>
             <div className="flex gap-6 pointer-events-auto">
-              <a href="https://github.com/Messy-guy" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-[#050505] text-gray-400 transition-all duration-300 hover-trigger group hover:-translate-y-1">
-                <GithubIcon size={22} className="transition-transform group-hover:scale-110" />
+              <a href="https://github.com/Messy-guy" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-white hover:text-[#050505] active:bg-white active:text-[#050505] text-gray-400 transition-all duration-300 hover-trigger group hover:-translate-y-1 active:-translate-y-1">
+                <GithubIcon size={22} className="transition-transform group-hover:scale-110 group-active:scale-110" />
               </a>
-              <a href="https://www.instagram.com/iam_animeshpoudel/" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#ff3366] hover:border-[#ff3366] hover:text-white text-gray-400 transition-all duration-300 hover-trigger group hover:-translate-y-1">
-                <InstagramIcon size={22} className="transition-transform group-hover:scale-110" />
+              <a href="https://www.instagram.com/iam_animeshpoudel/" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#ff3366] hover:border-[#ff3366] hover:text-white active:bg-[#ff3366] active:border-[#ff3366] active:text-white text-gray-400 transition-all duration-300 hover-trigger group hover:-translate-y-1 active:-translate-y-1">
+                <InstagramIcon size={22} className="transition-transform group-hover:scale-110 group-active:scale-110" />
               </a>
-              <a href="https://www.facebook.com/animesh.poudel.79/" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white text-gray-400 transition-all duration-300 hover-trigger group hover:-translate-y-1">
-                <FacebookIcon size={22} className="transition-transform group-hover:scale-110" />
+              <a href="https://www.facebook.com/animesh.poudel.79/" target="_blank" rel="noreferrer" className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center hover:bg-[#1877F2] hover:border-[#1877F2] hover:text-white active:bg-[#1877F2] active:border-[#1877F2] active:text-white text-gray-400 transition-all duration-300 hover-trigger group hover:-translate-y-1 active:-translate-y-1">
+                <FacebookIcon size={22} className="transition-transform group-hover:scale-110 group-active:scale-110" />
               </a>
             </div>
           </div>

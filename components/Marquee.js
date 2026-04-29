@@ -7,13 +7,13 @@ export default function Marquee() {
       {/* Top Marquee (Moves Left) */}
       <div className="flex whitespace-nowrap overflow-hidden">
         <div className="flex animate-[marqueeLeft_20s_linear_infinite]">
-          <h2 className="font-display text-[12vw] md:text-[8vw] font-bold uppercase leading-none text-transparent px-4" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.2)" }}>
+          <h2 className="font-display text-[12vw] md:text-[8vw] font-bold uppercase leading-none text-transparent px-4 transition-colors duration-300 hover:text-accent2 active:text-accent2 hover-trigger" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.2)" }}>
             FRONTEND &nbsp;&bull;&nbsp; BACKEND &nbsp;&bull;&nbsp; MOBILE &nbsp;&bull;&nbsp;
           </h2>
-          <h2 className="font-display text-[12vw] md:text-[8vw] font-bold uppercase leading-none text-transparent px-4" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.2)" }}>
+          <h2 className="font-display text-[12vw] md:text-[8vw] font-bold uppercase leading-none text-transparent px-4 transition-colors duration-300 hover:text-accent2 active:text-accent2 hover-trigger" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.2)" }}>
             FRONTEND &nbsp;&bull;&nbsp; BACKEND &nbsp;&bull;&nbsp; MOBILE &nbsp;&bull;&nbsp;
           </h2>
-          <h2 className="font-display text-[12vw] md:text-[8vw] font-bold uppercase leading-none text-transparent px-4" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.2)" }}>
+          <h2 className="font-display text-[12vw] md:text-[8vw] font-bold uppercase leading-none text-transparent px-4 transition-colors duration-300 hover:text-accent2 active:text-accent2 hover-trigger" style={{ WebkitTextStroke: "1px rgba(255,255,255,0.2)" }}>
             FRONTEND &nbsp;&bull;&nbsp; BACKEND &nbsp;&bull;&nbsp; MOBILE &nbsp;&bull;&nbsp;
           </h2>
         </div>
@@ -22,13 +22,13 @@ export default function Marquee() {
       {/* Bottom Marquee (Moves Right) */}
       <div className="flex whitespace-nowrap overflow-hidden">
         <div className="flex animate-[marqueeRight_20s_linear_infinite]">
-          <h2 className="font-display text-[12vw] md:text-[8vw] font-bold uppercase leading-none text-white px-4">
+          <h2 className="font-display text-[12vw] md:text-[8vw] font-bold uppercase leading-none text-white px-4 transition-colors duration-300 hover:text-accent active:text-accent hover-trigger">
             CREATIVE DEVELOPER &nbsp;&bull;&nbsp; UI/UX DESIGN &nbsp;&bull;&nbsp;
           </h2>
-          <h2 className="font-display text-[12vw] md:text-[8vw] font-bold uppercase leading-none text-white px-4">
+          <h2 className="font-display text-[12vw] md:text-[8vw] font-bold uppercase leading-none text-white px-4 transition-colors duration-300 hover:text-accent active:text-accent hover-trigger">
             CREATIVE DEVELOPER &nbsp;&bull;&nbsp; UI/UX DESIGN &nbsp;&bull;&nbsp;
           </h2>
-          <h2 className="font-display text-[12vw] md:text-[8vw] font-bold uppercase leading-none text-white px-4">
+          <h2 className="font-display text-[12vw] md:text-[8vw] font-bold uppercase leading-none text-white px-4 transition-colors duration-300 hover:text-accent active:text-accent hover-trigger">
             CREATIVE DEVELOPER &nbsp;&bull;&nbsp; UI/UX DESIGN &nbsp;&bull;&nbsp;
           </h2>
         </div>

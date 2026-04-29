@@ -37,7 +37,7 @@ export default function TextReveal({ text }) {
   return (
     <div ref={containerRef} className="font-display text-4xl md:text-6xl lg:text-7xl font-bold leading-tight uppercase tracking-tighter">
       {words.map((word, i) => (
-        <span key={i} className="reveal-word inline-block mr-[0.3em] transition-colors duration-100">
+        <span key={i} className="reveal-word inline-block mr-[0.3em] transition-colors duration-300 hover:text-accent active:text-accent hover-trigger">
           {word}
         </span>
       ))}

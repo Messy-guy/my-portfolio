@@ -102,10 +102,10 @@ export default function About() {
           {/* Bio & Stats */}
           <div className="w-full lg:w-[55%] flex flex-col justify-center">
             <div className="space-y-6 md:space-y-8 text-base md:text-xl text-gray-400 font-light leading-relaxed">
-              <p className="hover-trigger transition-colors duration-300 hover:text-white">
+              <p className="hover-trigger transition-colors duration-300 hover:text-white active:text-white">
                 Based in <strong className="text-white">Kathmandu</strong>, I specialize in crafting cross-platform mobile applications using <strong className="text-[#02569B]">Flutter</strong> and dynamic web experiences with the <strong className="text-[#61DAFB]">React ecosystem</strong>.
               </p>
-              <p className="hover-trigger transition-colors duration-300 hover:text-white">
+              <p className="hover-trigger transition-colors duration-300 hover:text-white active:text-white">
                 My philosophy is simple: engineering and design are not separate disciplines. Beautiful UI without flawless logic is useless, and a robust backend without an intuitive interface is frustrating. I bridge the gap to create complete digital experiences.
               </p>
             </div>

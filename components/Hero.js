@@ -70,28 +70,38 @@ export default function Hero() {
       <div className="relative z-10 w-full px-6 md:px-12 pointer-events-auto">
         <div className="w-full max-w-[1200px] flex flex-col items-center mx-auto">
           
-          <div className="group relative w-full flex justify-center hover-trigger cursor-none py-2 overflow-hidden hero-line-1 origin-bottom">
+          <div className="group relative w-full flex justify-center hover-trigger py-2 overflow-hidden hero-line-1 origin-bottom">
             <div className="hero-line-anim">
               <h1 
-                className="font-display text-[15vw] md:text-[12vw] leading-none font-bold uppercase tracking-tighter text-white transition-colors duration-500 hover:text-accent"
+                className="font-display text-[15vw] md:text-[12vw] leading-none font-bold uppercase tracking-tighter text-white transition-colors duration-500 hover:text-accent active:text-accent"
                 onMouseEnter={(e) => handleScramble(e, "FULL STACK", "SYSTEM ARCHITECT")}
                 onMouseLeave={(e) => handleScramble(e, "FULL STACK", "FULL STACK")}
+                onTouchStart={(e) => handleScramble(e, "FULL STACK", "SYSTEM ARCHITECT")}
+                onTouchEnd={(e) => handleScramble(e, "FULL STACK", "FULL STACK")}
               >
                 FULL STACK
               </h1>
             </div>
           </div>
 
-          <div className="group relative w-full flex justify-center hover-trigger cursor-none py-2 mt-[-2vw] overflow-hidden hero-line-2 origin-top">
+          <div className="group relative w-full flex justify-center hover-trigger py-2 mt-[-2vw] overflow-hidden hero-line-2 origin-top">
             <div className="hero-line-anim">
               <h1 
-                className="font-display text-[15vw] md:text-[12vw] leading-none font-bold uppercase tracking-tighter text-transparent transition-colors duration-500 hover:text-accent2" 
+                className="font-display text-[15vw] md:text-[12vw] leading-none font-bold uppercase tracking-tighter text-transparent transition-colors duration-500 hover:text-accent2 active:text-accent2" 
                 style={{ WebkitTextStroke: "2px white" }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.WebkitTextStroke = "0px";
                   handleScramble(e, "DEVELOPER.", "CREATOR.");
                 }}
                 onMouseLeave={(e) => {
+                  e.currentTarget.style.WebkitTextStroke = "2px white";
+                  handleScramble(e, "DEVELOPER.", "DEVELOPER.");
+                }}
+                onTouchStart={(e) => {
+                  e.currentTarget.style.WebkitTextStroke = "0px";
+                  handleScramble(e, "DEVELOPER.", "CREATOR.");
+                }}
+                onTouchEnd={(e) => {
                   e.currentTarget.style.WebkitTextStroke = "2px white";
                   handleScramble(e, "DEVELOPER.", "DEVELOPER.");
                 }}

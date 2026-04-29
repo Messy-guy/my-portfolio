@@ -20,11 +20,18 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-stopped { overflow: hidden; }
 .lenis.lenis-smooth iframe { pointer-events: none; }
 
-body {
-  cursor: none; /* Hide default cursor */
+@media (pointer: fine) {
+  body { cursor: none; }
+  a, button, input, textarea, select, .hover-trigger, [data-cursor-text] {
+    cursor: none !important;
+  }
 }
 
-[data-cursor-text] { cursor: none; }
+@media (pointer: coarse) {
+  .cursor-dot {
+    display: none !important;
+  }
+}
 
 ::-webkit-scrollbar { display: none; }
 
