@@ -121,21 +121,21 @@ export default function Projects() {
         {projects.map((p, i) => (
           <div 
             key={p.id} 
-            className="project-card sticky top-0 h-[100vh] flex items-center justify-center pt-24 pb-12"
+            className="project-card sticky top-0 h-screen flex items-center justify-center pt-20 pb-10"
             style={{ zIndex: i }}
           >
-            <div className="glass-panel w-full max-w-6xl h-[75vh] md:h-[80vh] flex flex-col md:flex-row rounded-[2rem] overflow-hidden bg-[#111111] border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.8)] relative">
+            <div className="glass-panel w-full max-w-6xl h-[85vh] md:h-[80vh] flex flex-col md:flex-row rounded-[2rem] overflow-hidden bg-[#111111] border border-white/10 shadow-[0_30px_80px_rgba(0,0,0,0.8)] relative">
               
-              <div className="w-full md:w-[45%] p-8 md:p-16 flex flex-col justify-center order-2 md:order-1 h-1/2 md:h-full overflow-y-auto custom-scrollbar z-20 bg-[#111111]">
-                <p className={`font-display ${p.color} mb-2 tracking-widest text-xs md:text-sm font-bold uppercase`}>
+              <div className="w-full md:w-[45%] p-8 md:p-16 flex flex-col justify-center order-2 md:order-1 h-[45%] md:h-full overflow-y-auto custom-scrollbar z-20 bg-[#111111]">
+                <p className={`font-display ${p.color} mb-2 tracking-widest text-[10px] md:text-sm font-bold uppercase`}>
                   {p.id} — {p.category}
                 </p>
-                <h3 className="font-display text-4xl md:text-6xl font-bold mb-4 md:mb-6 leading-tight">{p.title}</h3>
-                <p className="text-gray-400 mb-6 md:mb-8 text-sm md:text-base font-light">{p.desc}</p>
+                <h3 className="font-display text-3xl md:text-6xl font-bold mb-3 md:mb-6 leading-tight">{p.title}</h3>
+                <p className="text-gray-400 mb-6 text-xs md:text-base font-light line-clamp-3 md:line-clamp-none">{p.desc}</p>
                 
-                <div className="flex flex-wrap gap-2 mb-8 text-[10px] md:text-xs text-white/80 font-display uppercase tracking-wider">
+                <div className="flex flex-wrap gap-2 mb-8 text-[9px] md:text-xs text-white/80 font-display uppercase tracking-wider">
                   {p.tech.map((t) => (
-                    <span key={t} className="border border-white/20 rounded-full px-3 py-1.5 md:px-4 md:py-2 bg-white/5 backdrop-blur-sm">
+                    <span key={t} className="border border-white/20 rounded-full px-3 py-1 bg-white/5 backdrop-blur-sm">
                       {t}
                     </span>
                   ))}
@@ -145,15 +145,15 @@ export default function Projects() {
                   href={p.link}
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-4 group hover-trigger w-max mt-auto bg-white text-[#050505] px-6 py-3 rounded-full font-display uppercase tracking-widest text-xs font-bold transition-transform hover:scale-105"
+                  className="inline-flex items-center gap-3 group hover-trigger w-max bg-white text-[#050505] px-5 py-2.5 rounded-full font-display uppercase tracking-widest text-[10px] font-bold transition-transform hover:scale-105"
                 >
-                  <span className="relative z-10">View Github</span>
-                  <GithubIcon size={20} className="group-hover:scale-110 transition-transform" />
+                  <span>View Github</span>
+                  <GithubIcon size={16} className="group-hover:scale-110 transition-transform" />
                 </a>
               </div>
               
               <div 
-                className="w-full md:w-[55%] h-1/2 md:h-full order-1 md:order-2 relative overflow-hidden z-10 bg-black"
+                className="w-full md:w-[55%] h-[55%] md:h-full order-1 md:order-2 relative overflow-hidden z-10 bg-black"
                 data-cursor-text="EXPLORE"
               >
                 <div className="absolute inset-0 bg-black/20 z-10 transition-opacity duration-500 group-hover:opacity-0 group-active:opacity-0 pointer-events-none"></div>

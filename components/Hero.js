@@ -47,12 +47,12 @@ export default function Hero() {
       {/* Background radial gradient */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)]"></div>
 
-      <div className="relative z-10 w-full px-6 md:px-12 pointer-events-auto">
-        <div className="w-full max-w-[1200px] flex flex-col items-center mx-auto">
+      <div className="relative z-10 w-full px-4 md:px-12 pointer-events-auto">
+        <div className="w-full flex flex-col items-center mx-auto">
           
           <div className="group relative w-full flex justify-center hover-trigger py-2 overflow-hidden hero-line-1 origin-bottom">
             <div className="hero-line-anim">
-              <h1 className="font-display text-[15vw] md:text-[12vw] leading-none font-bold uppercase tracking-tighter text-white relative">
+              <h1 className="font-display text-[14vw] md:text-[clamp(5rem,11vw,16rem)] leading-[0.85] font-bold uppercase tracking-tighter text-white relative">
                 {/* Default Text */}
                 <span className="block transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-full group-active:opacity-0 group-active:-translate-y-full">
                   FULL STACK
@@ -65,11 +65,11 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="group relative w-full flex justify-center hover-trigger py-2 mt-[-2vw] overflow-hidden hero-line-2 origin-top">
+          <div className="group relative w-full flex justify-center hover-trigger py-2 mt-[-1vw] overflow-hidden hero-line-2 origin-top">
             <div className="hero-line-anim">
               <h1 
-                className="font-display text-[15vw] md:text-[12vw] leading-none font-bold uppercase tracking-tighter text-transparent relative" 
-                style={{ WebkitTextStroke: "2px white" }}
+                className="font-display text-[14vw] md:text-[clamp(5rem,11vw,16rem)] leading-[0.85] font-bold uppercase tracking-tighter text-transparent relative" 
+                style={{ WebkitTextStroke: "1.5px white" }}
               >
                 {/* Default Text */}
                 <span className="block transition-all duration-500 group-hover:opacity-0 group-hover:-translate-y-full group-active:opacity-0 group-active:-translate-y-full">
