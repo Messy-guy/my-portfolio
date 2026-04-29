@@ -1,976 +1,682 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animesh Poudel</title>
-<script src="https://cdn.tailwindcss.com/3.4.16"></script>
-<script>tailwind.config={theme:{extend:{colors:{primary:'#7B42F6',secondary:'#00BCD4'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
-<style>
-:where([class^="ri-"])::before { content: "\f3c2"; }
-body {
-font-family: 'Inter', sans-serif;
-background-color: #121212;
-color: #FFFFFF;
-overflow-x: hidden;
-}
-.gradient-text {
-background: linear-gradient(90deg, #7B42F6, #2196F3, #00BCD4);
--webkit-background-clip: text;
-background-clip: text;
-color: transparent;
-}
-.gradient-border {
-position: relative;
-border: 1px solid transparent;
-background: linear-gradient(#1E1E1E, #1E1E1E) padding-box,
-linear-gradient(90deg, #7B42F6, #2196F3) border-box;
-}
-.nav-link {
-position: relative;
-overflow: hidden;
-}
-.nav-link::after {
-content: '';
-position: absolute;
-bottom: 0;
-left: 0;
-width: 0;
-height: 2px;
-background: linear-gradient(90deg, #7B42F6, #2196F3);
-transition: width 0.3s ease;
-}
-.nav-link:hover::after, .nav-link.active::after {
-width: 100%;
-}
-.glass-effect {
-backdrop-filter: blur(10px);
-background: rgba(30, 30, 30, 0.7);
-}
-.project-card {
-transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.project-card:hover {
-transform: translateY(-5px) scale(1.02);
-box-shadow: 0 10px 25px rgba(123, 66, 246, 0.2);
-}
-.skill-bar {
-position: relative;
-height: 8px;
-background: #2A2A2A;
-border-radius: 4px;
-overflow: hidden;
-}
-.skill-progress {
-height: 100%;
-background: linear-gradient(90deg, #7B42F6, #2196F3);
-border-radius: 4px;
-position: relative;
-animation: skillFill 1.5s ease-out forwards;
-}
-@keyframes skillFill {
-from { width: 0; }
-}
-.glow-effect {
-box-shadow: 0 0 15px rgba(123, 66, 246, 0.5);
-transition: box-shadow 0.3s ease;
-}
-.glow-effect:hover {
-box-shadow: 0 0 25px rgba(123, 66, 246, 0.8);
-}
-.float-animation {
-animation: float 3s ease-in-out infinite;
-}
-@keyframes float {
-0% { transform: translateY(0px); }
-50% { transform: translateY(-10px); }
-100% { transform: translateY(0px); }
-}
-.typewriter {
-overflow: hidden;
-border-right: 3px solid #7B42F6;
-white-space: nowrap;
-margin: 0 auto;
-animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
-}
-@keyframes typing {
-from { width: 0 }
-to { width: 100% }
-}
-@keyframes blink-caret {
-from, to { border-color: transparent }
-50% { border-color: #7B42F6 }
-}
-.form-input {
-background-color: #1E1E1E;
-border: 1px solid #333;
-color: #FFF;
-transition: all 0.3s ease;
-}
-.form-input:focus {
-border-color: #7B42F6;
-box-shadow: 0 0 10px rgba(123, 66, 246, 0.3);
-}
-.pulse-animation {
-animation: pulse 2s infinite;
-}
-@keyframes pulse {
-0% { box-shadow: 0 0 0 0 rgba(123, 66, 246, 0.4); }
-70% { box-shadow: 0 0 0 10px rgba(123, 66, 246, 0); }
-100% { box-shadow: 0 0 0 0 rgba(123, 66, 246, 0); }
-}
-.fade-in {
-opacity: 0;
-animation: fadeIn 1s forwards;
-}
-@keyframes fadeIn {
-to { opacity: 1; }
-}
-.slide-up {
-opacity: 0;
-transform: translateY(20px);
-animation: slideUp 0.6s forwards;
-}
-@keyframes slideUp {
-to {
-opacity: 1;
-transform: translateY(0);
-}
-}
-.progress-circle {
-transition: stroke-dashoffset 1s ease;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animesh Poudel | Flutter Developer Portfolio</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Outfit', 'sans-serif'],
+                        display: ['Space Grotesk', 'sans-serif'],
+                    },
+                    colors: {
+                        dark: '#050505',
+                        light: '#f5f5f5',
+                        accent: '#ff3366',
+                        accent2: '#00f0ff'
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Smooth Scroll (Lenis) - Essential for premium feel */
+        html.lenis, html.lenis body { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto !important; }
+        .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+        .lenis.lenis-stopped { overflow: hidden; }
+        .lenis.lenis-smooth iframe { pointer-events: none; }
+
+        body {
+            background-color: #050505;
+            color: #f5f5f5;
+            overflow-x: hidden;
+            cursor: none; /* Hide default cursor */
+        }
+
+        ::-webkit-scrollbar { display: none; }
+
+        /* Sleek Inverted Cursor */
+        .cursor-dot {
+            position: fixed;
+            top: 0; left: 0;
+            width: 16px; height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            z-index: 99999;
+            pointer-events: none;
+            mix-blend-mode: difference; /* Inverts colors behind it */
+            transform: translate(-50%, -50%);
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1), height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .cursor-hover .cursor-dot {
+            width: 80px; height: 80px;
+        }
+
+        /* Cinematic Loader */
+        .loader {
+            position: fixed; inset: 0; z-index: 99998;
+            display: flex; pointer-events: none;
+        }
+        .loader-pane {
+            width: 50%; height: 100%;
+            background: #050505;
+            position: relative;
+        }
+        .loader-content {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center; z-index: 99999; mix-blend-mode: difference; color: white;
+        }
+
+        /* Advanced Typography Enhancements */
+        .text-outline {
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255, 255, 255, 0.4);
+            transition: color 0.4s cubic-bezier(0.16, 1, 0.3, 1), -webkit-text-stroke 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s;
+            display: inline-block;
+        }
+        .text-outline:hover {
+            color: white;
+            -webkit-text-stroke: 1px transparent;
+            transform: scale(1.02) skewX(-4deg);
+        }
+
+        /* Dynamic Glow that follows cursor */
+        .glow-orb {
+            position: fixed;
+            width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(255,51,102,0.15) 0%, rgba(0,240,255,0.15) 50%, transparent 70%);
+            border-radius: 50%;
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+            top: 0; left: 0;
+            transform: translate(-50%, -50%);
+            will-change: transform;
+        }
+
+        /* Glassmorphism & Parallax Cards */
+        .project-card {
+            position: sticky; top: 0; height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            transform-origin: center top;
+            padding: 2rem;
+            will-change: transform;
+        }
+        .glass-panel {
+            background: rgba(20, 20, 20, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 32px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+            width: 100%; max-width: 1200px;
+            height: 80vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        @media(min-width: 768px){
+            .glass-panel { flex-direction: row; }
+        }
+        
+        .img-parallax-container {
+            overflow: hidden;
+            width: 100%; height: 50%;
+        }
+        @media(min-width: 768px){
+            .img-parallax-container { height: 100%; width: 50%; border-radius: 24px;}
+        }
+        .img-parallax {
+            width: 100%; height: 130%; /* Extra height for scrolling room */
+            object-fit: cover;
+            will-change: transform;
+        }
+
+        .noise::before {
+            content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 50; opacity: 0.04;
+            background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+
+        /* Smooth reveal for horizontal section */
+        .skills-wrapper { transition: background-color 0.5s ease; }
+    </style>
 </head>
-<body>
-<!-- Navigation -->
-<nav class="fixed w-full z-50 glass-effect">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="flex items-center justify-between h-16">
-<div class="flex items-center">
-<div class="text-2xl font-['Pacifico'] gradient-text">DevFlutter</div>
-</div>
-<div class="hidden md:block">
-<div class="ml-10 flex items-baseline space-x-8">
-<a href="#home" class="nav-link active text-white px-3 py-2 text-sm font-medium">Home</a>
-<a href="#projects" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Projects</a>
-<a href="#skills" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Skills</a>
-<a href="#contact" class="nav-link text-gray-300 hover:text-white px-3 py-2 text-sm font-medium">Contact</a>
-</div>
-</div>
-<div class="md:hidden flex items-center">
-<button id="mobile-menu-button" class="text-gray-300 hover:text-white">
-<div class="w-8 h-8 flex items-center justify-center">
-<i class="ri-menu-line ri-lg"></i>
-</div>
-</button>
-</div>
-</div>
-</div>
-<!-- Mobile menu -->
-<div id="mobile-menu" class="hidden md:hidden glass-effect">
-<div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-<a href="#home" class="text-white block px-3 py-2 rounded-md text-base font-medium">Home</a>
-<a href="#projects" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Projects</a>
-<a href="#skills" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Skills</a>
-<a href="#contact" class="text-gray-300 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Contact</a>
-</div>
-</div>
-</nav>
-<!-- Hero Section -->
-<section id="home" class="min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 relative" style="background: linear-gradient(135deg, #121212 0%, #1E1E1E 100%);">
-<div class="absolute inset-0 overflow-hidden">
-<div id="particles-js" class="absolute inset-0"></div>
-</div>
-<div class="max-w-7xl w-full mx-auto grid md:grid-cols-2 gap-8 items-center z-10">
-<div class="fade-in" style="animation-delay: 0.2s">
-<h2 class="text-3xl font-bold text-gray-300 mb-2">Hello, I'm</h2>
-<h1 class="text-5xl md:text-6xl font-bold mb-4 typewriter gradient-text">Animesh Poudel</h1>
-<p class="text-xl text-gray-300 mb-8"> An Aspiring Flutter Developer, building responsive, user-friendly mobile apps with Flutter & Dart. Eager to grow through real-world experience and hands-on learning.</p>
-<div class="flex flex-wrap gap-4">
-<a href="#projects" class="gradient-border glow-effect !rounded-button px-6 py-3 text-white font-medium">View My Work</a>
-<a href="#contact" class="border border-gray-600 !rounded-button px-6 py-3 text-white font-medium hover:border-primary transition-all">Get In Touch</a>
-</div>
-</div>
-<div class="relative float-animation fade-in" style="animation-delay: 0.6s">
-<div class="relative">
-<img src="MyImage.jpg" alt="Flutter Developer" class="rounded-xl mx-auto object-top glow-effect w-full h-auto max-w-lg shadow-lg">
-<div class="absolute -bottom-4 -right-4 gradient-border glow-effect rounded-lg p-3 bg-[#1E1E1E]">
-<div class="flex items-center gap-2">
-<div class="w-6 h-6 flex items-center justify-center">
-<i class="ri-flutter-fill ri-lg text-primary"></i>
-</div>
-<!-- <span>Flutter Expert</span> -->
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Projects Section -->
-<section id="projects" class="py-20 px-4 sm:px-6 lg:px-8" style="background: #161616;">
-<div class="max-w-7xl mx-auto">
-<div class="text-center mb-16">
-<h2 class="text-4xl font-bold mb-4 gradient-text">My Projects</h2>
-<p class="text-xl text-gray-300 max-w-3xl mx-auto">Showcasing my Flutter development with a focus on performance, animations, and user experience.</p>
-</div>
-<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-<!-- Project 1 -->
-<div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.1s">
-<div class="relative">
-<img src="eventra.png" alt="event booking App" class="w-full h-47 object-cover object-top">
-<div class="absolute top-3 right-3 bg-[#1E1E1E] rounded-full px-3 py-1 text-xs font-medium text-primary">Featured</div>
-</div>
-<div class="p-6">
-<h3 class="text-xl font-bold mb-2">Eventra</h3>
-<p class="text-gray-400 mb-4">An Event Booking App With an Admin Panel, User Page and attractive UI</p>
-<div class="flex flex-wrap gap-2 mb-4">
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Firebase</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Firestore</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Cloudinary</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">shared-preference</span>
-</div>
-<div class="flex justify-between">
-<a href="https://drive.google.com/file/d/1D_cPDHQrQgNyGP208C39BdXwdqLwCtIQ/view?usp=sharing" class="text-primary flex items-center gap-1 hover:underline">
-<span>Download</span>
-<div class="w-4 h-4 flex items-center justify-center">
-<i class="ri-external-link-line"></i>
-</div>
-</a>
-<a href="https://github.com/Messy-guy/eventra1" class="text-primary flex items-center gap-1 hover:underline">
-<span>Source Code</span>
-<div class="w-4 h-4 flex items-center justify-center">
-<i class="ri-github-fill"></i>
-</div>
-</a>
-</div>
-</div>
-</div>
-<!-- Project 2 -->
-<div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.2s">
-<div class="relative">
-<img src="gitpeek (2).png" alt="" class="w-full h-47 object-cover object-top">
-</div>
-<div class="p-6">
-<h3 class="text-xl font-bold mb-2">Gitpeek</h3>
-<p class="text-gray-400 mb-4">An custom Github App that lets you peek someone's github profile , repos , Contribution and Top 5 repos.</p>
-<div class="flex flex-wrap gap-2 mb-4">
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Github api</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Bloc</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">fl_chart</span>
-</div>
-<div class="flex justify-between">
-<a href="https://drive.google.com/file/d/1D_cPDHQrQgNyGP208C39BdXwdqLwCtIQ/view?usp=sharing" class="text-primary flex items-center gap-1 hover:underline">
-<span>Download</span>
-<div class="w-4 h-4 flex items-center justify-center">
-<i class="ri-external-link-line"></i>
-</div>
-</a>
-<a href="https://github.com/Messy-guy/gitpeek" class="text-primary flex items-center gap-1 hover:underline">
-<span>Source Code</span>
-<div class="w-4 h-4 flex items-center justify-center">
-<i class="ri-github-fill"></i>
-</div>
-</a>
-</div>
-</div>
-</div>
-<!-- Project 3 -->
-<div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.3s">
-<div class="relative">
-<img src="voxa (2).png" alt="Voice assistant App" class="w-full h-46 object-cover object-top">
-</div>
-<div class="p-6">
-<h3 class="text-xl font-bold mb-2">Voxa</h3>
-<p class="text-gray-400 mb-4">A Voice Assistant App with a voice assitant to give you your answers and ai-image generator.</p>
-<div class="flex flex-wrap gap-2 mb-4">
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Openrouter Api</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">huggingface Api</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">http</span>
-</div>
-<div class="flex justify-between">
-<a href="https://drive.google.com/file/d/12Ee6BEHkZJdA7pVP9qdm6ug_qYEe_CIN/view?usp=sharing" class="text-primary flex items-center gap-1 hover:underline">
-<span>Download</span>
-<div class="w-4 h-4 flex items-center justify-center">
-<i class="ri-external-link-line"></i>
-</div>
-</a>
-<a href="https://github.com/Messy-guy/https---github.com-Messy-guy-voxa_" class="text-primary flex items-center gap-1 hover:underline">
-<span>Source Code</span>
-<div class="w-4 h-4 flex items-center justify-center">
-<i class="ri-github-fill"></i>
-</div>
-</a>
-</div>
-</div>
-</div>
-<!-- Project 4 -->
-<div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.4s">
-<div class="relative">
-<img src="AirZone.png" alt="AirQuality App" class="w-full h-47 object-cover object-top">
-</div>
-<div class="p-6">
-<h3 class="text-xl font-bold mb-2">AirZone</h3>
-<p class="text-gray-400 mb-4">AirZone is a mobile app that shows real-time AQI, pollutant levels, and a 7-day forecast. It includes a live map with air quality data from nearby cities to help users stay informed.</p>
-<div class="flex flex-wrap gap-2 mb-4">
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">http</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">fl_chart</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">OpenWeather Api</span>
-</div>
-<div class="flex justify-between">
-<a href="https://drive.google.com/file/d/1NBYX4TafSb-u29gQzYT8Kz4aMhdRhP_K/view?usp=sharing" class="text-primary flex items-center gap-1 hover:underline">
-<span>Download</span>
-<div class="w-4 h-4 flex items-center justify-center">
-<i class="ri-external-link-line"></i>
-</div>
-</a>
-<a href="https://github.com/Messy-guy/AIRZONE" class="text-primary flex items-center gap-1 hover:underline">
-<span>Source Code</span>
-<div class="w-4 h-4 flex items-center justify-center">
-<i class="ri-github-fill"></i>
-</div>
-</a>
-</div>
-</div>
-</div>
-<!-- Project 5 -->
-<div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.5s">
-<div class="relative">
-<img src="brain.png" alt="chatbot" class="w-full h-47 object-cover object-top">
-</div>
-<div class="p-6">
-<h3 class="text-xl font-bold mb-2">BrAIn</h3>
-<p class="text-gray-400 mb-4">Brain is a simple and responsive chatbot app designed for smooth real-time conversations. It provides an interactive user experience with intelligent message handling.</p>
-<div class="flex flex-wrap gap-2 mb-4">
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">dash_chat_2</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">google generative Ai</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Gemini Api</span>
-</div>
-<div class="flex justify-between">
-<a href="https://drive.google.com/file/d/1A91sl7QranlT3CMamQ0F4gdiPM3afboP/view?usp=sharing" class="text-primary flex items-center gap-1 hover:underline">
-<span>Download</span>
-<div class="w-4 h-4 flex items-center justify-center">
-<i class="ri-external-link-line"></i>
-</div>
-</a>
-<a href="https://github.com/Messy-guy/BrAIn" class="text-primary flex items-center gap-1 hover:underline">
-<span>Source Code</span>
-<div class="w-4 h-4 flex items-center justify-center">
-<i class="ri-github-fill"></i>
-</div>
-</a>
-</div>
-</div>
-</div>
-<!-- Project 6 -->
- <!-- <div class="project-card gradient-border rounded-lg overflow-hidden bg-[#1E1E1E] slide-up" style="animation-delay: 0.6s">
-<div class="relative">
-<img src="https://readdy.ai/api/search-image?query=chat%20messaging%20app%20interface%20with%20dark%20theme%2C%20conversation%20threads%2C%20message%20bubbles%2C%20user%20profiles%2C%20modern%20UI%20with%20purple%20accent%20colors%2C%20high%20quality%20render&width=600&height=400&seq=7&orientation=landscape" alt="Chat App" class="w-full h-48 object-cover object-top">
-</div>
-<div class="p-6">
-<h3 class="text-xl font-bold mb-2">ChatConnect</h3>
-<p class="text-gray-400 mb-4">A real-time messaging platform with typing indicators, read receipts, and rich media sharing capabilities.</p>
-<div class="flex flex-wrap gap-2 mb-4">
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Flutter</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Socket.io</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">Hive</span>
-<span class="bg-[#2A2A2A] px-2 py-1 rounded-full text-xs font-medium text-gray-300">End-to-End Encryption</span>
-</div>
-<div class="flex justify-between">
-<a href="#" class="text-primary flex items-center gap-1 hover:underline">
-<span>Download</span>
-<div class="w-4 h-4 flex items-center justify-center">
-<i class="ri-external-link-line"></i>
-</div>
-</a>
-<a href="#" class="text-primary flex items-center gap-1 hover:underline">
-<span>Source Code</span>
-<div class="w-4 h-4 flex items-center justify-center">
-<i class="ri-github-fill"></i>
-</div>
-</a>
-</div>
-</div>
-</div> -->
-</div>
-<div class="text-center mt-12">
-<a href="allprojects.html" data-readdy="true" class="gradient-border glow-effect !rounded-button px-6 py-3 text-white font-medium inline-flex items-center gap-2">
-<span>View All Projects</span>
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-arrow-right-line"></i>
-</div>
-</a>
-</div>
-</div>
-</section>
-<!-- Skills Section -->
-<section id="skills" class="py-20 px-4 sm:px-6 lg:px-8" style="background: #121212;">
-<div class="max-w-7xl mx-auto">
-<div class="text-center mb-16">
-<h2 class="text-4xl font-bold mb-4 gradient-text">Technical Skills</h2>
-<p class="text-xl text-gray-300 max-w-3xl mx-auto">A comprehensive overview of my technical expertise and proficiency levels.</p>
-</div>
-<div class="grid md:grid-cols-2 gap-12">
-<!-- Left Column - Skill Bars -->
-<div class="max-w-2xl mr-auto"> <!-- Left-aligned container with right padding -->
-  <h3 class="text-2xl font-bold mb-8 text-white border-b border-gray-700 pb-2 pl-2 pr-4">
-    <span class="inline-block transition-all duration-300 hover:translate-x-1 hover:text-primary">
-      Development Skills
-    </span>
-  </h3>
-  
-  <div class="space-y-6 pl-2 pr-4">
-    <!-- Flutter -->
-    <div class="slide-up group" style="animation-delay: 0.1s">
-      <div class="flex items-center gap-6 transition-all duration-300 group-hover:translate-x-2">
-        <div class="w-12 h-12 flex-shrink-0 bg-white rounded-lg p-2 flex items-center justify-center shadow-md
-                  transform transition-all duration-500 group-hover:rotate-6 group-hover:scale-105">
-          <img src="https://storage.googleapis.com/cms-storage-bucket/6a07d8a62f4308d2b854.svg" 
-               alt="Flutter" 
-               class="w-full h-full object-contain">
+<body class="noise font-sans antialiased selection:bg-white selection:text-dark">
+
+    <!-- Inverted Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="glow-orb" id="cursor-glow"></div>
+
+    <!-- Cinematic Split Loader -->
+    <div class="loader">
+        <div class="loader-pane left-pane"></div>
+        <div class="loader-pane right-pane"></div>
+        <div class="loader-content">
+            <h1 class="font-display text-4xl md:text-8xl font-bold tracking-tighter overflow-hidden">
+                <span class="loader-text block translate-y-full">LOADING</span>
+            </h1>
+            <div class="loader-percent font-display text-xl md:text-3xl mt-4">0%</div>
         </div>
-        <div class="flex-1 min-w-0 relative">
-          <span class="text-gray-300 group-hover:text-white transition-colors truncate block">Flutter</span>
-          <div class="absolute bottom-0 left-0 h-0.5 bg-primary origin-left scale-x-0 
-                    group-hover:scale-x-100 transition-transform duration-500"></div>
-        </div>
-      </div>
     </div>
+
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full p-6 md:p-12 flex justify-between items-center z-40 mix-blend-difference text-white pointer-events-none">
+        <div class="font-display font-bold text-xl tracking-widest uppercase hover-trigger pointer-events-auto">ANIMESH.</div>
+        <div class="flex gap-8 font-display text-sm uppercase tracking-widest hidden md:flex pointer-events-auto">
+            <a href="#work" class="hover-trigger relative group">Work<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#about" class="hover-trigger relative group">About<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a>
+            <a href="#contact" class="hover-trigger relative group">Contact<span class="absolute -bottom-1 left-0 w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-full"></span></a>
+        </div>
+        <button class="md:hidden text-2xl hover-trigger pointer-events-auto"><i class="fa-solid fa-bars"></i></button>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="main-container">
+        
+        <!-- Enhanced Hero Section -->
+        <section class="h-screen relative flex items-center justify-center overflow-hidden pt-20">
+            <div class="container mx-auto px-6 z-10 relative pointer-events-none flex flex-col items-center mix-blend-difference">
+                <div class="hero-text-wrapper overflow-hidden">
+                    <h1 class="hero-line font-display text-[15vw] md:text-[10vw] leading-[0.8] font-bold uppercase tracking-tighter hover-trigger pointer-events-auto">
+                        Full Stack
+                    </h1>
+                </div>
+                <div class="hero-text-wrapper overflow-hidden ml-0 md:ml-[15vw] mt-4">
+                    <h1 class="hero-line font-display text-[15vw] md:text-[10vw] leading-[0.8] font-bold uppercase tracking-tighter text-outline hover-trigger pointer-events-auto">
+                        Frontend
+                    </h1>
+                </div>
+                <div class="hero-text-wrapper overflow-hidden text-right mt-4">
+                    <h1 class="hero-line font-display text-[15vw] md:text-[10vw] leading-[0.8] font-bold uppercase tracking-tighter hover-trigger pointer-events-auto">
+                        Developer.
+                    </h1>
+                </div>
+            </div>
+
+            <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 opacity-50 scroll-indicator">
+                <span class="font-display text-xs uppercase tracking-[0.3em]">Scroll</span>
+                <div class="w-[1px] h-16 bg-white/20 relative overflow-hidden">
+                    <div class="w-full h-full bg-white absolute top-0 left-0 animate-[scrolldown_2s_cubic-bezier(0.77,0,0.175,1)_infinite]"></div>
+                </div>
+            </div>
+            <style>
+                @keyframes scrolldown {
+                    0% { transform: translateY(-100%); }
+                    100% { transform: translateY(100%); }
+                }
+            </style>
+        </section>
+
+        <!-- Upgraded Visual About (Horizontal Parallax) -->
+        <section id="about" class="text-white relative z-10">
+            <div class="h-screen flex items-center skills-wrapper overflow-hidden bg-[#050505]">
+                <div class="skills-track flex w-[800vw] h-full items-center px-[10vw]">
+                    
+                    <!-- Panel 1 -->
+                    <div class="w-[100vw] flex-shrink-0 flex flex-col md:flex-row items-center gap-12 pr-20 relative">
+                        <div class="w-full md:w-1/2 z-10">
+                            <h2 class="font-display text-5xl md:text-8xl font-bold leading-none mix-blend-difference">I SPEAK<br><span class="text-transparent" style="-webkit-text-stroke: 1px white;">VISUALS.</span></h2>
+                            <p class="mt-8 text-xl text-gray-300 font-light max-w-md mix-blend-difference">An Aspiring Flutter Developer, building responsive, user-friendly mobile apps with beautiful UI.</p>
+                        </div>
+                        <div class="w-full md:w-1/2 flex justify-center mix-blend-difference">
+                            <i class="fa-brands fa-html5 text-[15rem] md:text-[25rem] text-white float"></i>
+                        </div>
+                    </div>
+
+                    <!-- Panel 2 -->
+                    <div class="w-[100vw] flex-shrink-0 flex flex-col md:flex-row items-center gap-12 pr-20" data-color="#111827">
+                        <div class="w-full md:w-1/2 flex justify-center order-2 md:order-1 mix-blend-difference">
+                            <i class="fa-brands fa-css3-alt text-[15rem] md:text-[25rem] text-white float-delay"></i>
+                        </div>
+                        <div class="w-full md:w-1/2 order-1 md:order-2 z-10">
+                            <h2 class="font-display text-5xl md:text-8xl font-bold leading-none mix-blend-difference">STYLING<br>IS AN <span class="italic text-transparent" style="-webkit-text-stroke: 1px white;">ART.</span></h2>
+                        </div>
+                    </div>
+
+                    <!-- Panel 3 -->
+                    <div class="w-[100vw] flex-shrink-0 flex flex-col md:flex-row items-center gap-12 pr-20" data-color="#3f3f46">
+                        <div class="w-full md:w-1/2 z-10">
+                            <h2 class="font-display text-5xl md:text-8xl font-bold leading-none mix-blend-difference">LOGIC<br>IN <span class="text-transparent" style="-webkit-text-stroke: 1px white;">MOTION.</span></h2>
+                        </div>
+                        <div class="w-full md:w-1/2 flex justify-center relative mix-blend-difference">
+                             <i class="fa-brands fa-js text-[15rem] md:text-[25rem] text-white float"></i>
+                             <i class="fa-brands fa-react absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[10rem] text-white opacity-0 react-icon mix-blend-difference"></i>
+                        </div>
+                    </div>
+
+                    <!-- Panel 4: React -->
+                    <div class="w-[100vw] flex-shrink-0 flex flex-col md:flex-row items-center gap-12 pr-20" data-color="#1a1a2e">
+                        <div class="w-full md:w-1/2 flex justify-center order-2 md:order-1 mix-blend-difference">
+                            <i class="fa-brands fa-react text-[15rem] md:text-[25rem] text-white float"></i>
+                        </div>
+                        <div class="w-full md:w-1/2 order-1 md:order-2 z-10">
+                            <h2 class="font-display text-5xl md:text-8xl font-bold leading-none mix-blend-difference">REACTIVE<br><span class="italic text-transparent" style="-webkit-text-stroke: 1px white;">THINKING.</span></h2>
+                            <p class="mt-8 text-xl text-gray-300 font-light max-w-md mix-blend-difference">Building dynamic, component-driven interfaces with React ecosystem.</p>
+                        </div>
+                    </div>
+
+                    <!-- Panel 5: Flutter -->
+                    <div class="w-[100vw] flex-shrink-0 flex flex-col md:flex-row items-center gap-12 pr-20" data-color="#0d2137">
+                        <div class="w-full md:w-1/2 z-10">
+                            <h2 class="font-display text-5xl md:text-8xl font-bold leading-none mix-blend-difference">CROSS<br>PLATFORM <span class="text-transparent" style="-webkit-text-stroke: 1px white;">MAGIC.</span></h2>
+                            <p class="mt-8 text-xl text-gray-300 font-light max-w-md mix-blend-difference">One codebase, beautiful apps everywhere — powered by Flutter & Dart.</p>
+                        </div>
+                        <div class="w-full md:w-1/2 flex justify-center mix-blend-difference">
+                            <svg class="w-[15rem] md:w-[22rem] h-[15rem] md:h-[22rem] text-white float-delay" viewBox="0 0 24 24" fill="currentColor"><path d="M14.314 0L2.3 12 6 15.7 21.684.013h-7.357zm.014 11.072L7.857 17.53l6.47 6.47H21.7l-6.46-6.468 6.46-6.46h-7.37z"/></svg>
+                        </div>
+                    </div>
+
+                    <!-- Panel 6: React Native -->
+                    <div class="w-[100vw] flex-shrink-0 flex flex-col md:flex-row items-center gap-12 pr-20" data-color="#16213e">
+                        <div class="w-full md:w-1/2 flex justify-center order-2 md:order-1 mix-blend-difference">
+                            <i class="fa-brands fa-react text-[15rem] md:text-[25rem] text-white float"></i>
+                        </div>
+                        <div class="w-full md:w-1/2 order-1 md:order-2 z-10">
+                            <h2 class="font-display text-5xl md:text-8xl font-bold leading-none mix-blend-difference">NATIVE<br><span class="italic text-transparent" style="-webkit-text-stroke: 1px white;">MOBILE.</span></h2>
+                            <p class="mt-8 text-xl text-gray-300 font-light max-w-md mix-blend-difference">React Native — bringing the power of React to iOS & Android.</p>
+                        </div>
+                    </div>
+
+                    <!-- Panel 7: TypeScript -->
+                    <div class="w-[100vw] flex-shrink-0 flex flex-col md:flex-row items-center gap-12 pr-20" data-color="#1b2838">
+                        <div class="w-full md:w-1/2 z-10">
+                            <h2 class="font-display text-5xl md:text-8xl font-bold leading-none mix-blend-difference">TYPE<br>SAFE <span class="text-transparent" style="-webkit-text-stroke: 1px white;">CODE.</span></h2>
+                            <p class="mt-8 text-xl text-gray-300 font-light max-w-md mix-blend-difference">TypeScript — writing scalable, maintainable code with confidence.</p>
+                        </div>
+                        <div class="w-full md:w-1/2 flex justify-center mix-blend-difference">
+                            <span class="font-display text-[15rem] md:text-[22rem] font-bold text-white float">TS</span>
+                        </div>
+                    </div>
+
+                    <!-- Panel 8 -->
+                    <div class="w-[100vw] flex-shrink-0 flex items-center justify-center pr-[10vw]" data-color="#050505">
+                        <h2 class="font-display text-[10vw] font-bold text-outline uppercase text-center leading-none hover-trigger">
+                            See my work.
+                        </h2>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <!-- Premium Selected Works (Glass Sticky Stack & Inner Parallax) -->
+        <section id="work" class="relative z-20 bg-transparent pb-[20vh] pt-[10vh]">
+            <div class="container mx-auto px-6 py-12">
+                <h2 class="font-display text-2xl uppercase tracking-widest text-white/50 border-b border-white/10 pb-6 mb-24">Selected Works (05)</h2>
+            </div>
+
+            <div class="projects-container relative">
+                <!-- Project 1: Eventra -->
+                <div class="project-card">
+                    <div class="glass-panel">
+                        <div class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center order-2 md:order-1">
+                            <p class="font-display text-accent mb-4 tracking-widest text-sm font-bold">01 / EVENT APP</p>
+                            <h3 class="font-display text-5xl md:text-7xl font-bold mb-6">Eventra</h3>
+                            <p class="text-gray-400 mb-4 text-sm">An Event Booking App With an Admin Panel, User Page and attractive UI</p>
+                            <div class="flex flex-wrap gap-3 mb-8 text-xs text-white/70 font-display">
+                                <span class="border border-white/20 rounded-full px-4 py-2">Flutter</span>
+                                <span class="border border-white/20 rounded-full px-4 py-2">Firebase</span>
+                                <span class="border border-white/20 rounded-full px-4 py-2">Firestore</span>
+                                <span class="border border-white/20 rounded-full px-4 py-2">Cloudinary</span>
+                            </div>
+                            <a href="https://github.com/Messy-guy/eventra1" class="inline-block relative group hover-trigger w-max mt-auto">
+                                <span class="relative z-10 font-display uppercase tracking-widest text-sm font-bold">View Project</span>
+                                <span class="absolute -bottom-2 left-0 w-full h-[2px] bg-white transform origin-left transition-transform group-hover:scale-x-0"></span>
+                            </a>
+                        </div>
+                        <div class="img-parallax-container order-1 md:order-2 m-4">
+                            <img src="eventra.png" alt="Eventra App" class="img-parallax">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: GitPeek -->
+                <div class="project-card">
+                    <div class="glass-panel">
+                        <div class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center order-2 md:order-1">
+                            <p class="font-display text-accent2 mb-4 tracking-widest text-sm font-bold">02 / GITHUB CLIENT</p>
+                            <h3 class="font-display text-5xl md:text-7xl font-bold mb-6">GitPeek</h3>
+                            <p class="text-gray-400 mb-4 text-sm">A custom Github App that lets you peek someone's profile, repos, contributions and Top 5 repos.</p>
+                            <div class="flex flex-wrap gap-3 mb-8 text-xs text-white/70 font-display">
+                                <span class="border border-white/20 rounded-full px-4 py-2">Flutter</span>
+                                <span class="border border-white/20 rounded-full px-4 py-2">Github API</span>
+                                <span class="border border-white/20 rounded-full px-4 py-2">Bloc</span>
+                                <span class="border border-white/20 rounded-full px-4 py-2">fl_chart</span>
+                            </div>
+                            <a href="https://github.com/Messy-guy/gitpeek" class="inline-block relative group hover-trigger w-max mt-auto">
+                                <span class="relative z-10 font-display uppercase tracking-widest text-sm font-bold">View Project</span>
+                                <span class="absolute -bottom-2 left-0 w-full h-[2px] bg-white transform origin-left transition-transform group-hover:scale-x-0"></span>
+                            </a>
+                        </div>
+                        <div class="img-parallax-container order-1 md:order-2 m-4">
+                            <img src="gitpeek (2).png" alt="GitPeek App" class="img-parallax">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: Voxa -->
+                <div class="project-card">
+                    <div class="glass-panel">
+                        <div class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center order-2 md:order-1">
+                            <p class="font-display text-yellow-400 mb-4 tracking-widest text-sm font-bold">03 / VOICE AI</p>
+                            <h3 class="font-display text-5xl md:text-7xl font-bold mb-6">Voxa</h3>
+                            <p class="text-gray-400 mb-4 text-sm">A Voice Assistant App with voice assistant answers and AI image generator.</p>
+                            <div class="flex flex-wrap gap-3 mb-8 text-xs text-white/70 font-display">
+                                <span class="border border-white/20 rounded-full px-4 py-2">Flutter</span>
+                                <span class="border border-white/20 rounded-full px-4 py-2">OpenRouter API</span>
+                                <span class="border border-white/20 rounded-full px-4 py-2">HuggingFace</span>
+                            </div>
+                            <a href="https://github.com/Messy-guy/https---github.com-Messy-guy-voxa_" class="inline-block relative group hover-trigger w-max mt-auto">
+                                <span class="relative z-10 font-display uppercase tracking-widest text-sm font-bold">View Project</span>
+                                <span class="absolute -bottom-2 left-0 w-full h-[2px] bg-white transform origin-left transition-transform group-hover:scale-x-0"></span>
+                            </a>
+                        </div>
+                        <div class="img-parallax-container order-1 md:order-2 m-4">
+                            <img src="voxa (2).png" alt="Voxa App" class="img-parallax">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: AirZone -->
+                <div class="project-card">
+                    <div class="glass-panel">
+                        <div class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center order-2 md:order-1">
+                            <p class="font-display text-green-400 mb-4 tracking-widest text-sm font-bold">04 / AIR QUALITY</p>
+                            <h3 class="font-display text-5xl md:text-7xl font-bold mb-6">AirZone</h3>
+                            <p class="text-gray-400 mb-4 text-sm">Real-time AQI, pollutant levels, and a 7-day forecast with live map from nearby cities.</p>
+                            <div class="flex flex-wrap gap-3 mb-8 text-xs text-white/70 font-display">
+                                <span class="border border-white/20 rounded-full px-4 py-2">Flutter</span>
+                                <span class="border border-white/20 rounded-full px-4 py-2">OpenWeather API</span>
+                                <span class="border border-white/20 rounded-full px-4 py-2">fl_chart</span>
+                            </div>
+                            <a href="https://github.com/Messy-guy/AIRZONE" class="inline-block relative group hover-trigger w-max mt-auto">
+                                <span class="relative z-10 font-display uppercase tracking-widest text-sm font-bold">View Project</span>
+                                <span class="absolute -bottom-2 left-0 w-full h-[2px] bg-white transform origin-left transition-transform group-hover:scale-x-0"></span>
+                            </a>
+                        </div>
+                        <div class="img-parallax-container order-1 md:order-2 m-4">
+                            <img src="AirZone.png" alt="AirZone App" class="img-parallax">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: BrAIn -->
+                <div class="project-card">
+                    <div class="glass-panel">
+                        <div class="w-full md:w-1/2 p-8 md:p-16 flex flex-col justify-center order-2 md:order-1">
+                            <p class="font-display text-purple-400 mb-4 tracking-widest text-sm font-bold">05 / CHATBOT</p>
+                            <h3 class="font-display text-5xl md:text-7xl font-bold mb-6">BrAIn</h3>
+                            <p class="text-gray-400 mb-4 text-sm">A simple and responsive chatbot app for smooth real-time conversations with intelligent message handling.</p>
+                            <div class="flex flex-wrap gap-3 mb-8 text-xs text-white/70 font-display">
+                                <span class="border border-white/20 rounded-full px-4 py-2">Flutter</span>
+                                <span class="border border-white/20 rounded-full px-4 py-2">Gemini API</span>
+                                <span class="border border-white/20 rounded-full px-4 py-2">dash_chat_2</span>
+                            </div>
+                            <a href="https://github.com/Messy-guy/BrAIn" class="inline-block relative group hover-trigger w-max mt-auto">
+                                <span class="relative z-10 font-display uppercase tracking-widest text-sm font-bold">View Project</span>
+                                <span class="absolute -bottom-2 left-0 w-full h-[2px] bg-white transform origin-left transition-transform group-hover:scale-x-0"></span>
+                            </a>
+                        </div>
+                        <div class="img-parallax-container order-1 md:order-2 m-4">
+                            <img src="brain.png" alt="BrAIn Chatbot" class="img-parallax">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Big Type Marquee Transition -->
+        <section class="py-24 bg-accent text-white overflow-hidden transform -skew-y-3 z-30 relative">
+            <div class="marquee-container flex whitespace-nowrap mix-blend-difference">
+                <h2 class="font-display text-[8vw] font-bold uppercase marquee-content leading-none">
+                    LET'S BUILD SOMETHING BEAUTIFUL &nbsp;&bull;&nbsp; LET'S BUILD SOMETHING BEAUTIFUL &nbsp;&bull;&nbsp; 
+                </h2>
+                <h2 class="font-display text-[8vw] font-bold uppercase marquee-content leading-none">
+                    LET'S BUILD SOMETHING BEAUTIFUL &nbsp;&bull;&nbsp; LET'S BUILD SOMETHING BEAUTIFUL &nbsp;&bull;&nbsp; 
+                </h2>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="h-screen bg-dark relative flex flex-col items-center justify-center overflow-hidden z-20">
+            <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.03)_0%,transparent_60%)]"></div>
+            
+            <div class="text-center z-10 mix-blend-difference">
+                <p class="font-display text-white/50 tracking-[0.5em] uppercase mb-8">Got a project?</p>
+                
+                <!-- Magnetic Button -->
+                <div class="magnetic-wrap inline-block p-12 hover-trigger">
+                    <a href="mailto:animeshpoudel6@gmail.com" class="magnetic-btn inline-flex items-center justify-center w-56 h-56 rounded-full bg-white text-dark font-display font-bold text-3xl transition-transform duration-300 ease-out hover:scale-110">
+                        <span>SAY HI</span>
+                    </a>
+                </div>
+            </div>
+
+            <footer class="absolute bottom-6 w-full flex justify-between px-12 text-xs font-display text-gray-500 uppercase tracking-widest mix-blend-difference pointer-events-none">
+                <span>© 2026 Animesh Poudel. All rights reserved.</span>
+                <div class="flex gap-6 pointer-events-auto">
+                    <a href="https://github.com/Messy-guy" class="hover:text-white transition-colors hover-trigger">Github</a>
+                    <a href="https://www.instagram.com/iam_animeshpoudel/" class="hover:text-white transition-colors hover-trigger">Instagram</a>
+                    <a href="https://www.facebook.com/animesh.poudel.79/" class="hover:text-white transition-colors hover-trigger">Facebook</a>
+                </div>
+            </footer>
+        </section>
+
+    </main>
+    <!-- Scripts (Added Lenis for premium smooth scroll) -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.34/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     
-    <!-- Dart -->
-    <div class="slide-up group" style="animation-delay: 0.2s">
-      <div class="flex items-center gap-6 transition-all duration-300 group-hover:translate-x-2">
-        <div class="w-12 h-12 flex-shrink-0 bg-[#0175C2] rounded-lg p-2 flex items-center justify-center shadow-md
-                  transform transition-all duration-500 group-hover:-rotate-6 group-hover:scale-105">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Dart-logo.png" 
-               alt="Dart" 
-               class="w-full h-full object-contain">
-        </div>
-        <div class="flex-1 min-w-0 relative">
-          <span class="text-gray-300 group-hover:text-white transition-colors truncate block">Dart</span>
-          <div class="absolute bottom-0 left-0 h-0.5 bg-primary origin-left scale-x-0 
-                    group-hover:scale-x-100 transition-transform duration-500 delay-75"></div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- Firebase -->
-    <div class="slide-up group" style="animation-delay: 0.3s">
-      <div class="flex items-center gap-6 transition-all duration-300 group-hover:translate-x-2">
-        <div class="w-12 h-12 flex-shrink-0 bg-[#FFCA28] rounded-lg p-2 flex items-center justify-center shadow-md
-                  transform transition-all duration-500 group-hover:rotate-6 group-hover:scale-105">
-          <img src="https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg" 
-               alt="Firebase" 
-               class="w-full h-full object-contain">
-        </div>
-        <div class="flex-1 min-w-0 relative">
-          <span class="text-gray-300 group-hover:text-white transition-colors truncate block">Firebase</span>
-          <div class="absolute bottom-0 left-0 h-0.5 bg-primary origin-left scale-x-0 
-                    group-hover:scale-x-100 transition-transform duration-500 delay-150"></div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- State Management -->
-    <div class="slide-up group" style="animation-delay: 0.4s">
-      <div class="flex items-center gap-6 transition-all duration-300 group-hover:translate-x-2">
-        <div class="w-12 h-12 flex-shrink-0 bg-gray-800 rounded-lg p-2 flex items-center justify-center shadow-md border border-gray-700
-                  transform transition-all duration-500 group-hover:scale-105">
-          <div class="flex space-x-1">
-            <img src="https://raw.githubusercontent.com/felangel/bloc/master/docs/assets/bloc_logo_small.png" 
-                 alt="BLoC" 
-                 class="w-5 h-5 object-contain hover:scale-110 transition-transform">
-            <img src="https://riverpod.dev/img/logo.png" 
-                 alt="Riverpod" 
-                 class="w-5 h-5 object-contain hover:scale-110 transition-transform">
-          </div>
-        </div>
-        <div class="flex-1 min-w-0 relative">
-          <span class="text-gray-300 group-hover:text-white transition-colors truncate block">State Management (BLoC, Riverpod)</span>
-          <div class="absolute bottom-0 left-0 h-0.5 bg-primary origin-left scale-x-0 
-                    group-hover:scale-x-100 transition-transform duration-500 delay-225"></div>
-        </div>
-      </div>
-    </div>
-    
-    <!-- API Integration -->
-    <div class="slide-up group" style="animation-delay: 0.5s">
-      <div class="flex items-center gap-6 transition-all duration-300 group-hover:translate-x-2">
-        <div class="w-12 h-12 flex-shrink-0 bg-[#FF6C37] rounded-lg p-2 flex items-center justify-center shadow-md
-                  transform transition-all duration-500 group-hover:-rotate-6 group-hover:scale-105">
-          <img src="https://www.vectorlogo.zone/logos/getpostman/getpostman-icon.svg" 
-               alt="API Integration" 
-               class="w-full h-full object-contain">
-        </div>
-        <div class="flex-1 min-w-0 relative">
-          <span class="text-gray-300 group-hover:text-white transition-colors truncate block">API Integration</span>
-          <div class="absolute bottom-0 left-0 h-0.5 bg-primary origin-left scale-x-0 
-                    group-hover:scale-x-100 transition-transform duration-500 delay-300"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Right Column - Skill Cards -->
-<div>
-<h3 class="text-2xl font-bold mb-6 text-white">Specialized Expertise</h3>
-<div class="grid grid-cols-2 gap-4">
-<!-- Animation & Motion -->
-<div class="gradient-border rounded-lg p-5 bg-[#1E1E1E] slide-up" style="animation-delay: 0.1s">
-<div class="w-12 h-12 flex items-center justify-center mb-4 text-primary">
-<i class="ri-animation-fill ri-2x"></i>
-</div>
-<h4 class="text-lg font-bold mb-2">Animation </h4>
-<p class="text-gray-400">Creating simple animations,splash screens and smooth loading UI in mobile apps </p>
-</div>
-<!-- Cross-Platform Development -->
-<!-- <div class="gradient-border rounded-lg p-5 bg-[#1E1E1E] slide-up" style="animation-delay: 0.2s">
-<div class="w-12 h-12 flex items-center justify-center mb-4 text-primary">
-<i class="ri-device-fill ri-2x"></i>
-</div>
-<h4 class="text-lg font-bold mb-2">Cross-Platform</h4>
-<p class="text-gray-400">Building apps that work flawlessly on iOS, Android, and web platforms.</p>
-</div> -->
-<!-- Performance Optimization -->
-<div class="gradient-border rounded-lg p-5 bg-[#1E1E1E] slide-up" style="animation-delay: 0.3s">
-<div class="w-12 h-12 flex items-center justify-center mb-4 text-primary">
-<i class="ri-speed-up-fill ri-2x"></i>
-</div>
-<h4 class="text-lg font-bold mb-2">Performance</h4>
-<p class="text-gray-400">Optimizing apps for speed, memory usage, and battery efficiency.</p>
-</div>
-<!-- Custom Widgets -->
-<div class="gradient-border rounded-lg p-5 bg-[#1E1E1E] slide-up" style="animation-delay: 0.4s">
-<div class="w-12 h-12 flex items-center justify-center mb-4 text-primary">
-<i class="ri-layout-masonry-fill ri-2x"></i>
-</div>
-<h4 class="text-lg font-bold mb-2">Custom Widgets</h4>
-<p class="text-gray-400">Creating bespoke UI components for unique and branded experiences.</p>
-</div>
-<!-- CI/CD -->
-<!-- <div class="gradient-border rounded-lg p-5 bg-[#1E1E1E] slide-up" style="animation-delay: 0.5s">
-<div class="w-12 h-12 flex items-center justify-center mb-4 text-primary">
-<i class="ri-git-branch-fill ri-2x"></i>
-</div>
-<h4 class="text-lg font-bold mb-2">CI/CD</h4>
-<p class="text-gray-400">Setting up automated testing and deployment pipelines for efficiency.</p>
-</div> -->
-<!-- App Architecture -->
-<div class="gradient-border rounded-lg p-5 bg-[#1E1E1E] slide-up" style="animation-delay: 0.6s">
-<div class="w-12 h-12 flex items-center justify-center mb-4 text-primary">
-<i class="ri-stack-fill ri-2x"></i>
-</div>
-<h4 class="text-lg font-bold mb-2">Architecture</h4>
-<p class="text-gray-400">Designing scalable, maintainable app structures following best practices.</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Progress Circles -->
-<!-- <div class="mt-16">
-<h3 class="text-2xl font-bold mb-8 text-center text-white">Additional Competencies</h3>
-<div class="grid grid-cols-2 md:grid-cols-4 gap-8"> -->
-<!-- Circle 1 -->
-<!-- <div class="text-center slide-up" style="animation-delay: 0.1s">
-<div class="relative w-32 h-32 mx-auto mb-4">
-<svg class="w-full h-full" viewBox="0 0 100 100">
-<circle cx="50" cy="50" r="45" fill="none" stroke="#2A2A2A" stroke-width="8" />
-<circle class="progress-circle" cx="50" cy="50" r="45" fill="none" stroke="url(#gradient1)" stroke-width="8" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="42" />
-<defs>
-<linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="0%">
-<stop offset="0%" stop-color="#7B42F6" />
-<stop offset="100%" stop-color="#2196F3" />
-</linearGradient>
-</defs>
-</svg>
-<div class="absolute inset-0 flex items-center justify-center">
-<span class="text-2xl font-bold text-white">85%</span>
-</div>
-</div>
-<h4 class="text-lg font-bold text-white">Testing & QA</h4>
-</div> -->
-<!-- Circle 2 -->
-<!-- <div class="text-center slide-up" style="animation-delay: 0.2s">
-<div class="relative w-32 h-32 mx-auto mb-4">
-<svg class="w-full h-full" viewBox="0 0 100 100">
-<circle cx="50" cy="50" r="45" fill="none" stroke="#2A2A2A" stroke-width="8" />
-<circle class="progress-circle" cx="50" cy="50" r="45" fill="none" stroke="url(#gradient2)" stroke-width="8" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="71" />
-<defs>
-<linearGradient id="gradient2" x1="0%" y1="0%" x2="100%" y2="0%">
-<stop offset="0%" stop-color="#7B42F6" />
-<stop offset="100%" stop-color="#2196F3" />
-</linearGradient>
-</defs>
-</svg>
-<div class="absolute inset-0 flex items-center justify-center">
-<span class="text-2xl font-bold text-white">75%</span>
-</div>
-</div>
-<h4 class="text-lg font-bold text-white">Backend Integration</h4>
-</div> -->
-<!-- Circle 3 -->
-<!-- <div class="text-center slide-up" style="animation-delay: 0.3s">
-<div class="relative w-32 h-32 mx-auto mb-4">
-<svg class="w-full h-full" viewBox="0 0 100 100">
-<circle cx="50" cy="50" r="45" fill="none" stroke="#2A2A2A" stroke-width="8" />
-<circle class="progress-circle" cx="50" cy="50" r="45" fill="none" stroke="url(#gradient3)" stroke-width="8" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="56" />
-<defs>
-<linearGradient id="gradient3" x1="0%" y1="0%" x2="100%" y2="0%">
-<stop offset="0%" stop-color="#7B42F6" />
-<stop offset="100%" stop-color="#2196F3" />
-</linearGradient>
-</defs>
-</svg>
-<div class="absolute inset-0 flex items-center justify-center">
-<span class="text-2xl font-bold text-white">80%</span>
-</div>
-</div>
-<h4 class="text-lg font-bold text-white">App Store Optimization</h4>
-</div> -->
-<!-- Circle 4 -->
-<!-- <div class="text-center slide-up" style="animation-delay: 0.4s">
-<div class="relative w-32 h-32 mx-auto mb-4">
-<svg class="w-full h-full" viewBox="0 0 100 100">
-<circle cx="50" cy="50" r="45" fill="none" stroke="#2A2A2A" stroke-width="8" />
-<circle class="progress-circle" cx="50" cy="50" r="45" fill="none" stroke="url(#gradient4)" stroke-width="8" stroke-linecap="round" stroke-dasharray="283" stroke-dashoffset="28" />
-<defs>
-<linearGradient id="gradient4" x1="0%" y1="0%" x2="100%" y2="0%">
-<stop offset="0%" stop-color="#7B42F6" />
-<stop offset="100%" stop-color="#2196F3" />
-</linearGradient>
-</defs>
-</svg>
-<div class="absolute inset-0 flex items-center justify-center">
-<span class="text-2xl font-bold text-white">90%</span>
-</div>
-</div>
-<h4 class="text-lg font-bold text-white">Responsive Design</h4>
-</div>
-</div>
-</div>
-</div>
-</section> -->
-<!-- Contact Section -->
-<section id="contact" class="py-20 px-4 sm:px-6 lg:px-8 mt-24" style="background: #161616;">
-<div class="max-w-7xl mx-auto">
-<div class="text-center mb-16">
-<h2 class="text-4xl font-bold mb-4 gradient-text">Get In Touch</h2>
-<p class="text-xl text-gray-300 max-w-3xl mx-auto">Have a project in mind? Let's discuss how we can bring your ideas to life with Flutter.</p>
-</div>
-<div class="grid md:grid-cols-2 gap-12">
-<!-- Contact Form -->
-<div class="gradient-border rounded-lg p-8 h-full bg-[#1E1E1E] fade-in" style="animation-delay: 0.2s">
-<h3 class="text-2xl font-bold mb-6 text-white">Send Me a Message</h3>
-<form name="submit-to-google-sheet" id="submit-to-google-sheet">
-    <div class="mb-6">
-      <label for="name" class="block text-gray-300 mb-2">Name</label>
-      <input type="text" name="Name" id="name" class="form-input w-full px-4 py-3 rounded !rounded-button bg-[#2A2A2A] border-none focus:ring-2 focus:ring-primary text-white" placeholder="Your name" required>
-    </div>
-    <div class="mb-6">
-      <label for="email" class="block text-gray-300 mb-2">Email</label>
-      <input type="email" name="Email" id="email" class="form-input w-full px-4 py-3 rounded !rounded-button bg-[#2A2A2A] border-none focus:ring-2 focus:ring-primary text-white" placeholder="your.email@example.com" required>
-    </div>
-    <div class="mb-6">
-      <label for="message" class="block text-gray-300 mb-2">Message</label>
-      <textarea name="Message" id="message" rows="5" class="form-input w-full px-4 py-3 rounded !rounded-button bg-[#2A2A2A] border-none focus:ring-2 focus:ring-primary text-white" placeholder="Tell me about your project..." required></textarea>
-    </div>
-    <button type="submit" class="w-full gradient-border glow-effect pulse-animation !rounded-button px-6 py-3 text-white font-medium">Send Message</button>
-  </form>
-</div>
-<!-- Contact Info -->
-<div class="fade-in" style="animation-delay: 0.4s">
-<h3 class="text-2xl font-bold mb-6 text-white">Contact Information</h3>
-<div class="space-y-6">
-<div class="flex items-start gap-4">
-<div class="w-10 h-10 flex items-center justify-center text-primary bg-[#1E1E1E] rounded-full">
-<i class="ri-mail-line ri-lg"></i>
-</div>
-<div>
-<h4 class="text-lg font-medium text-white">Email</h4>
-<a href="mailto:animeshpoudel6@gmail.com" class="text-gray-300">animeshpoudel6@gmail.com</a>
-<p class="text-gray-400 text-sm mt-1">I'll respond within 24 hours</p>
-</div>
-</div>
-<div class="flex items-start gap-4">
-<div class="w-10 h-10 flex items-center justify-center text-primary bg-[#1E1E1E] rounded-full">
-<i class="ri-map-pin-line ri-lg"></i>
-</div>
-<div>
-<h4 class="text-lg font-medium text-white">Location</h4>
-<p class="text-gray-300">Gyaneshwor, Kathmandu</p>
-<p class="text-gray-400 text-sm mt-1">Available for remote work worldwide</p>
-</div>
-</div>
-<div class="flex items-start gap-4">
-<div class="w-10 h-10 flex items-center justify-center text-primary bg-[#1E1E1E] rounded-full">
-<i class="ri-phone-line ri-lg"></i>
-</div>
-<div>
-<h4 class="text-lg font-medium text-white">Contact</h4>
-<p class="text-gray-300">+977 9761657579</p>
-<p class="text-gray-400 text-sm mt-1">Available 24/7</p>
-</div>
-</div>
-</div>
-<div class="mt-10">
-<h4 class="text-lg font-bold mb-4 text-white">Connect With Me</h4>
-<div class="flex gap-4">
-<a href="https://github.com/Messy-guy" class="w-10 h-10 flex items-center justify-center text-white bg-[#1E1E1E] rounded-full hover:bg-primary transition-all">
-<i class="ri-github-fill ri-lg"></i>
-</a>
-<a href="#" class="w-10 h-10 flex items-center justify-center text-white bg-[#1E1E1E] rounded-full hover:bg-primary transition-all">
-<i class="ri-linkedin-fill ri-lg"></i>
-</a>
-<a href="https://www.instagram.com/iam_animeshpoudel/" class="w-10 h-10 flex items-center justify-center text-white bg-[#1E1E1E] rounded-full hover:bg-primary transition-all">
-<i class="ri-instagram-fill ri-lg"></i>
-</a>
-<a href="https://www.facebook.com/animesh.poudel.79/" class="w-10 h-10 flex items-center justify-center text-white bg-[#1E1E1E] rounded-full hover:bg-primary transition-all">
-<i class="ri-facebook-fill ri-lg"></i>
-</a>
-<!-- <a href="#" class="w-10 h-10 flex items-center justify-center text-white bg-[#1E1E1E] rounded-full hover:bg-primary transition-all">
-<i class="ri-medium-fill ri-lg"></i>
-</a> -->
-</div>
-</div>
-<div class="mt-10 gradient-border rounded-lg p-6 bg-[#1E1E1E]">
-<h4 class="text-lg font-bold mb-3 text-white">Current Availability</h4>
-<p class="text-gray-300 mb-4">I'm currently available for new projects.</p>
-<div class="flex items-center gap-2 text-primary">
-<div class="w-5 h-5 flex items-center justify-center">
-<i class="ri-calendar-check-fill"></i>
-</div>
-<span>Taking new clients</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Footer -->
-<!-- <footer class="py-12 px-4 sm:px-6 lg:px-8" style="background: #121212;">
-<div class="max-w-7xl mx-auto">
-<div class="grid md:grid-cols-4 gap-8 mb-12">
-<div>
-<div class="text-2xl font-['Pacifico'] gradient-text mb-4">DevFlutter</div>
-<p class="text-gray-400 mb-6">Crafting beautiful, performant mobile experiences with Flutter.</p>
-<p class="text-gray-400">© 2025 Alex Morgan. All rights reserved.</p>
-</div>
-<div>
-<h4 class="text-lg font-bold mb-4 text-white">Quick Links</h4>
-<ul class="space-y-2">
-<li><a href="#home" class="text-gray-400 hover:text-primary transition-colors">Home</a></li>
-<li><a href="#projects" class="text-gray-400 hover:text-primary transition-colors">Projects</a></li>
-<li><a href="#skills" class="text-gray-400 hover:text-primary transition-colors">Skills</a></li>
-<li><a href="#contact" class="text-gray-400 hover:text-primary transition-colors">Contact</a></li>
-</ul>
-</div>
-<div>
-<h4 class="text-lg font-bold mb-4 text-white">Services</h4>
-<ul class="space-y-2">
-<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Mobile App Development</a></li>
-<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">UI/UX Design</a></li>
-<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">App Performance Optimization</a></li>
-<li><a href="#" class="text-gray-400 hover:text-primary transition-colors">Code Review & Consulting</a></li>
-</ul>
-</div>
-<div>
-<h4 class="text-lg font-bold mb-4 text-white">Newsletter</h4>
-<p class="text-gray-400 mb-4">Subscribe to receive updates on Flutter development and my latest projects.</p>
-<form class="flex">
-<input type="email" placeholder="Your email" class="form-input px-4 py-2 rounded-l !rounded-button bg-[#2A2A2A] border-none focus:ring-2 focus:ring-primary text-white w-full" required>
-<button type="submit" class="gradient-border glow-effect !rounded-button !rounded-l-none px-4 py-2 text-white font-medium whitespace-nowrap">Subscribe</button>
-</form>
-</div>
-</div> -->
-<div class="text-center mt-4 mb-4">
-<p class="text-gray-500 text-center">© 2025 Portfolio Website by Animesh Poudel | All rights reserved.</p>
-<!-- <div class="flex gap-4"> -->
-<!-- <a href="#" class="text-gray-500 hover:text-primary transition-colors">Privacy Policy</a>
-<a href="#" class="text-gray-500 hover:text-primary transition-colors">Terms of Service</a>
-<a href="#" class="text-gray-500 hover:text-primary transition-colors">Cookie Policy</a> -->
-<!-- </div> -->
-</div>
-</div>
-</footer>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-// Mobile menu toggle
-const mobileMenuButton = document.getElementById('mobile-menu-button');
-const mobileMenu = document.getElementById('mobile-menu');
-if (mobileMenuButton && mobileMenu) {
-mobileMenuButton.addEventListener('click', function() {
-mobileMenu.classList.toggle('hidden');
-});
-}
-// Smooth scroll for all navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-anchor.addEventListener('click', function (e) {
-e.preventDefault();
-const targetId = this.getAttribute('href');
-const targetElement = document.querySelector(targetId);
-if (targetElement) {
-// Close mobile menu if open
-if (!mobileMenu.classList.contains('hidden')) {
-mobileMenu.classList.add('hidden');
-}
-// Smooth scroll to target
-targetElement.scrollIntoView({
-behavior: 'smooth',
-block: 'start'
-});
-// Update URL without jumping
-window.history.pushState(null, '', targetId);
-// Update active state
-document.querySelectorAll('.nav-link').forEach(link => {
-link.classList.remove('active');
-});
-this.classList.add('active');
-}
-});
-});
-// Nav link active state
-const navLinks = document.querySelectorAll('.nav-link');
-const sections = document.querySelectorAll('section');
-function setActiveLink() {
-let current = '';
-sections.forEach(section => {
-const sectionTop = section.offsetTop;
-const sectionHeight = section.clientHeight;
-if (window.scrollY >= (sectionTop - 100)) {
-current = section.getAttribute('id');
-}
-});
-navLinks.forEach(link => {
-link.classList.remove('active');
-if (link.getAttribute('href') === `#${current}`) {
-link.classList.add('active');
-}
-});
-}
-window.addEventListener('scroll', setActiveLink);
-// Contact form submission
-// const contactForm = document.getElementById('contact-form');
-// if (contactForm) {
-// contactForm.addEventListener('submit', function(e) {
-// e.preventDefault();
-// // Simulate form submission
-// const submitButton = contactForm.querySelector('button[type="submit"]');
-// submitButton.innerHTML = 'Sending...';
-// setTimeout(() => {
-// submitButton.innerHTML = 'Message Sent!';
-// contactForm.reset();
-// setTimeout(() => {
-// submitButton.innerHTML = 'Send Message';
-// }, 3000);
-// }, 1500);
-// });
-// }
-// Initialize particles.js
-if (typeof particlesJS !== 'undefined') {
-particlesJS('particles-js', {
-particles: {
-number: { value: 80, density: { enable: true, value_area: 800 } },
-color: { value: '#7B42F6' },
-shape: { type: 'circle' },
-opacity: { value: 0.5, random: false },
-size: { value: 3, random: true },
-line_linked: {
-enable: true,
-distance: 150,
-color: '#2196F3',
-opacity: 0.2,
-width: 1
-},
-move: {
-enable: true,
-speed: 2,
-direction: 'none',
-random: false,
-straight: false,
-out_mode: 'out',
-bounce: false
-}
-},
-interactivity: {
-detect_on: 'canvas',
-events: {
-onhover: { enable: true, mode: 'grab' },
-onclick: { enable: true, mode: 'push' },
-resize: true
-},
-modes: {
-grab: { distance: 140, line_linked: { opacity: 0.5 } },
-push: { particles_nb: 4 }
-}
-},
-retina_detect: true
-});
-}
-// Animate skill bars on scroll
-function animateOnScroll() {
-const elements = document.querySelectorAll('.slide-up');
-elements.forEach(element => {
-const position = element.getBoundingClientRect();
-// Check if element is in viewport
-if(position.top < window.innerHeight && position.bottom >= 0) {
-const delay = element.style.animationDelay || '0s';
-setTimeout(() => {
-element.style.opacity = '1';
-element.style.transform = 'translateY(0)';
-}, parseFloat(delay) * 1000);
-}
-});
-}
-window.addEventListener('scroll', animateOnScroll);
-animateOnScroll(); // Initial check
-});
-</script>
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbxMWn-MgTGgGU1r09HWLk4eMOG1vdr3pjfCgTyVAd5vdXee3o1bnsauAhlzVhT_y0Yx/exec'
-    const form = document.forms['submit-to-google-sheet'];
-    const submitButton = form.querySelector('button[type="submit"]');
-  
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      
-      // Show sending state
-      submitButton.innerHTML = 'Sending...';
-      submitButton.disabled = true;
-      
-      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-        .then(response => {
-          console.log('Success!', response);
-          submitButton.innerHTML = 'Message Sent!';
-          form.reset();
-          
-          // Reset button after 3 seconds
-          setTimeout(() => {
-            submitButton.innerHTML = 'Send Message';
-            submitButton.disabled = false;
-          }, 3000);
-        })
-        .catch(error => {
-          console.error('Error!', error.message);
-          submitButton.innerHTML = 'Error! Try Again';
-          submitButton.disabled = false;
-          
-          // Reset button after 3 seconds
-          setTimeout(() => {
-            submitButton.innerHTML = 'Send Message';
-          }, 3000);
+    <script>
+        // 1. Initialize Lenis Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
         });
-    });
-</script>
+
+        // Integrate Lenis with GSAP ScrollTrigger
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => { lenis.raf(time * 1000) });
+        gsap.ticker.lagSmoothing(0, 0);
+
+        // Initialize GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 2. High-Performance Cursor & Glow Tracker
+        const cursorDot = document.querySelector('.cursor-dot');
+        const cursorGlow = document.getElementById('cursor-glow');
+        const hoverTriggers = document.querySelectorAll('.hover-trigger');
+
+        // gsap.quickTo is highly optimized for mouse movements
+        const xToDot = gsap.quickTo(cursorDot, "x", {duration: 0.1, ease: "power3"});
+        const yToDot = gsap.quickTo(cursorDot, "y", {duration: 0.1, ease: "power3"});
+        const xToGlow = gsap.quickTo(cursorGlow, "x", {duration: 0.8, ease: "power3"});
+        const yToGlow = gsap.quickTo(cursorGlow, "y", {duration: 0.8, ease: "power3"});
+
+        window.addEventListener('mousemove', (e) => {
+            xToDot(e.clientX);
+            yToDot(e.clientY);
+            xToGlow(e.clientX);
+            yToGlow(e.clientY);
+        });
+
+        hoverTriggers.forEach(trigger => {
+            trigger.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
+            trigger.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
+        });
+
+        // 3. Cinematic Split Preloader
+        document.body.style.overflow = 'hidden'; // Stop scroll during load
+        lenis.stop(); // Stop lenis
+
+        const tlLoader = gsap.timeline({
+            onComplete: () => {
+                initScrollAnimations();
+                document.body.style.overflow = ''; 
+                lenis.start(); 
+            }
+        });
+
+        tlLoader.to(".loader-percent", { innerHTML: "100%", duration: 1.5, snap: { innerHTML: 1 }, ease: "power1.inOut" })
+                .to(".loader-text", { y: 0, duration: 0.8, ease: "power3.out" }, "-=1")
+                .to(".loader-content", { opacity: 0, duration: 0.5, ease: "power2.inOut" })
+                .to(".left-pane", { x: "-100%", duration: 1.2, ease: "power4.inOut" }, "split")
+                .to(".right-pane", { x: "100%", duration: 1.2, ease: "power4.inOut" }, "split")
+                .from(".hero-line", { y: "100%", duration: 1.2, stagger: 0.15, ease: "power4.out" }, "-=0.8")
+                .from("nav", { y: -20, opacity: 0, duration: 1, ease: "power3.out" }, "-=1")
+                .to(".loader", { display: "none" });
+
+        // 4. Main Scroll Animations
+        function initScrollAnimations() {
+            
+            // Hero Parallax (Text moves slightly up on scroll)
+            gsap.to(".hero-text-wrapper", {
+                y: -150,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: "header",
+                    start: "top top",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+
+            // Horizontal Scroll Section (Skills) with BG Color change
+            const skillsTrack = document.querySelector('.skills-track');
+            const skillsWrapper = document.querySelector('.skills-wrapper');
+            const panels = gsap.utils.toArray('.skills-track > div');
+            
+            let getScrollAmount = () => -(skillsTrack.scrollWidth - window.innerWidth);
+
+            const tween = gsap.to(skillsTrack, {
+                x: getScrollAmount,
+                ease: "none"
+            });
+
+            ScrollTrigger.create({
+                trigger: skillsWrapper,
+                start: "top top",
+                end: () => `+=${getScrollAmount() * -1}`,
+                pin: true,
+                animation: tween,
+                scrub: 1,
+                invalidateOnRefresh: true,
+                onUpdate: (self) => {
+                    // Change BG color based on panel progress
+                    const progress = self.progress;
+                    const panelIndex = Math.min(Math.floor(progress * panels.length), panels.length - 1);
+                    const newColor = panels[panelIndex].getAttribute('data-color');
+                    if(newColor) {
+                        gsap.to(skillsWrapper, { backgroundColor: newColor, duration: 0.5 });
+                    }
+                }
+            });
+
+            // React Icon pop within horizontal scroll
+            gsap.to(".react-icon", {
+                opacity: 1, rotate: 360, scale: 1.5,
+                scrollTrigger: {
+                    trigger: ".fa-js",
+                    containerAnimation: tween,
+                    start: "center center",
+                    toggleActions: "play reverse play reverse"
+                }
+            });
+
+            // Glass Project Cards: Stacking & Inner Image Parallax
+            const cards = gsap.utils.toArray('.project-card');
+            
+            cards.forEach((card, index) => {
+                const img = card.querySelector('.img-parallax');
+                
+                // Inner Image Parallax effect
+                gsap.fromTo(img, 
+                    { y: "-15%" }, 
+                    { y: "15%", ease: "none", 
+                      scrollTrigger: {
+                          trigger: card,
+                          start: "top bottom",
+                          end: "bottom top",
+                          scrub: true
+                      }
+                    }
+                );
+
+                // Card Stacking/Shrinking effect
+                if(index !== cards.length - 1) {
+                    gsap.to(card.querySelector('.glass-panel'), {
+                        scale: 0.92,
+                        opacity: 0.3,
+                        filter: "blur(5px)",
+                        scrollTrigger: {
+                            trigger: cards[index + 1],
+                            start: "top bottom",
+                            end: "top top",
+                            scrub: true,
+                        }
+                    });
+                }
+            });
+
+            // Marquee Animation
+            gsap.to(".marquee-content", {
+                xPercent: -50,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: ".marquee-container",
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+        }
+
+        // 5. Magnetic Button Effect (Refined)
+        const magnetBtns = document.querySelectorAll('.magnetic-wrap');
+        magnetBtns.forEach(btn => {
+            const magnetChild = btn.querySelector('.magnetic-btn');
+            
+            btn.addEventListener('mousemove', (e) => {
+                const bound = btn.getBoundingClientRect();
+                const x = e.clientX - bound.left - bound.width / 2;
+                const y = e.clientY - bound.top - bound.height / 2;
+                
+                gsap.to(magnetChild, {
+                    x: x * 0.3, y: y * 0.3, duration: 1, ease: "power3.out"
+                });
+            });
+
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(magnetChild, {
+                    x: 0, y: 0, duration: 1, ease: "elastic.out(1, 0.3)"
+                });
+            });
+        });
+
+    </script>
 </body>
 </html>
