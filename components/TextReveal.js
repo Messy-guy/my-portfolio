@@ -14,9 +14,9 @@ export default function TextReveal({ text }) {
       
       gsap.fromTo(
         words,
-        { color: "rgba(255, 255, 255, 0.1)" },
+        { opacity: 0.1 },
         {
-          color: "rgba(255, 255, 255, 1)",
+          opacity: 1,
           stagger: 0.1,
           ease: "none",
           scrollTrigger: {

@@ -1,8 +1,8 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const skills = [
+const fallbackSkills = [
   { 
     name: "Flutter", 
     code: "Widget build() {\n  return MaterialApp(\n    home: Scaffold(),\n  );\n}", 
@@ -29,7 +29,7 @@ const skills = [
     logoSrc: "/logos/outline/nextjs.svg",
     logoClass: "logo-outline",
     colorHex: "#FFFFFF",
-    color: "text-white", 
+    color: "text-foreground", 
     idleAnim: { y: [0, -1.5, 0], transition: { repeat: Infinity, duration: 2, ease: "easeInOut" } },
     hoverAnim: { y: [0, -10, 0], scale: 1.1, transition: { repeat: Infinity, duration: 1.5, ease: "easeInOut" } } 
   },
@@ -134,7 +134,7 @@ function SkillItem({ skill }) {
             animate={{ opacity: 1, scale: 1, borderRadius: "1rem" }}
             exit={{ opacity: 0, scale: 0.8, borderRadius: "100%" }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="absolute top-[-20px] left-[-20px] right-[-20px] bottom-[-40px] md:top-[-30px] md:left-[-30px] md:right-[-30px] md:bottom-[-60px] bg-[#0a0a0a] border border-white/5 shadow-2xl z-0 overflow-hidden"
+            className="absolute top-[-20px] left-[-20px] right-[-20px] bottom-[-40px] md:top-[-30px] md:left-[-30px] md:right-[-30px] md:bottom-[-60px] bg-[#0a0a0a] border border-foreground/5 shadow-2xl z-0 overflow-hidden"
           >
             {/* macOS window dots */}
             <div className="absolute top-4 left-4 flex gap-1.5">
@@ -160,7 +160,7 @@ function SkillItem({ skill }) {
           <motion.div 
             animate={isHovered ? skill.hoverAnim : (skill.idleAnim ?? { scale: 1, rotate: 0, x: 0, y: 0, opacity: 1 })}
             transition={{ type: "spring", stiffness: 400, damping: 20 }}
-            className="relative mb-5 md:mb-6 transition-colors duration-500 text-white"
+            className="relative mb-5 md:mb-6 transition-colors duration-500 text-foreground"
           >
             <motion.div
               aria-label={`${skill.name} logo`}
@@ -245,7 +245,7 @@ function HeaderTitle() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -40, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-5xl md:text-8xl font-bold uppercase tracking-tighter text-white"
+            className="font-display text-5xl md:text-8xl font-bold uppercase tracking-tighter text-foreground"
           >
             Tech Stack
           </motion.h2>
@@ -256,7 +256,7 @@ function HeaderTitle() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: -40, opacity: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="font-display text-2xl md:text-5xl font-light italic tracking-tight text-white/70"
+            className="font-display text-2xl md:text-5xl font-light italic tracking-tight text-foreground/70"
           >
             {hoverTexts[textIndex]}
           </motion.p>
@@ -266,9 +266,34 @@ function HeaderTitle() {
   );
 }
 
-export default function Skills() {
+export default function Skills({ data }) {
+  const rawSkills = data && data.length > 0 ? data : fallbackSkills;
+
+  const skillsList = rawSkills.map((s, idx) => {
+    // Intelligently hydrate premium motions if missing from Sanity API
+    const idleAnim = s.idleAnim || (
+      idx % 3 === 0 
+        ? { y: [0, -2, 0], rotate: [0, -1.5, 0, 1.5, 0], transition: { repeat: Infinity, duration: 2.4, ease: "easeInOut" } }
+        : idx % 3 === 1
+          ? { rotate: [0, 5, 0, -5, 0], transition: { repeat: Infinity, duration: 3.6, ease: "linear" } }
+          : { y: [0, -1.5, 0], transition: { repeat: Infinity, duration: 2, ease: "easeInOut" } }
+    );
+
+    const hoverAnim = s.hoverAnim || (
+      idx % 2 === 0
+        ? { rotate: [0, -10, 10, -10, 10, 0], scale: 1.1, transition: { repeat: Infinity, duration: 1, ease: "easeInOut" } }
+        : { rotate: 360, scale: 1.1, transition: { repeat: Infinity, duration: 3, ease: "linear" } }
+    );
+
+    return {
+      ...s,
+      idleAnim,
+      hoverAnim
+    };
+  });
+
   return (
-    <section id="skills" className="py-24 md:py-40 relative z-10 bg-[#050505]">
+    <section id="skills" className="py-24 md:py-40 relative z-10 bg-background">
       <div className="container mx-auto px-6 max-w-7xl relative z-20">
         
         {/* Header */}
@@ -279,7 +304,7 @@ export default function Skills() {
             whileInView={{ opacity: 1, scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="w-24 h-[2px] bg-white/20"
+            className="w-24 h-[2px] bg-foreground/20"
           />
         </div>
 
@@ -291,7 +316,7 @@ export default function Skills() {
           viewport={{ once: true, margin: "-100px" }}
           className="grid grid-cols-2 md:grid-cols-4 gap-y-24 md:gap-y-32 gap-x-8 md:gap-x-12"
         >
-          {skills.map((skill) => (
+          {skillsList.map((skill) => (
             <SkillItem key={skill.name} skill={skill} />
           ))}
         </motion.div>

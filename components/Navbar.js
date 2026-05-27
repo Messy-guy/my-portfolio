@@ -4,6 +4,7 @@ import gsap from "gsap";
 
 import { MenuIcon } from "@/components/ui/menu";
 import { XIcon } from "@/components/ui/x";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -25,24 +26,27 @@ export default function Navbar() {
         <a href="#" className="font-display font-bold text-2xl tracking-widest uppercase hover-trigger pointer-events-auto">
           ANIMESH.
         </a>
-        <div className="flex gap-10 font-display text-sm uppercase tracking-widest hidden md:flex pointer-events-auto">
-          {["About", "Skills", "Work", "Contact"].map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="hover-trigger relative group overflow-hidden">
-              <span className="block transition-transform duration-300 group-hover:-translate-y-full">{item}</span>
-              <span className="absolute top-0 left-0 w-full h-full block transition-transform duration-300 translate-y-full group-hover:translate-y-0 text-accent2">{item}</span>
-            </a>
-          ))}
+        <div className="flex items-center gap-10 font-display text-sm uppercase tracking-widest pointer-events-auto">
+          <div className="hidden md:flex gap-10">
+            {["About", "Skills", "Work", "Contact"].map((item) => (
+              <a key={item} href={`#${item.toLowerCase()}`} className="hover-trigger relative group overflow-hidden">
+                <span className="block transition-transform duration-300 group-hover:-translate-y-full">{item}</span>
+                <span className="absolute top-0 left-0 w-full h-full block transition-transform duration-300 translate-y-full group-hover:translate-y-0 text-accent2">{item}</span>
+              </a>
+            ))}
+          </div>
+          <ThemeToggle className="w-10 h-10 hover-trigger" />
+          <button 
+            onClick={() => setIsOpen(!isOpen)} 
+            className="md:hidden flex justify-center items-center pointer-events-auto z-[101] hover-trigger text-white transition-all duration-300 hover:scale-110 active:scale-95"
+          >
+            {isOpen ? <XIcon size={32} /> : <MenuIcon size={32} />}
+          </button>
         </div>
-        <button 
-          onClick={() => setIsOpen(!isOpen)} 
-          className="md:hidden flex justify-center items-center pointer-events-auto z-[101] hover-trigger text-white transition-all duration-300 hover:scale-110 active:scale-95"
-        >
-          {isOpen ? <XIcon size={32} /> : <MenuIcon size={32} />}
-        </button>
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div className="mobile-menu fixed inset-0 bg-dark z-[90] -translate-y-full flex items-center justify-center pointer-events-auto">
+      <div className="mobile-menu fixed inset-0 bg-background z-[90] -translate-y-full flex items-center justify-center pointer-events-auto">
         <div className="flex flex-col items-center gap-8 font-display text-4xl uppercase tracking-widest">
           {["About", "Skills", "Work", "Contact"].map((item) => (
             <a 
@@ -51,7 +55,7 @@ export default function Navbar() {
               onClick={() => setIsOpen(false)}
               className="menu-link overflow-hidden relative group hover-trigger"
             >
-              <span className="text-white group-hover:text-transparent group-hover:[-webkit-text-stroke:1px_white] group-active:text-transparent group-active:[-webkit-text-stroke:1px_white] transition-all duration-300">
+              <span className="text-foreground group-hover:text-transparent group-hover:[-webkit-text-stroke:1px_currentColor] group-active:text-transparent group-active:[-webkit-text-stroke:1px_currentColor] transition-all duration-300">
                 {item}
               </span>
             </a>

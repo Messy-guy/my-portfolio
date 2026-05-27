@@ -38,8 +38,8 @@ export default function Loader({ onComplete }) {
   return (
     <div ref={loaderRef} className="fixed inset-0 z-[99998] flex items-center justify-center pointer-events-none w-screen h-screen">
       {/* Background Panes */}
-      <div ref={leftPaneRef} className="absolute left-0 top-0 w-1/2 h-full bg-[#050505]"></div>
-      <div ref={rightPaneRef} className="absolute right-0 top-0 w-1/2 h-full bg-[#050505]"></div>
+      <div ref={leftPaneRef} className="absolute left-0 top-0 w-1/2 h-full bg-background"></div>
+      <div ref={rightPaneRef} className="absolute right-0 top-0 w-1/2 h-full bg-background"></div>
       
       {/* Centered Content */}
       <div className="relative z-[99999] mix-blend-difference text-white flex flex-col items-center justify-center">

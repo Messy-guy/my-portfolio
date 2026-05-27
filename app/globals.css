@@ -21,8 +21,14 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth iframe { pointer-events: none; }
 
 @media (pointer: fine) {
-  body { cursor: none; }
-  a, button, input, textarea, select, .hover-trigger, [data-cursor-text] {
+  .custom-cursor-active, .custom-cursor-active body { cursor: none; }
+  .custom-cursor-active a,
+  .custom-cursor-active button,
+  .custom-cursor-active input,
+  .custom-cursor-active textarea,
+  .custom-cursor-active select,
+  .custom-cursor-active .hover-trigger,
+  .custom-cursor-active [data-cursor-text] {
     cursor: none !important;
   }
 }
@@ -61,7 +67,7 @@ html.lenis, html.lenis body { height: auto; }
 }
 .loader-pane {
   width: 50%; height: 100%;
-  background: #050505;
+  background: var(--background);
   position: relative;
 }
 .loader-content {
@@ -244,8 +250,8 @@ html.lenis, html.lenis body { height: auto; }
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
+  --background: #050505;
+  --foreground: #f5f5f5;
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
@@ -287,4 +293,22 @@ html.lenis, html.lenis body { height: auto; }
   html {
     @apply font-sans;
   }
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-old(root) {
+  z-index: 1;
+}
+::view-transition-new(root) {
+  z-index: 2;
+}
+.dark::view-transition-old(root) {
+  z-index: 2;
+}
+.dark::view-transition-new(root) {
+  z-index: 1;
 }

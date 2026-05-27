@@ -6,7 +6,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function About() {
+export default function About({ data }) {
   const sectionRef = useRef(null);
 
   useEffect(() => {
@@ -15,9 +15,9 @@ export default function About() {
       const words = gsap.utils.toArray(".reveal-word");
       gsap.fromTo(
         words,
-        { color: "rgba(255, 255, 255, 0.15)" },
+        { opacity: 0.15 },
         {
-          color: "rgba(255, 255, 255, 1)",
+          opacity: 1,
           stagger: 0.5,
           ease: "none",
           scrollTrigger: {
@@ -51,11 +51,12 @@ export default function About() {
     return () => ctx.revert();
   }, []);
 
-  const text = "I am Animesh Poudel. An aspiring frontend & mobile developer building immersive software that doesn't just work—it feels alive.";
+  const text = data?.bio || "I am Animesh Poudel. An aspiring frontend & mobile developer building immersive software that doesn't just work—it feels alive.";
   const wordsArray = text.split(" ");
 
+
   return (
-    <section id="about" ref={sectionRef} className="py-24 md:py-40 relative z-10 bg-[#050505]">
+    <section id="about" ref={sectionRef} className="py-24 md:py-40 relative z-10 bg-background">
       <div className="container mx-auto px-6 max-w-7xl relative">
         
         {/* Scrub Reveal Text */}

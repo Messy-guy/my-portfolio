@@ -40,25 +40,25 @@ const deliverables = [
 // Re-integrating the Literal Visuals into the horizontal panels
 const Visuals = {
   ui: () => (
-    <div className="relative w-full aspect-video bg-[#09090b] border border-white/10 rounded-2xl overflow-hidden flex items-center justify-center">
-      <div className="px-10 py-5 bg-white/5 border border-white/20 rounded-xl text-white font-mono text-xs uppercase tracking-widest">
+    <div className="relative w-full aspect-video bg-[#09090b] border border-foreground/10 rounded-2xl overflow-hidden flex items-center justify-center">
+      <div className="px-10 py-5 bg-foreground/5 border border-foreground/20 rounded-xl text-foreground font-mono text-xs uppercase tracking-widest">
         Precision
       </div>
       <motion.div 
-        className="absolute w-32 h-32 rounded-full border-2 border-[#ff3366] bg-[#09090b]/80 shadow-[0_0_30px_rgba(255,51,102,0.3)] overflow-hidden pointer-events-none z-50 flex items-center justify-center"
+        className="absolute w-32 h-32 rounded-full border-2 border-accent bg-[#09090b]/80 shadow-[0_0_30px_rgba(255,51,102,0.3)] overflow-hidden pointer-events-none z-50 flex items-center justify-center"
         animate={{ x: [0, 60, -60, 0], y: [0, -30, 30, 0] }}
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       >
         <div className="grid grid-cols-6 gap-0.5 opacity-60">
           {[...Array(36)].map((_, i) => (
-            <div key={i} className={`w-4 h-4 ${i % 7 === 0 ? 'bg-[#ff3366]' : 'bg-white/20'}`} />
+            <div key={i} className={`w-4 h-4 ${i % 7 === 0 ? 'bg-accent' : 'bg-foreground/20'}`} />
           ))}
         </div>
       </motion.div>
     </div>
   ),
   perf: () => (
-    <div className="w-full aspect-video bg-[#09090b] border border-white/10 rounded-2xl overflow-hidden flex items-center justify-center p-12">
+    <div className="w-full aspect-video bg-[#09090b] border border-foreground/10 rounded-2xl overflow-hidden flex items-center justify-center p-12">
       <div className="w-full h-full relative">
         <svg className="w-full h-full" viewBox="0 0 320 100">
           <motion.path
@@ -77,7 +77,7 @@ const Visuals = {
     </div>
   ),
   scale: () => (
-    <div className="w-full aspect-video bg-[#09090b] border border-white/10 rounded-2xl overflow-hidden flex items-center justify-center">
+    <div className="w-full aspect-video bg-[#09090b] border border-foreground/10 rounded-2xl overflow-hidden flex items-center justify-center">
        <div className="relative">
         <motion.div 
           className="w-4 h-4 bg-[#02569B] rounded-full"
@@ -101,7 +101,7 @@ const Visuals = {
     const [points, setPoints] = useState([{ x: 50, y: 50 }]);
     return (
       <div 
-        className="w-full aspect-video bg-[#09090b] border border-white/10 rounded-2xl overflow-hidden flex items-center justify-center relative cursor-crosshair"
+        className="w-full aspect-video bg-[#09090b] border border-foreground/10 rounded-2xl overflow-hidden flex items-center justify-center relative cursor-crosshair"
         onMouseMove={(e) => {
           const rect = e.currentTarget.getBoundingClientRect();
           const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -118,7 +118,7 @@ const Visuals = {
             strokeOpacity="0.4"
           />
         </svg>
-        <div className="text-[10px] text-white/20 uppercase tracking-[0.4em] select-none">Experience Trail</div>
+        <div className="text-[10px] text-foreground/20 uppercase tracking-[0.4em] select-none">Experience Trail</div>
       </div>
     )
   }
@@ -165,9 +165,9 @@ export default function Deliverables() {
   }, []);
 
   return (
-    <section ref={containerRef} className="relative z-10 bg-[#050505] overflow-hidden">
+    <section ref={containerRef} className="relative z-10 bg-background overflow-hidden">
       <div className="absolute top-10 left-6 md:left-16 z-20 pointer-events-none">
-        <p className="font-display text-[10px] uppercase tracking-[0.5em] text-white/30">What I Deliver</p>
+        <p className="font-display text-[10px] uppercase tracking-[0.5em] text-foreground/30">What I Deliver</p>
       </div>
 
       <div ref={trackRef} className="flex h-screen w-max items-center">
@@ -179,14 +179,14 @@ export default function Deliverables() {
                 {/* Content */}
                 <div className="flex flex-col gap-6">
                   <span className="font-mono text-[#444] text-xs tracking-widest">/0{deliverables.indexOf(item) + 1}</span>
-                  <h2 className="text-5xl md:text-8xl font-bold text-white uppercase tracking-tighter">
+                  <h2 className="text-5xl md:text-8xl font-bold text-foreground uppercase tracking-tighter">
                     {item.title}
                   </h2>
                   <div className="flex flex-col gap-4">
-                    <h3 className="text-xl md:text-2xl font-medium text-white/90" style={{ color: item.color }}>
+                    <h3 className="text-xl md:text-2xl font-medium text-foreground/90" style={{ color: item.color }}>
                       {item.subtitle}
                     </h3>
-                    <p className="text-white/50 text-lg leading-relaxed max-w-md">
+                    <p className="text-foreground/50 text-lg leading-relaxed max-w-md">
                       {item.description}
                     </p>
                   </div>

@@ -13,12 +13,21 @@ import Skills from "@/components/Skills";
 import Projects from "@/components/Projects";
 import Marquee from "@/components/Marquee";
 import Contact from "@/components/Contact";
+import { fetchPortfolioData } from "@/lib/sanity/service";
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const [portfolioData, setPortfolioData] = useState(null);
 
   useEffect(() => {
-    // 1. Initialize Lenis Smooth Scroll
+    // 1. Fetch dynamic data on mount
+    async function loadData() {
+      const data = await fetchPortfolioData();
+      setPortfolioData(data);
+    }
+    loadData();
+
+    // 2. Initialize Lenis Smooth Scroll
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -58,16 +67,16 @@ export default function Home() {
       <Cursor />
       {loading && <Loader onComplete={() => setLoading(false)} />}
       
-      {!loading && (
+      {!loading && portfolioData && (
         <div className="opacity-0 animate-[fadeIn_1s_ease-out_forwards]">
-          <Navbar />
+          <Navbar data={portfolioData.contact} />
           <main id="main-container">
-            <Hero />
-            <About />
-            <Skills />
-            <Projects />
+            <Hero data={portfolioData.hero} metrics={portfolioData.metrics} />
+            <About data={portfolioData.about} />
+            <Skills data={portfolioData.skills} />
+            <Projects data={portfolioData.projects} />
             <Marquee />
-            <Contact />
+            <Contact data={portfolioData.contact} />
           </main>
         </div>
       )}
@@ -81,3 +90,4 @@ export default function Home() {
     </>
   );
 }
+

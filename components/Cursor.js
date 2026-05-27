@@ -9,6 +9,9 @@ export default function Cursor() {
     const dot = cursorDot.current;
     if (!dot) return;
 
+    // Enable custom cursor styling class globally
+    document.documentElement.classList.add("custom-cursor-active");
+
     // Show cursor by default
     gsap.set(dot, { opacity: 1 });
 
@@ -106,13 +109,14 @@ export default function Cursor() {
       window.removeEventListener("mouseout", handleMouseOut);
       window.removeEventListener("scroll", handleScroll);
       document.body.classList.remove("cursor-hover");
+      document.documentElement.classList.remove("custom-cursor-active");
     };
   }, []);
 
   return (
     <>
       <div ref={cursorDot} className="cursor-dot pointer-events-none z-[99999] flex items-center justify-center">
-        <span className="cursor-text text-black font-display font-bold text-[11px] tracking-widest opacity-0 transition-opacity duration-300 pointer-events-none whitespace-nowrap"></span>
+        <span className="cursor-text text-foreground font-display font-bold text-[11px] tracking-widest opacity-0 transition-opacity duration-300 pointer-events-none whitespace-nowrap"></span>
       </div>
     </>
   );
