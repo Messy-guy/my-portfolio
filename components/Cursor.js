@@ -45,8 +45,22 @@ export default function Cursor() {
           cursorTextEl.innerText = cursorTextAttr;
           cursorTextEl.style.opacity = "1";
         }
-        gsap.to(dot, { backgroundColor: "white", mixBlendMode: "normal", border: "none" });
+        gsap.to(dot, { 
+          backgroundColor: "rgba(5, 5, 5, 0.75)", 
+          backdropFilter: "blur(4px)",
+          mixBlendMode: "normal", 
+          border: "1px solid rgba(255, 255, 255, 0.15)" 
+        });
       } else {
+        if (cursorTextEl) {
+          cursorTextEl.style.opacity = "0";
+        }
+        gsap.to(dot, { 
+          backgroundColor: "white", 
+          backdropFilter: "none",
+          mixBlendMode: "difference",
+          border: "none"
+        });
         if (!isNaN(fontSize) && fontSize > 24) {
           newSize = Math.min(fontSize * 1.2, 80); 
         }
@@ -62,7 +76,18 @@ export default function Cursor() {
       if (cursorTextEl) {
         cursorTextEl.style.opacity = "0";
       }
-      gsap.to(dot, { width: 24, height: 24, marginTop: -12, marginLeft: -12, backgroundColor: "white", mixBlendMode: "difference", duration: 0.3, ease: "power3.out" }); 
+      gsap.to(dot, { 
+        width: 24, 
+        height: 24, 
+        marginTop: -12, 
+        marginLeft: -12, 
+        backgroundColor: "white", 
+        backdropFilter: "none",
+        mixBlendMode: "difference", 
+        border: "none",
+        duration: 0.3, 
+        ease: "power3.out" 
+      }); 
     };
 
     // Track mouse position to check elements during scroll

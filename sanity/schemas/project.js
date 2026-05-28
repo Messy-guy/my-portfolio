@@ -36,6 +36,11 @@ export default {
       type: "string"
     },
     {
+      name: "projectUrl",
+      title: "Live Website / Demo URL (Optional)",
+      type: "string"
+    },
+    {
       name: "img",
       title: "Project Cover Image",
       type: "image",

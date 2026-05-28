@@ -118,49 +118,105 @@ export default function Projects({ data }) {
                   ))}
                 </div>
                 
-                <a
-                  href={p.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-3 group hover-trigger w-max bg-foreground text-background px-5 py-2.5 rounded-full font-display uppercase tracking-widest text-[10px] font-bold transition-transform hover:scale-105"
-                >
-                  <span>View Github</span>
-                  <GithubIcon size={16} className="group-hover:scale-110 transition-transform" />
-                </a>
+                 <div className="flex flex-wrap gap-4 items-center">
+                   <a
+                     href={p.link}
+                     target="_blank"
+                     rel="noreferrer"
+                     className="inline-flex items-center gap-3 group hover-trigger w-max bg-foreground text-background px-5 py-2.5 rounded-full font-display uppercase tracking-widest text-[10px] font-bold transition-transform hover:scale-105"
+                   >
+                     <span>View Github</span>
+                     <GithubIcon size={16} className="group-hover:scale-110 transition-transform" />
+                   </a>
+
+                   {p.projectUrl && (
+                     <a
+                       href={p.projectUrl}
+                       target="_blank"
+                       rel="noreferrer"
+                       className="inline-flex items-center gap-2.5 group hover-trigger w-max border border-foreground/30 hover:border-foreground/80 text-foreground px-5 py-2.5 rounded-full font-display uppercase tracking-widest text-[10px] font-bold transition-all hover:scale-105 backdrop-blur-sm"
+                     >
+                       <span>Live Site</span>
+                       <svg className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" fill="none" stroke="currentColor" strokeWidth="2.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                         <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 19.5l15-15m0 0H8.25m11.25 0v11.25"></path>
+                       </svg>
+                     </a>
+                   )}
+                 </div>
               </div>
               
-              <div 
-                className="w-full md:w-[55%] h-[55%] md:h-full order-1 md:order-2 relative overflow-hidden z-10 bg-black"
-                data-cursor-text="EXPLORE"
-              >
-                <div className="absolute inset-0 bg-foreground/5 z-10 transition-opacity duration-500 group-hover:opacity-0 group-active:opacity-0 pointer-events-none"></div>
-                {p.video ? (
-                  <video
-                    src={p.video}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="object-contain w-full h-full transition-transform duration-[1.5s] ease-out group-hover:scale-[1.01] group-active:scale-[1.01]"
-                  />
-                ) : p.img && (p.img.endsWith(".mp4") || p.img.endsWith(".webm") || p.img.includes("video") || p.img.includes(".mov")) ? (
-                  <video
-                    src={p.img}
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    className="object-contain w-full h-full transition-transform duration-[1.5s] ease-out group-hover:scale-[1.01] group-active:scale-[1.01]"
-                  />
-                ) : (
-                  <Image
-                    src={p.img || "/images/placeholder.png"}
-                    alt={p.title}
-                    fill
-                    className="img-parallax object-cover object-left md:object-center transition-transform duration-[1.5s] ease-out group-hover:scale-[1.03] group-active:scale-[1.03]"
-                  />
-                )}
-              </div>
+              {p.projectUrl ? (
+                <a 
+                  href={p.projectUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="w-full md:w-[55%] h-[55%] md:h-full order-1 md:order-2 relative overflow-hidden z-10 bg-black group/media block cursor-pointer"
+                  data-cursor-text="PREVIEW"
+                >
+                  <div className="absolute inset-0 bg-foreground/5 z-10 transition-opacity duration-500 group-hover/media:opacity-0 pointer-events-none"></div>
+                  
+
+                  {p.video ? (
+                    <video
+                      src={p.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="object-contain w-full h-full transition-transform duration-[1.5s] ease-out group-hover/media:scale-[1.01] group-active/media:scale-[1.01]"
+                    />
+                  ) : p.img && (p.img.endsWith(".mp4") || p.img.endsWith(".webm") || p.img.includes("video") || p.img.includes(".mov")) ? (
+                    <video
+                      src={p.img}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="object-contain w-full h-full transition-transform duration-[1.5s] ease-out group-hover/media:scale-[1.01] group-active/media:scale-[1.01]"
+                    />
+                  ) : (
+                    <Image
+                      src={p.img || "/images/placeholder.png"}
+                      alt={p.title}
+                      fill
+                      className="img-parallax object-cover object-left md:object-center transition-transform duration-[1.5s] ease-out group-hover/media:scale-[1.03] group-active/media:scale-[1.03]"
+                    />
+                  )}
+                </a>
+              ) : (
+                <div 
+                  className="w-full md:w-[55%] h-[55%] md:h-full order-1 md:order-2 relative overflow-hidden z-10 bg-black"
+                  data-cursor-text="EXPLORE"
+                >
+                  <div className="absolute inset-0 bg-foreground/5 z-10 transition-opacity duration-500 group-hover:opacity-0 group-active:opacity-0 pointer-events-none"></div>
+                  {p.video ? (
+                    <video
+                      src={p.video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="object-contain w-full h-full transition-transform duration-[1.5s] ease-out group-hover:scale-[1.01] group-active:scale-[1.01]"
+                    />
+                  ) : p.img && (p.img.endsWith(".mp4") || p.img.endsWith(".webm") || p.img.includes("video") || p.img.includes(".mov")) ? (
+                    <video
+                      src={p.img}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="object-contain w-full h-full transition-transform duration-[1.5s] ease-out group-hover:scale-[1.01] group-active:scale-[1.01]"
+                    />
+                  ) : (
+                    <Image
+                      src={p.img || "/images/placeholder.png"}
+                      alt={p.title}
+                      fill
+                      className="img-parallax object-cover object-left md:object-center transition-transform duration-[1.5s] ease-out group-hover:scale-[1.03] group-active:scale-[1.03]"
+                    />
+                  )}
+                </div>
+              )}
 
             </div>
           </div>
