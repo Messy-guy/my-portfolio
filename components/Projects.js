@@ -8,37 +8,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 const fallbackProjects = [
   {
-    id: "01",
-    category: "EVENT APP",
-    title: "Eventra",
-    desc: "An Event Booking App With an Admin Panel, User Page and attractive UI.",
-    tech: ["Flutter", "Firebase", "Firestore", "Cloudinary"],
-    link: "https://github.com/Messy-guy/eventra1",
-    img: "/images/eventra.png",
-    color: "text-accent",
-  },
-  {
     id: "02",
-    category: "GITHUB CLIENT",
-    title: "GitPeek",
-    desc: "A custom Github App that lets you peek someone's profile, repos, contributions and Top 5 repos.",
-    tech: ["Flutter", "Github API", "Bloc", "fl_chart"],
-    link: "https://github.com/Messy-guy/gitpeek",
-    img: "/images/gitpeek (2).png",
-    color: "text-accent2",
-  },
-  {
-    id: "03",
-    category: "VOICE AI",
-    title: "Voxa",
-    desc: "A Voice Assistant App with voice assistant answers and AI image generator.",
-    tech: ["Flutter", "OpenRouter API", "HuggingFace"],
-    link: "https://github.com/Messy-guy/https---github.com-Messy-guy-voxa_",
-    img: "/images/voxa (2).png",
-    color: "text-yellow-400",
-  },
-  {
-    id: "04",
     category: "AIR QUALITY",
     title: "AirZone",
     desc: "Real-time AQI, pollutant levels, and a 7-day forecast with live map from nearby cities.",
@@ -46,16 +16,6 @@ const fallbackProjects = [
     link: "https://github.com/Messy-guy/AIRZONE",
     img: "/images/AirZone.png",
     color: "text-green-400",
-  },
-  {
-    id: "05",
-    category: "CHATBOT",
-    title: "BrAIn",
-    desc: "A simple and responsive chatbot app for smooth real-time conversations with intelligent message handling.",
-    tech: ["Flutter", "Gemini API", "dash_chat_2"],
-    link: "https://github.com/Messy-guy/BrAIn",
-    img: "/images/brain.png",
-    color: "text-purple-400",
   },
 ];
 
