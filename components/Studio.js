@@ -3,5 +3,9 @@ import { NextStudio } from "next-sanity/studio";
 import config from "../sanity.config";
 
 export default function Studio() {
-  return <NextStudio config={config} />;
+  const embeddedConfig = {
+    ...config,
+    basePath: "/studio",
+  };
+  return <NextStudio config={embeddedConfig} />;
 }

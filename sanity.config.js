@@ -6,10 +6,8 @@ export default defineConfig({
   name: "default",
   title: "Animesh Portfolio Admin",
 
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "placeholder",
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "24ci87jt",
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
-
-  basePath: "/studio", // Accessible under your_site/studio
 
   plugins: [deskTool()],
 

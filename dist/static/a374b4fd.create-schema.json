@@ -1,0 +1,262 @@
+[
+  {
+    "fields": [
+      {
+        "initialValue": "FULL STACK",
+        "name": "title1",
+        "type": "string",
+        "title": "Headline Title 1"
+      },
+      {
+        "initialValue": "SYSTEM ARCHITECT",
+        "name": "title1Hover",
+        "type": "string",
+        "title": "Headline Title 1 Hover Text"
+      },
+      {
+        "initialValue": "DEVELOPER.",
+        "name": "title2",
+        "type": "string",
+        "title": "Headline Title 2"
+      },
+      {
+        "initialValue": "CREATOR.",
+        "name": "title2Hover",
+        "type": "string",
+        "title": "Headline Title 2 Hover Text"
+      },
+      {
+        "initialValue": "#",
+        "name": "resumeLink",
+        "type": "string",
+        "title": "Resume Download URL"
+      },
+      {
+        "initialValue": "Scroll",
+        "name": "tagline",
+        "type": "string",
+        "title": "Scroll Tagline Indicator"
+      }
+    ],
+    "name": "hero",
+    "type": "document",
+    "title": "Hero Section"
+  },
+  {
+    "fields": [
+      {
+        "rows": 4,
+        "initialValue": "I am Animesh Poudel. An aspiring frontend & mobile developer building immersive software that doesn't just work—it feels alive.",
+        "name": "bio",
+        "type": "text",
+        "title": "Biography Text"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "profileImage",
+        "type": "image"
+      }
+    ],
+    "name": "about",
+    "type": "document",
+    "title": "About Section"
+  },
+  {
+    "fields": [
+      {
+        "name": "name",
+        "type": "string",
+        "title": "Skill Name"
+      },
+      {
+        "rows": 4,
+        "name": "code",
+        "type": "text",
+        "title": "Typewriter Code Snippet"
+      },
+      {
+        "name": "logo",
+        "type": "image",
+        "title": "SVG Outline Logo"
+      },
+      {
+        "initialValue": "logo-outline",
+        "name": "logoClass",
+        "type": "string",
+        "title": "Logo Style Class (e.g. logo-outline)"
+      },
+      {
+        "name": "colorHex",
+        "type": "string",
+        "title": "Branded Hex Code Color (e.g. #61DAFB)"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "title": "Tailwind Color Class Name (e.g. text-[#61DAFB])"
+      }
+    ],
+    "name": "skill",
+    "type": "document",
+    "title": "Skills (Tech Stack)"
+  },
+  {
+    "fields": [
+      {
+        "name": "id",
+        "type": "string",
+        "title": "Project Index / ID (e.g. 01)"
+      },
+      {
+        "name": "category",
+        "type": "string",
+        "title": "Category Tag (e.g. EVENT APP)"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "title": "Project Title"
+      },
+      {
+        "rows": 3,
+        "name": "desc",
+        "type": "text",
+        "title": "Project Description"
+      },
+      {
+        "of": [
+          {
+            "type": "string"
+          }
+        ],
+        "name": "tech",
+        "type": "array",
+        "title": "Technologies Used"
+      },
+      {
+        "name": "link",
+        "type": "string",
+        "title": "GitHub / Demo Link"
+      },
+      {
+        "name": "projectUrl",
+        "type": "string",
+        "title": "Live Website / Demo URL (Optional)"
+      },
+      {
+        "options": {
+          "hotspot": true
+        },
+        "name": "img",
+        "type": "image",
+        "title": "Project Cover Image"
+      },
+      {
+        "options": {
+          "accept": "video/*"
+        },
+        "name": "video",
+        "type": "file",
+        "title": "Project Showcase Video (Optional)"
+      },
+      {
+        "name": "color",
+        "type": "string",
+        "title": "Visual Theme Highlight Class (e.g. text-accent)"
+      }
+    ],
+    "name": "project",
+    "type": "document",
+    "title": "Selected Works (Projects)"
+  },
+  {
+    "fields": [
+      {
+        "initialValue": "Gyaneshwor, Kathmandu",
+        "name": "location",
+        "type": "string",
+        "title": "Physical Location"
+      },
+      {
+        "initialValue": "+977 9761657579",
+        "name": "phone",
+        "type": "string",
+        "title": "Phone Number"
+      },
+      {
+        "initialValue": "animeshpoudel6@gmail.com",
+        "name": "email",
+        "type": "string",
+        "title": "Email Address"
+      },
+      {
+        "initialValue": "https://github.com/Messy-guy",
+        "name": "github",
+        "type": "string",
+        "title": "GitHub Profile URL"
+      },
+      {
+        "initialValue": "https://www.instagram.com/iam_animeshpoudel/",
+        "name": "instagram",
+        "type": "string",
+        "title": "Instagram URL"
+      },
+      {
+        "initialValue": "https://www.facebook.com/animesh.poudel.79/",
+        "name": "facebook",
+        "type": "string",
+        "title": "Facebook URL"
+      }
+    ],
+    "name": "contact",
+    "type": "document",
+    "title": "Contact Information"
+  },
+  {
+    "fields": [
+      {
+        "initialValue": 124,
+        "name": "codingStreak",
+        "type": "number",
+        "title": "Coding Streak Days"
+      },
+      {
+        "initialValue": 12,
+        "name": "activeProjectsCount",
+        "type": "number"
+      },
+      {
+        "of": [
+          {
+            "fields": [
+              {
+                "name": "subject",
+                "type": "string",
+                "title": "Technology Name"
+              },
+              {
+                "name": "A",
+                "type": "number",
+                "title": "Proficiency Index (Max 150)"
+              },
+              {
+                "name": "fullMark",
+                "type": "number",
+                "title": "Full Mark (e.g. 150)"
+              }
+            ],
+            "type": "object",
+            "name": "radarItem"
+          }
+        ],
+        "name": "techRadarData",
+        "type": "array",
+        "title": "Tech Radar Points"
+      }
+    ],
+    "name": "systemMetrics",
+    "type": "document"
+  }
+]
